@@ -6,16 +6,10 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="src" path="IsAccountCheckService"/>
-	<classpathentry kind="src" path="GetProfileDataService"/>
-	<classpathentry kind="src" path="ViewPatientsService"/>
 	<classpathentry kind="src" path="CommonCISValidation"/>
 	<classpathentry kind="src" path="CISSessions"/>
 	<classpathentry kind="src" path="CISDataCommon"/>
 	<classpathentry kind="src" path="CISCommunication"/>
-	<classpathentry kind="src" path="AdminUpdateProfileService"/>
-	<classpathentry kind="src" path="AdminCreateService"/>
-	<classpathentry kind="src" path="AddCareTakers"/>
 	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>

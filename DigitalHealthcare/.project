@@ -41,21 +41,6 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>AddCareTakers</name>
-			<type>2</type>
-			<location>E:/GitHub/ArcturusadminApi1.1/AddCareTakers/src</location>
-		</link>
-		<link>
-			<name>AdminCreateService</name>
-			<type>2</type>
-			<location>E:/GitHub/ArcturusadminApi1.1/AdminCreateService/src</location>
-		</link>
-		<link>
-			<name>AdminUpdateProfileService</name>
-			<type>2</type>
-			<location>E:/GitHub/ArcturusadminApi1.1/AdminUpdateProfileService/src</location>
-		</link>
-		<link>
 			<name>CISCommunication</name>
 			<type>2</type>
 			<location>E:/GitHub/ArcturusadminApi1.1/CISCommunication/src</location>
@@ -74,21 +59,6 @@
 			<name>CommonCISValidation</name>
 			<type>2</type>
 			<location>E:/GitHub/ArcturusadminApi1.1/CommonCISValidation/src</location>
-		</link>
-		<link>
-			<name>GetProfileDataService</name>
-			<type>2</type>
-			<location>E:/GitHub/ArcturusadminApi1.1/GetProfileDataService/src</location>
-		</link>
-		<link>
-			<name>IsAccountCheckService</name>
-			<type>2</type>
-			<location>E:/GitHub/ArcturusadminApi1.1/IsAccountCheckService/src</location>
-		</link>
-		<link>
-			<name>ViewPatientsService</name>
-			<type>2</type>
-			<location>E:/GitHub/ArcturusadminApi1.1/ViewPatientsService/src</location>
 		</link>
 	</linkedResources>
 </projectDescription>
