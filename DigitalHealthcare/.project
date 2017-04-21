@@ -41,6 +41,11 @@
 	</natures>
 	<linkedResources>
 		<link>
+			<name>AdminViewPlans</name>
+			<type>2</type>
+			<location>E:/GitHub/ArcturusAdminApi1.2/AdminViewPlans/src</location>
+		</link>
+		<link>
 			<name>CISCommunication</name>
 			<type>2</type>
 			<location>E:/GitHub/ArcturusadminApi1.1/CISCommunication/src</location>

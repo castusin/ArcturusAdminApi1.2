@@ -13,34 +13,17 @@
     <bean name="viewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
     <bean name="jsonTemplate" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
  
-	<bean id="AccountExist" class="com.digitalhealthcare.DigitalHealthCareIsAccountExistDAO">
-		<property name="dataSource" ref="ds" />
-	</bean>
-	
-	<bean id="addCaretaker" class="com.digitalhealthcare.DigiHealthCareAdminAddCareTakerDAO">
+	<bean id="adminViewPlans" class="com.digitalhealthcare.DigiHealthCareAdminViewPlansDAO">
 		<property name="dataSource" ref="ds" />
 	</bean>
 	
 	
-	<bean id="sessionHandler" class="com.cis.CISSessionDAO">
-		<property name="dataSource" ref="ds" />
-	</bean>
 	
-	<bean id="profileDAO" class="com.digitalhealthcare.DigiHealthCareGetProfileDataDAO">  
-  		<property name="dataSource" ref="ds" />  
-  	</bean>
-  	
- 	<bean id="savePatient" class="com.digitalhealthcare.DigihealthCareAdminCreateServiceDAO">
+	<!-- <bean id="sessionHandler" class="com.cis.CISSessionDAO">
 		<property name="dataSource" ref="ds" />
 	</bean>
-
-	<bean id="viewPatients" class="com.digitalhealthcare.DigiHealthCareViewPatientsServiceDAO">
-		<property name="dataSource" ref="ds" />
-	</bean>
+	 -->
 	
-	<bean id="AdminProfileUpdateDAO" class="com.digitalhealthcare.DigiHealthCareAdminProfileUpdateDAO">
-		<property name="dataSource" ref="ds" />
-	</bean>
  	
 <!-- Development  DB connections     --> 
 
