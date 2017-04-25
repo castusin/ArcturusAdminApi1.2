@@ -1,6 +1,12 @@
 
 package com.digitalhealthcare;
 
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.TimeZone;
+
 import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
@@ -16,6 +22,7 @@ public class DigiHealthCareEditSchedulePlanDAO extends JdbcDaoSupport {
 			String startTime, String endTime, int allDay, String aptWith) {
 		
 		CISResults cisResults=new CISResults();
+	
 		cisResults.setResponseCode(CISConstants.RESPONSE_SUCCESS);
 		Logger logger = Logger.getLogger(DigiHealthCareEditSchedulePlanDAO.class);
 		Object[] inputs = new Object[]{aptPersonId,startTime,endTime,allDay,aptWith,patientId};

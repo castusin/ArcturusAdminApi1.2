@@ -13,7 +13,7 @@ public class DigiHealthCareEditSchedulePlanWebservice {
 	
 	DigiHealthCareEditSchedulePlanBL editSchedulePlanBL=new DigiHealthCareEditSchedulePlanBL();
 
-		public CISResults editSchedulePlan(DigiHealthCareEditSchedulePlanModel editSchedulePlan) {
+		public CISResults editSchedulePlan(DigiHealthCareEditSchedulePlanModel editSchedulePlan){
 		 CISResults cisResult = editSchedulePlanBL.editSchedulePlan(editSchedulePlan);
 		 logger.info(" DigitalHealthCare:edit schedule plan WebService :"+cisResult);
 		return cisResult;
