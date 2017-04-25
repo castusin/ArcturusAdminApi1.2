@@ -17,7 +17,9 @@
 		<property name="dataSource" ref="ds" />
 	</bean>
 	
-	
+	<bean id="editSchedulePlanDAO" class="com.digitalhealthcare.DigiHealthCareEditSchedulePlanDAO">
+		<property name="dataSource" ref="ds" />
+	</bean>
 	
 	<!-- <bean id="sessionHandler" class="com.cis.CISSessionDAO">
 		<property name="dataSource" ref="ds" />
