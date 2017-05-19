@@ -70,5 +70,20 @@
 			<type>2</type>
 			<location>E:/GitHub/ArcturusAdminApi1.2/EditSchedulePlan/src</location>
 		</link>
+		<link>
+			<name>GetStaffMemberDetails</name>
+			<type>2</type>
+			<location>E:/GitHub/ArcturusAdminApi1.2/GetStaffMemberDetails/src</location>
+		</link>
+		<link>
+			<name>SaveStaffmember</name>
+			<type>2</type>
+			<location>E:/GitHub/ArcturusAdminApi1.2/SaveStaffmember/src</location>
+		</link>
+		<link>
+			<name>UpdateStaffDetails</name>
+			<type>2</type>
+			<location>E:/GitHub/ArcturusAdminApi1.2/UpdateStaffDetails/src</location>
+		</link>
 	</linkedResources>
 </projectDescription>

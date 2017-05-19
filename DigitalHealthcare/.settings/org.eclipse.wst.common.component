@@ -11,6 +11,9 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/CISCommunication"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/AdminViewPlans"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/EditSchedulePlan"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/SaveStaffmember"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/GetStaffMemberDetails"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/UpdateStaffDetails"/>
         <property name="context-root" value="DigitalHealthcare"/>
         <property name="java-output-path" value="/DigitalHealthcare/target/classes"/>
     </wb-module>

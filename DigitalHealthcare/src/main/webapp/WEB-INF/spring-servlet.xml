@@ -21,6 +21,17 @@
 		<property name="dataSource" ref="ds" />
 	</bean>
 	
+	<bean id="saveStaffMember" class="com.digitalhealthcare.DigiHealthCareSaveStaffMemberDAO">
+		<property name="dataSource" ref="ds" />
+	</bean>
+	
+	<bean id="getStaffMember" class="com.digitalhealthcare.DigiHealthCareGetStaffMemberDAO">
+		<property name="dataSource" ref="ds" />
+	</bean>
+	
+	<bean id="updateStaffDetails" class="com.digitalhealthcare.DigiHealthCareUpdateStaffDetailsDAO">
+		<property name="dataSource" ref="ds" />
+	</bean>
 	<!-- <bean id="sessionHandler" class="com.cis.CISSessionDAO">
 		<property name="dataSource" ref="ds" />
 	</bean>
