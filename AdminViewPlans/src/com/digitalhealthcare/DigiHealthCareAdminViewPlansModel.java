@@ -77,6 +77,7 @@ public class DigiHealthCareAdminViewPlansModel {
 		this.title = title;
 	}
 
+
 	public String getStartsAt() {
 		return startsAt;
 	}
@@ -93,7 +94,6 @@ public class DigiHealthCareAdminViewPlansModel {
 		this.endsAt = endsAt;
 	}
 
-	
 	public int getAptseriesId() {
 		return aptseriesId;
 	}

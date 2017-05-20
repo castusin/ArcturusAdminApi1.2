@@ -7,6 +7,10 @@ public class DigiHealthCareCreateScheduleModel {
 	
 	int aptId;
 	int aptseriesId;
+	int aptpersonId;
+	
+	int totalDay;
+	String status;
 	int staffId;
 	String startDateTime;
 	String endDateTime;
@@ -14,10 +18,13 @@ public class DigiHealthCareCreateScheduleModel {
 	String type;
 	String aptWith;
 	String seriesStatus;
-	String recurenceTime;
+	int recurenceTime;
 	
-    public DigiHealthCareCreateScheduleModel(int staffId, int aptId, int aptseriesId, String startDateTime, String endDateTime, String patientId, String type, String aptWith, String seriesStatus, String recurenceTime) {
+    public DigiHealthCareCreateScheduleModel(int staffId, int aptId, int aptseriesId, String startDateTime, String endDateTime, String patientId, String type, String aptWith, String seriesStatus, int recurenceTime, int aptpersonId, int totalDay, String status) {
 		super();
+		this.aptpersonId=aptpersonId;
+		this.totalDay=totalDay;
+		this.status=status;
 		this.staffId=staffId;
 		this.aptId=aptId;
 		this.aptseriesId=aptseriesId;
@@ -30,6 +37,37 @@ public class DigiHealthCareCreateScheduleModel {
 		this.recurenceTime=recurenceTime;
 		
 
+	}
+
+
+	public int getAptpersonId() {
+		return aptpersonId;
+	}
+
+
+	public void setAptpersonId(int aptpersonId) {
+		this.aptpersonId = aptpersonId;
+	}
+
+
+
+	public int getTotalDay() {
+		return totalDay;
+	}
+
+
+	public void setTotalDay(int totalDay) {
+		this.totalDay = totalDay;
+	}
+
+
+	public String getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 
@@ -123,12 +161,13 @@ public class DigiHealthCareCreateScheduleModel {
 	}
 
 
-	public String getRecurenceTime() {
+
+	public int getRecurenceTime() {
 		return recurenceTime;
 	}
 
 
-	public void setRecurenceTime(String recurenceTime) {
+	public void setRecurenceTime(int recurenceTime) {
 		this.recurenceTime = recurenceTime;
 	}
 
