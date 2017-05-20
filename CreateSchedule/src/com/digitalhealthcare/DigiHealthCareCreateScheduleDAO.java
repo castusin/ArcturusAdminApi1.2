@@ -1,7 +1,8 @@
 package com.digitalhealthcare;
 
-import java.sql.Date;
+
 import java.util.Calendar;
+import java.util.Date;
 
 import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;

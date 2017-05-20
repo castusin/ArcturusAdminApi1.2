@@ -1,11 +1,16 @@
 package com.digitalhealthcare;
 
-import java.sql.Date;
+
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.TimeZone;
 import java.util.concurrent.atomic.AtomicInteger;
+
+
+
 
 import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
@@ -26,7 +31,7 @@ public class DigiHealthCareCreateScheduleBL {
 	
 	 private static final AtomicInteger counts = new AtomicInteger(11101);
 	 
-	 public CISResults createSchedule( DigiHealthCareCreateScheduleModel createSchedule){
+	 public CISResults createSchedule( DigiHealthCareCreateScheduleModel createSchedule) throws ParseException{
 		
 		final Logger logger = Logger.getLogger(DigiHealthCareEditSchedulePlanBL.class);
 		// Capture service Start time
@@ -47,6 +52,40 @@ public class DigiHealthCareCreateScheduleBL {
 		 int staffId=createSchedule.getStaffId();
 		 int totalDay=0;
 		 String startDateTime=createSchedule.getStartDateTime();
+		 
+		 
+		 // convert stringt to date
+		 String startDateString = "Sat Apr 22 2017 12:27:00";
+		 DateFormat sdf = new SimpleDateFormat("EEE MMM dd yyyy HH:hh:ss");
+		 Date date = (Date) sdf.parse(startDateString);
+		 
+		 System.out.println(sdf.format(date));
+		 
+		 
+		 
+		 
+		 // convert String to Calander
+		 Calendar cal = Calendar.getInstance();
+		 SimpleDateFormat sdf1 = new SimpleDateFormat("EEE MMM dd yyyy HH:hh:ss");
+		 cal.setTime(sdf1.parse("Sat Apr 22 2017 12:27:00"));// all done
+		 
+		 System.out.println(sdf1.getCalendar());
+		 
+		 
+		 
+		 
+			SimpleDateFormat df = new SimpleDateFormat("EEE MMM dd yyyy HH:hh:ss");
+			int minutesToAdd = 5;
+			System.out.println("Initial Time: " + df.format(date.getTime()));
+			Calendar startTime =sdf1.getCalendar();
+			startTime.add(Calendar.MINUTE, minutesToAdd);
+			String dateStr = df.format(startTime.getTime());
+			System.out.println("After Time : " + dateStr + "\n");
+		 
+		 
+		 
+		 
+		 
 	   	if(recurrenceTime >=1){
 	   		    seriesStatus=CISConstants.seriesStatus1;
 	   		  // Calendar today =createSchedule.getStartDateTime();
@@ -61,8 +100,8 @@ public class DigiHealthCareCreateScheduleBL {
 		            today.add(Calendar.WEEK_OF_MONTH, 1);
 		           
 		            
-		            Calendar date = Calendar.getInstance();
-		            long t= date.getTimeInMillis();
+		            Calendar dates = Calendar.getInstance();
+		            long t= dates.getTimeInMillis();
 		            Date endDateTime=new Date(t + (30 * ONE_MINUTE_IN_MILLIS));
 		            
 		            cisResults = createScheduleDAO.createSchedule(aptId,aptSeriesId,staffId,createSchedule.getPatientId(),createSchedule.getStartDateTime(),endDateTime,totalDay,createSchedule.getType(),createSchedule.getAptWith(),createDate,seriesStatus,recurrenceTime);
@@ -70,12 +109,12 @@ public class DigiHealthCareCreateScheduleBL {
 		        }
 		       
 		}else{
-			    Calendar date = Calendar.getInstance();
+			 /*   Calendar date = Calendar.getInstance();
 	            long t= date.getTimeInMillis();
 	            Date endDateTime=new Date(t + (30 * ONE_MINUTE_IN_MILLIS));
 	            
 	            cisResults = createScheduleDAO.createSchedule(aptId,aptSeriesId,staffId,createSchedule.getPatientId(),createSchedule.getStartDateTime(),endDateTime,totalDay,createSchedule.getType(),createSchedule.getAptWith(),createDate,seriesStatus,recurrenceTime);
-	    		
+	    		*/
 		}
 	   
 		// Capture Service End time
