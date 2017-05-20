@@ -32,6 +32,11 @@
 	<bean id="updateStaffDetails" class="com.digitalhealthcare.DigiHealthCareUpdateStaffDetailsDAO">
 		<property name="dataSource" ref="ds" />
 	</bean>
+	
+	<bean id="createSchedule" class="com.digitalhealthcare.DigiHealthCareCreateScheduleDAO">
+		<property name="dataSource" ref="ds" />
+	</bean>
+	
 	<!-- <bean id="sessionHandler" class="com.cis.CISSessionDAO">
 		<property name="dataSource" ref="ds" />
 	</bean>

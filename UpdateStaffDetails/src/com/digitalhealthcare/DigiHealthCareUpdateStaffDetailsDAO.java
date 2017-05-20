@@ -12,7 +12,7 @@ import com.cis.testServiceTime;
 public class DigiHealthCareUpdateStaffDetailsDAO extends JdbcDaoSupport {
 
 	public CISResults updateStaffDetails(int staffId, String getfName, String getlName,
-			String serviceType, String emailId, int phone1, int phone2,
+			String serviceType, String emailId, String phone1, String phone2,
 			String address1, String address2, String city, String country,
 			String state, int zipcode, String activeInd) {
 		CISResults cisResults=new CISResults();

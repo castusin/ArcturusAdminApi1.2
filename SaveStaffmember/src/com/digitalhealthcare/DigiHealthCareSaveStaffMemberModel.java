@@ -10,8 +10,8 @@ public class DigiHealthCareSaveStaffMemberModel {
 	String lName;
 	String emailId;
 	String serviceType;
-	int phone1;
-	int phone2;
+	String phone1;
+	String phone2;
 	String address1;
 	String address2;
 	String city;
@@ -20,7 +20,7 @@ public class DigiHealthCareSaveStaffMemberModel {
 	int zipcode;
 	String activeInd;
 	Date createDate;
-    public DigiHealthCareSaveStaffMemberModel(int staffId, String fName, String lName, String emailId, String serviceType, int phone1, int phone2, String address1, String address2, String city, String country, String state, int zipcode, String activeInd, Date createDate ) {
+    public DigiHealthCareSaveStaffMemberModel(int staffId, String fName, String lName, String emailId, String serviceType, String phone1, String phone2, String address1, String address2, String city, String country, String state, int zipcode, String activeInd, Date createDate ) {
 		super();
 		this.staffId=staffId;
 		this.fName=fName;
@@ -101,26 +101,25 @@ public class DigiHealthCareSaveStaffMemberModel {
 	}
 
 
-
-	public int getPhone1() {
+	public String getPhone1() {
 		return phone1;
 	}
 
 
 
-	public void setPhone1(int phone1) {
+	public void setPhone1(String phone1) {
 		this.phone1 = phone1;
 	}
 
 
 
-	public int getPhone2() {
+	public String getPhone2() {
 		return phone2;
 	}
 
 
 
-	public void setPhone2(int phone2) {
+	public void setPhone2(String phone2) {
 		this.phone2 = phone2;
 	}
 

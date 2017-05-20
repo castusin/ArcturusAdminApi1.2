@@ -1,4 +1,3 @@
-
 package com.digitalhealthcare;
 
 import java.text.DateFormat;
@@ -17,30 +16,36 @@ import com.cis.TimeCheck;
 import com.cis.testServiceTime;
 
 
-public class DigiHealthCareSaveStaffMemberBL {
+public class DigiHealthCareCreateScheduleBL {
 
-	ApplicationContext ctx=new ClassPathXmlApplicationContext("spring-servlet.xml"); 
-	DigiHealthCareSaveStaffMemberDAO saveStaffMemberDAO=(DigiHealthCareSaveStaffMemberDAO)ctx.getBean("saveStaffMember");
-	 private static final AtomicInteger count = new AtomicInteger(111101);
-	public CISResults saveStaffMember( DigiHealthCareSaveStaffMemberModel saveStaffmember){
+	 ApplicationContext ctx=new ClassPathXmlApplicationContext("spring-servlet.xml"); 
+	 DigiHealthCareCreateScheduleDAO createScheduleDAO=(DigiHealthCareCreateScheduleDAO)ctx.getBean("createSchedule");
+	
+	 private static final AtomicInteger count = new AtomicInteger(1001);
+	
+	 private static final AtomicInteger counts = new AtomicInteger(11101);
+	 
+	 public CISResults createSchedule( DigiHealthCareCreateScheduleModel createSchedule){
 		
 		final Logger logger = Logger.getLogger(DigiHealthCareEditSchedulePlanBL.class);
 		// Capture service Start time
 		 TimeCheck time=new TimeCheck();
 		 testServiceTime seriveTimeCheck=new testServiceTime();
 		 String serviceStartTime=time.getTimeZone();
-		 int staffId = count.incrementAndGet();
+		 int aptId = count.incrementAndGet();
+		 int aptSeriesId = counts.incrementAndGet();
 		 Calendar currentdate = Calendar.getInstance();
 	     DateFormat formatter = new SimpleDateFormat(CISConstants.GS_DATE_FORMAT);
 	     TimeZone obj = TimeZone.getTimeZone(CISConstants.TIME_ZONE);
 	     formatter.setTimeZone(obj);
 	     String createDate=time.getTimeZone();
-		CISResults cisResult = saveStaffMemberDAO.saveStaffMember(staffId,saveStaffmember.getfName(),saveStaffmember.getlName(),saveStaffmember.getServiceType(),saveStaffmember.getEmailId(),saveStaffmember.getPhone1(),saveStaffmember.getPhone2(),saveStaffmember.getAddress1(),saveStaffmember.getAddress2(),saveStaffmember.getCity(),saveStaffmember.getCountry(),saveStaffmember.getState(),saveStaffmember.getZipcode(),saveStaffmember.getActiveInd(),createDate);
+	  
+		CISResults cisResult = createScheduleDAO.createSchedule(aptId,aptSeriesId,createSchedule.getPatientId(),createSchedule.getStartDateTime(),createSchedule.getEndDateTime(),createSchedule.getType(),createSchedule.getAptWith(),createDate,createSchedule.getSeriesStatus(),createSchedule.getRecurenceTime());
 		
 		// Capture Service End time
 		  String serviceEndTime=time.getTimeZone();
 		  long result=seriveTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
-		  logger.info("Database time for edit schedule plan service:: " +result );
+		  logger.info("Database time for create schedule service:: " +result );
 		  
 		return cisResult;
 	}

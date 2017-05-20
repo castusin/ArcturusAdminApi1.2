@@ -12,8 +12,8 @@ import com.cis.testServiceTime;
 public class DigiHealthCareSaveStaffMemberDAO extends JdbcDaoSupport {
 
 	public CISResults saveStaffMember(int staffId, String getfName,
-			String getlName, String serviceType, String emailId, int phone1,
-			int phone2, String address1, String address2, String city,
+			String getlName, String serviceType, String emailId, String phone1,
+			String phone2, String address1, String address2, String city,
 			String country, String state, int zipcode, String activeInd,
 			String createDate) {
 		CISResults cisResults=new CISResults();
