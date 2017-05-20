@@ -20,7 +20,11 @@ public class DigiHealthCareCreateScheduleWebservice {
 	
 	DigiHealthCareCreateScheduleBL createScheduleBL=new DigiHealthCareCreateScheduleBL();
 
+<<<<<<< HEAD
 	public CISResults createSchedule( DigiHealthCareCreateScheduleModel createSchedule) throws ParseException{
+=======
+	public CISResults createSchedule( DigiHealthCareCreateScheduleModel createSchedule) throws Throwable{
+>>>>>>> origin/master
 	CISResults cisResult = createScheduleBL.createSchedule(createSchedule);
 	logger.info(" DigitalHealthCare:create schedule WebService :"+cisResult);
    

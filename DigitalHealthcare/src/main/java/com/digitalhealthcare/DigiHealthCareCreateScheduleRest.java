@@ -34,7 +34,11 @@ public class DigiHealthCareCreateScheduleRest {
 	
 	@RequestMapping(value="/createSchedule",method=RequestMethod.POST,consumes=MediaType.APPLICATION_JSON_VALUE)
 	
+<<<<<<< HEAD
 	public String createSchedule(@RequestBody DigiHealthCareCreateScheduleModel createSchedule) throws ParseException{
+=======
+	public String createSchedule(@RequestBody DigiHealthCareCreateScheduleModel createSchedule) throws Throwable{
+>>>>>>> origin/master
 		 
 		Logger logger = Logger.getLogger(DigiHealthCareCreateScheduleRest.class);
 			
