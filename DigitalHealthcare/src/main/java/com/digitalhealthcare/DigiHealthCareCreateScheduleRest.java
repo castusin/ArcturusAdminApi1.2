@@ -28,7 +28,7 @@ public class DigiHealthCareCreateScheduleRest {
 	
 	@RequestMapping(value="/createSchedule",method=RequestMethod.POST,consumes=MediaType.APPLICATION_JSON_VALUE)
 	
-	public String createSchedule(@RequestBody DigiHealthCareCreateScheduleModel createSchedule){
+	public String createSchedule(@RequestBody DigiHealthCareCreateScheduleModel createSchedule) throws Throwable{
 		 
 		Logger logger = Logger.getLogger(DigiHealthCareCreateScheduleRest.class);
 			

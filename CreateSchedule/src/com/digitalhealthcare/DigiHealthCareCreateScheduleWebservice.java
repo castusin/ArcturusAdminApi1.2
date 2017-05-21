@@ -14,7 +14,7 @@ public class DigiHealthCareCreateScheduleWebservice {
 	
 	DigiHealthCareCreateScheduleBL createScheduleBL=new DigiHealthCareCreateScheduleBL();
 
-	public CISResults createSchedule( DigiHealthCareCreateScheduleModel createSchedule){
+	public CISResults createSchedule( DigiHealthCareCreateScheduleModel createSchedule) throws Throwable{
 	CISResults cisResult = createScheduleBL.createSchedule(createSchedule);
 	logger.info(" DigitalHealthCare:create schedule WebService :"+cisResult);
     return cisResult;
