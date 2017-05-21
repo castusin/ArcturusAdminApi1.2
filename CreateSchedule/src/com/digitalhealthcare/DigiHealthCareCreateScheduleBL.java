@@ -71,6 +71,19 @@ public class DigiHealthCareCreateScheduleBL {
 	     System.out.println(sdf1.getCalendar());
 	     
 	     
+	     // calander logic
+	     
+	     
+	     
+	     
+	     Calendar calendar = Calendar.getInstance();
+	     cal.setTime(sdf1.parse("Sat Apr 22 2017 12:27:00"));
+	     System.out.println(calendar.getTime());
+	     calendar.add(Calendar.MINUTE, 5);
+	     System.out.println(calendar.getTime());
+	     
+	     
+	     
 	     
 	     
 	        SimpleDateFormat df = new SimpleDateFormat("EEE MMM dd yyyy HH:hh:ss");
