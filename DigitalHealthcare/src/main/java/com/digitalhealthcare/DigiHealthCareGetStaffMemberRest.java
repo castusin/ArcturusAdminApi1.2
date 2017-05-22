@@ -10,6 +10,7 @@ import java.util.TimeZone;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,7 +30,7 @@ public class DigiHealthCareGetStaffMemberRest {
 	
 	@RequestMapping(value="/getStaffList",method=RequestMethod.GET,produces={"application/json"})
 	
-		public String getStaffList(@RequestParam ("staffId") String staffId){	 
+		public String getStaffList(DigiHealthCareSaveStaffMemberModel viewStaffmember){	 
 		 Logger logger = Logger.getLogger(DigiHealthCareGetStaffMemberRest.class);
 		 
 		// Capture service Start time
@@ -43,7 +44,7 @@ public class DigiHealthCareGetStaffMemberRest {
 		//if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
 		//  {
 		 DigiHealthCareGetStaffMemberWebservice staffMemberWebservice= new DigiHealthCareGetStaffMemberWebservice();
-			CISResults  cisResults  = staffMemberWebservice.getStaffList(staffId);
+			CISResults  cisResults  = staffMemberWebservice.getStaffList(viewStaffmember);
 		  logger.info(" DigitalHealthCare: get staff list rest service :"+cisResults);
 		//}
 		

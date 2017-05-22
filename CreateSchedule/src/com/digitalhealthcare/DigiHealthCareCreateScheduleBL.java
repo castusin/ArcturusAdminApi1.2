@@ -16,6 +16,7 @@ import org.springframework.expression.ParseException;
 
 import com.cis.CISConstants;
 import com.cis.CISResults;
+import com.cis.EmailCommunication;
 import com.cis.TimeCheck;
 import com.cis.testServiceTime;
 
@@ -32,6 +33,9 @@ public class DigiHealthCareCreateScheduleBL {
 	 public CISResults createSchedule( DigiHealthCareCreateScheduleModel createSchedule) throws Throwable{
 		
 		final Logger logger = Logger.getLogger(DigiHealthCareEditSchedulePlanBL.class);
+		
+		EmailCommunication sendMail=new EmailCommunication();
+		DigiHealthCareSaveStaffMemberModel staffEmailId=new DigiHealthCareSaveStaffMemberModel();
 		// Capture service Start time
 		final long ONE_HOUR_IN_MS = 3600000;
 		CISResults cisResults=new CISResults();
@@ -48,100 +52,45 @@ public class DigiHealthCareCreateScheduleBL {
 	     int recurrenceTime=createSchedule.getRecurenceTime();
 		 String seriesStatus=CISConstants.seriesStatus2;
 		 int staffId=createSchedule.getStaffId();
-		 int totalDay=0;
+		 int totalDay=CISConstants.totalDay2;
+		 String endDateTime=createSchedule.getEndDateTime();
 		// String startDateTime=createSchedule.getStartDateTime();
-		 
-		 
+		  cisResults = createScheduleDAO.createSchedule(aptId,aptSeriesId,staffId,createSchedule.getPatientId(),createSchedule.getStartDateTime(),endDateTime,totalDay,createSchedule.getType(),createSchedule.getAptWith(),createDate,seriesStatus,recurrenceTime);
 		 
 		  // convert stringt to date
-	     String startDateString = "Sat Apr 22 2017 12:27:00";
+	    /* String startDateString = "Sat Apr 22 2017 12:27:00";
 	     DateFormat sdf = new SimpleDateFormat("EEE MMM dd yyyy HH:hh:ss");
 	     Date date = (Date) sdf.parse(startDateString);
 	     
-	     System.out.println(sdf.format(date));
-	     
-	     
+	     System.out.println(sdf.format(date));*/
 	     
 	     
 	     // convert String to Calander
-	     Calendar cal = Calendar.getInstance();
+	    /* Calendar cal = Calendar.getInstance();
 	     SimpleDateFormat sdf1 = new SimpleDateFormat("EEE MMM dd yyyy HH:hh:ss");
 	     cal.setTime(sdf1.parse("Sat Apr 22 2017 12:27:00"));// all done
 	     
-	     System.out.println(sdf1.getCalendar());
+	     System.out.println(sdf1.getCalendar());*/
 	     
 	     
 	     // calander logic
 	     
+		    /* Calendar calendar = Calendar.getInstance();
+		     cal.setTime(sdf1.parse("Sat Apr 22 2017 12:27:00"));
+		     System.out.println(calendar.getTime());
+		     calendar.add(Calendar.MINUTE, 5);
+		     System.out.println(calendar.getTime());*/
 	     
 	     
-	     
-	     Calendar calendar = Calendar.getInstance();
-	     cal.setTime(sdf1.parse("Sat Apr 22 2017 12:27:00"));
-	     System.out.println(calendar.getTime());
-	     calendar.add(Calendar.MINUTE, 5);
-	     System.out.println(calendar.getTime());
-	     
-	     
-	     
-	     
-	     
-	        SimpleDateFormat df = new SimpleDateFormat("EEE MMM dd yyyy HH:hh:ss");
+	       /* SimpleDateFormat df = new SimpleDateFormat("EEE MMM dd yyyy HH:hh:ss");
 	        int minutesToAdd = 30;
 	        System.out.println("Initial Time: " + df.format(date.getTime()));
 	        Calendar startTime =sdf1.getCalendar();
 	        startTime.add(Calendar.MINUTE, minutesToAdd);
 	        String dateStr = df.format(startTime.getTime());
-	        System.out.println("After Time : " + dateStr + "\n");
+	        System.out.println("After Time : " + dateStr + "\n");*/
 		 
-		 
-		 
-		 
-		 
-		 
-		 
-	   	if(recurrenceTime >=1){
-	   		    seriesStatus=CISConstants.seriesStatus1;
-	   		  // Calendar today =createSchedule.getStartDateTime();
-			  Calendar today = Calendar.getInstance();
-			 
-		        Calendar newDate = Calendar.getInstance();
-		        newDate.add(Calendar.WEEK_OF_MONTH, recurrenceTime);
-		        System.out.println("Fetching Dates between ::"+today.getTime()+" and "+newDate.getTime());
-		        while (newDate.compareTo(today) > 0) {
-		        	aptId = count.incrementAndGet();
-		            System.out.println("day:" + today.getTime());
-		            today.add(Calendar.WEEK_OF_MONTH, 1);
-		           
-		            
-		           /* Calendar date = Calendar.getInstance();
-		            long t= date.getTimeInMillis();
-		            Date endDateTime=new Date(t + (30 * ONE_MINUTE_IN_MILLIS));*/
-		            
-		            //cisResults = createScheduleDAO.createSchedule(aptId,aptSeriesId,staffId,createSchedule.getPatientId(),createSchedule.getStartDateTime(),endDateTime,totalDay,createSchedule.getType(),createSchedule.getAptWith(),createDate,seriesStatus,recurrenceTime);
-		    		
-		        }
-		       
-		}else{
-			/*String startDateTime=createSchedule.getStartDateTime();
-			DateFormat df = new SimpleDateFormat("EEE MMM dd yyyy HH:hh:ss"); 
-			java.util.Date startDate;
-			try {
-			    startDate = df.parse(startDateTime);
-			    String t= startDateTime;
-			    String endDateTime=(t + (30 * ONE_HOUR_IN_MS));
-			    //String newDateString = df.format(endDateTime);
-			    //System.out.println(newDateString);
-			    cisResults = createScheduleDAO.createSchedule(aptId,aptSeriesId,staffId,createSchedule.getPatientId(),createSchedule.getStartDateTime(),endDateTime,totalDay,createSchedule.getType(),createSchedule.getAptWith(),createDate,seriesStatus,recurrenceTime);
-	    		
-			} catch (ParseException e) {
-			    e.printStackTrace();
-			}
-	           */
-			
-	           
-		}
-	   
+	       
 		// Capture Service End time
 		  String serviceEndTime=time.getTimeZone();
 		  long result=seriveTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);

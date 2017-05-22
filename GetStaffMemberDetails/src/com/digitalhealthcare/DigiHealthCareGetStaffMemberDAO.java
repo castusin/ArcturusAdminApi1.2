@@ -19,20 +19,23 @@ import com.cis.testServiceTime;
 public class DigiHealthCareGetStaffMemberDAO extends JdbcDaoSupport {
 
 
-	public CISResults getStaffList(String staffId) {
+	public CISResults getStaffList(int staffId, String getfName, String getlName,
+			String serviceType, String emailId, String phone1, String phone2,
+			String address1, String address2, String city, String country,
+			String state, int zipcode, String activeInd, Date createDate) {
 		Logger logger = Logger.getLogger(DigiHealthCareAdminViewPlansDAO.class);
 		DigiHealthCareSaveStaffMemberModel getStafflist=new DigiHealthCareSaveStaffMemberModel();
 		CISResults cisResults=new CISResults();
 		Calendar cal = Calendar.getInstance();
 		//accountType="P";
-		Object[] inputs = new Object[]{staffId};
+		//Object[] inputs = new Object[]{staffId};
 		cisResults.setResponseCode(CISConstants.RESPONSE_SUCCESS);
 		
 		try{
 			 TimeCheck time=new TimeCheck();
 			 testServiceTime sessionTimeCheck=new testServiceTime();
 			 String serviceStartTime=time.getTimeZone();
-			 List result=getJdbcTemplate().query(DigiHealthCareGetStaffMemberQuery.SQL_GETSTAFFLIST,inputs,new DigiHealthCareGetStaffMemberMapper());
+			 List result=getJdbcTemplate().query(DigiHealthCareGetStaffMemberQuery.SQL_GETSTAFFLIST,new DigiHealthCareGetStaffMemberMapper());
 			 String serviceEndTime=time.getTimeZone();
 			 long results=sessionTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
 			 logger.info("admin view plans query time:: " +results);
