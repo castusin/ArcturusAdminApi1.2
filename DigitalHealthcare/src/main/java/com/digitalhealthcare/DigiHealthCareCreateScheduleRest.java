@@ -34,26 +34,18 @@ public class DigiHealthCareCreateScheduleRest {
 	
 	@RequestMapping(value="/createSchedule",method=RequestMethod.POST,consumes=MediaType.APPLICATION_JSON_VALUE)
 	
-<<<<<<< HEAD
-	public String createSchedule(@RequestBody DigiHealthCareCreateScheduleModel createSchedule) throws ParseException{
-=======
+
 	public String createSchedule(@RequestBody DigiHealthCareCreateScheduleModel createSchedule) throws Throwable{
->>>>>>> origin/master
+
 		 
-		Logger logger = Logger.getLogger(DigiHealthCareCreateScheduleRest.class);
-			
-       
-		
-		
-		
-		
-		CommonCISValidation CommonCISValidation=new CommonCISValidation();
+		      Logger logger = Logger.getLogger(DigiHealthCareCreateScheduleRest.class);
+		      CommonCISValidation CommonCISValidation=new CommonCISValidation();
 		   // CISResults cisResults=CommonCISValidation.editSchedulePlanValidation(request,editSchedulePlan);
 		   // if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
 		    // {
-            DigiHealthCareCreateScheduleWebservice createScheduleWebservice= new DigiHealthCareCreateScheduleWebservice();
-		    	CISResults cisResults  = createScheduleWebservice.createSchedule(createSchedule);
-		       logger.info(" DigitalHealthCare: create schedule rest service :"+cisResults);
+                 DigiHealthCareCreateScheduleWebservice createScheduleWebservice= new DigiHealthCareCreateScheduleWebservice();
+		    	 CISResults cisResults  = createScheduleWebservice.createSchedule(createSchedule);
+		         logger.info(" DigitalHealthCare: create schedule rest service :"+cisResults);
 		    // }
 		       return returnJsonData(cisResults);
 	 }
