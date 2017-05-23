@@ -35,10 +35,10 @@ public class DigiHealthCareCreateScheduleBL {
 		final Logger logger = Logger.getLogger(DigiHealthCareEditSchedulePlanBL.class);
 		
 		EmailCommunication sendMail=new EmailCommunication();
-		DigiHealthCareSaveStaffMemberModel staffEmailId=new DigiHealthCareSaveStaffMemberModel();
+		//DigiHealthCareSaveStaffMemberModel staffEmailId=new DigiHealthCareSaveStaffMemberModel();
 		// Capture service Start time
-		final long ONE_HOUR_IN_MS = 3600000;
-		CISResults cisResults=new CISResults();
+		
+		 CISResults cisResults=new CISResults();
 		 TimeCheck time=new TimeCheck();
 		 testServiceTime seriveTimeCheck=new testServiceTime();
 		 String serviceStartTime=time.getTimeZone();
@@ -53,51 +53,83 @@ public class DigiHealthCareCreateScheduleBL {
 		 String seriesStatus=CISConstants.seriesStatus2;
 		 int staffId=createSchedule.getStaffId();
 		 int totalDay=CISConstants.totalDay2;
-		 String endDateTime=createSchedule.getEndDateTime();
-		// String startDateTime=createSchedule.getStartDateTime();
-		  cisResults = createScheduleDAO.createSchedule(aptId,aptSeriesId,staffId,createSchedule.getPatientId(),createSchedule.getStartDateTime(),endDateTime,totalDay,createSchedule.getType(),createSchedule.getAptWith(),createDate,seriesStatus,recurrenceTime);
+		 String patientId=createSchedule.getPatientId();
+		
+		
+		 // recurrence code
 		 
-		  // convert stringt to date
-	    /* String startDateString = "Sat Apr 22 2017 12:27:00";
-	     DateFormat sdf = new SimpleDateFormat("EEE MMM dd yyyy HH:hh:ss");
-	     Date date = (Date) sdf.parse(startDateString);
-	     
-	     System.out.println(sdf.format(date));*/
-	     
-	     
-	     // convert String to Calander
-	    /* Calendar cal = Calendar.getInstance();
-	     SimpleDateFormat sdf1 = new SimpleDateFormat("EEE MMM dd yyyy HH:hh:ss");
-	     cal.setTime(sdf1.parse("Sat Apr 22 2017 12:27:00"));// all done
-	     
-	     System.out.println(sdf1.getCalendar());*/
-	     
-	     
-	     // calander logic
-	     
-		    /* Calendar calendar = Calendar.getInstance();
-		     cal.setTime(sdf1.parse("Sat Apr 22 2017 12:27:00"));
-		     System.out.println(calendar.getTime());
-		     calendar.add(Calendar.MINUTE, 5);
-		     System.out.println(calendar.getTime());*/
-	     
-	     
-	       /* SimpleDateFormat df = new SimpleDateFormat("EEE MMM dd yyyy HH:hh:ss");
-	        int minutesToAdd = 30;
-	        System.out.println("Initial Time: " + df.format(date.getTime()));
-	        Calendar startTime =sdf1.getCalendar();
-	        startTime.add(Calendar.MINUTE, minutesToAdd);
-	        String dateStr = df.format(startTime.getTime());
-	        System.out.println("After Time : " + dateStr + "\n");*/
-		 
+		 if(recurrenceTime>=1){
+			 seriesStatus=CISConstants.seriesStatus1;
+	         String startDateTime=createSchedule.getStartDateTime();
+	         String enddateTime=createSchedule.getEndDateTime();
+	         String endDateTime = "";
+	        
+	         // Logic to split Enddate time 
+	         String[] allStrings = enddateTime.split("\\s");
+	            for (int i = 4; i < allStrings.length; i++){
+	                endDateTime = endDateTime + " " + allStrings[i];
+	           
+	        }
+	         
+	            // Logic to Get recursive next week datetime
+	         
+	          for (int i=1; i<=recurrenceTime; i++) {
+	          aptId = count.incrementAndGet();
+	          SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd yyyy HH:hh:ss");
+	          Date d1 = sdf.parse(startDateTime);
+	          Calendar c = Calendar.getInstance();
+	          c.setTime(d1); // Now use today date.
+	          c.add(Calendar.DATE, 7); // Adding 5 days
+	          String output = sdf.format(c.getTime());
+	          startDateTime=output;
+
+	          // Concat Enddate with end time Lodic
+	          String[] allStrings1 = startDateTime.split("\\s");
+	          StringBuilder strBuilder = new StringBuilder();
+
+	           for (int k = 0; k < allStrings1.length-1; k++) {
+	           strBuilder.append(allStrings1[k]);
+	           strBuilder.append(" ");
+	           }
+	          String endDatetime= strBuilder.toString();
+	          endDatetime=endDatetime+endDateTime;
+	                
+	           cisResults = createScheduleDAO.createSchedule(aptId,aptSeriesId,staffId,createSchedule.getPatientId(),startDateTime,endDatetime,totalDay,createSchedule.getType(),createSchedule.getAptWith(),createDate,seriesStatus,recurrenceTime);
+	          		
+	           }
+	         }
+		         //single insertion
+	           else{
+	        	   cisResults = createScheduleDAO.createSchedule(aptId,aptSeriesId,staffId,createSchedule.getPatientId(),createSchedule.getStartDateTime(),createSchedule.getEndDateTime(),totalDay,createSchedule.getType(),createSchedule.getAptWith(),createDate,seriesStatus,recurrenceTime);
+	       		
+	               }
+	 
+		          // mail code
+		
+				  cisResults=createScheduleDAO.getStaffEmail(staffId);
+				  String staffEmail="";
+				  DigiHealthCareSaveStaffMemberModel  staffEmailId=(DigiHealthCareSaveStaffMemberModel)cisResults.getResultObject();
+				  staffEmail=staffEmailId.getEmailId();
+				  cisResults=createScheduleDAO.getPatientEmail(patientId);
+				  String patientEmail="";
+				  DigiHealthCarePatientModel  patientEmailId=(DigiHealthCarePatientModel)cisResults.getResultObject();
+				  patientEmail=patientEmailId.getEmailId();
+				  if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
+				     {
+					  cisResults=sendMail.sendStaffMail(staffEmail);
+					  cisResults=sendMail.sendPatientMail(patientEmail);
+					  cisResults=sendMail.sendAdminMail();
+				     }
+				 
+		
 	       
-		// Capture Service End time
-		  String serviceEndTime=time.getTimeZone();
-		  long result=seriveTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
-		  logger.info("Database time for create schedule service:: " +result );
+			// Capture Service End time
+			  String serviceEndTime=time.getTimeZone();
+			  long result=seriveTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
+			  logger.info("Database time for create schedule service:: " +result );
 		  
 		return cisResults;
 	}
 
-
+	
 }
