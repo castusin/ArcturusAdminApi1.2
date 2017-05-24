@@ -103,9 +103,9 @@ public class DigiHealthCareCreateScheduleBL {
 	        	   cisResults = createScheduleDAO.createSchedule(aptId,aptSeriesId,staffId,createSchedule.getPatientId(),createSchedule.getStartDateTime(),createSchedule.getEndDateTime(),totalDay,createSchedule.getType(),createSchedule.getAptWith(),createDate,seriesStatus,recurrenceTime);
 	       		
 	               }
-	 
 		          // mail code
-		
+		      if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
+		      {
 				  cisResults=createScheduleDAO.getStaffEmail(staffId);
 				  String staffEmail="";
 				  DigiHealthCareSaveStaffMemberModel  staffEmailId=(DigiHealthCareSaveStaffMemberModel)cisResults.getResultObject();
@@ -115,14 +115,12 @@ public class DigiHealthCareCreateScheduleBL {
 				  DigiHealthCarePatientModel  patientEmailId=(DigiHealthCarePatientModel)cisResults.getResultObject();
 				  patientEmail=patientEmailId.getEmailId();
 				  if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
-				     {
+				   {
 					  cisResults=sendMail.sendStaffMail(staffEmail);
 					  cisResults=sendMail.sendPatientMail(patientEmail);
 					  cisResults=sendMail.sendAdminMail();
-				     }
-				 
-		
-	       
+				   }
+		      }
 			// Capture Service End time
 			  String serviceEndTime=time.getTimeZone();
 			  long result=seriveTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);

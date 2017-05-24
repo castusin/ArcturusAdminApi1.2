@@ -71,6 +71,11 @@
 			<location>E:/GitHub/ArcturusAdminApi1.2/CreateSchedule/src</location>
 		</link>
 		<link>
+			<name>DeleteStaffMember</name>
+			<type>2</type>
+			<location>E:/GitHub/ArcturusAdminApi1.2/DeleteStaffMember/src</location>
+		</link>
+		<link>
 			<name>EditSchedulePlan</name>
 			<type>2</type>
 			<location>E:/GitHub/ArcturusAdminApi1.2/EditSchedulePlan/src</location>
