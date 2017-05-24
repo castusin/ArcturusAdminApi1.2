@@ -30,7 +30,6 @@ public class DigiHealthCareDeleteStaffMemberDAO extends JdbcDaoSupport {
 			
 		} catch (DataAccessException e) {
 			e.printStackTrace();
-		
 			cisResults.setResponseCode(CISConstants.RESPONSE_FAILURE);
 			cisResults.setErrorMessage("Failed to get Profile Data");
 		}
