@@ -70,7 +70,6 @@ public class DigiHealthCareCreateScheduleBL {
 	                endDateTime = endDateTime + " " + allStrings[i];
 	           
 	        }
-	         
 	            // Logic to Get recursive next week datetime
 	         
 	          for (int i=1; i<=recurrenceTime; i++) {

@@ -31,9 +31,9 @@ public class DigiHealthCareDeleteStaffMemberBL {
 		 String serviceStartTime=time.getTimeZone();
 		 CISResults cisResult = deleteStaffMemberDAO.deleteStaffMember(staffId);
 		// Capture Service End time
-		String serviceEndTime=time.getTimeZone();
-		long result=seriveTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
-		  logger.info("Database time for delete staff member service:: " +result );
+		 String serviceEndTime=time.getTimeZone();
+		 long result=seriveTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
+	     logger.info("Database time for delete staff member service:: " +result );
 		  
 		return cisResult;
 	}

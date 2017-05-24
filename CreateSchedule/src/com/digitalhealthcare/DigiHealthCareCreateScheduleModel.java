@@ -8,7 +8,6 @@ public class DigiHealthCareCreateScheduleModel {
 	int aptId;
 	int aptseriesId;
 	int aptpersonId;
-	
 	int totalDay;
 	String status;
 	int staffId;

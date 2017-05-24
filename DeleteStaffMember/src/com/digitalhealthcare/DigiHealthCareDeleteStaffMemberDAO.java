@@ -35,5 +35,4 @@ public class DigiHealthCareDeleteStaffMemberDAO extends JdbcDaoSupport {
 		}
    		return cisResults; 
 	}
-
 }

@@ -9,4 +9,3 @@ public class DigiHealthCareCreateScheduleQuery {
 	public static String SQL_GETPATIENTEMAIL = " select Email_id from Profile_table where User_id= ? "; 
 
 }
-//aptId,aptseriesId,staffId,startDateTime,endDateTime,patientId,type,aptWith,seriesStatus,recurenceTime

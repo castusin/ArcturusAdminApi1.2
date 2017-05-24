@@ -41,10 +41,7 @@
 		<property name="dataSource" ref="ds" />
 	</bean>
 	
-	<!-- <bean id="sessionHandler" class="com.cis.CISSessionDAO">
-		<property name="dataSource" ref="ds" />
-	</bean>
-	 -->
+	
 	
  	
 <!-- Development  DB connections     --> 

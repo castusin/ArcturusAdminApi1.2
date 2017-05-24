@@ -54,7 +54,7 @@ public class DigiHealthCareCreateScheduleDAO extends JdbcDaoSupport {
 			 cisResults.setResultObject(getstaffEmail);
 			 String serviceEndTime=time.getTimeZone();
 			 long result=sessionTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
-			 logger.info("save staff member query time:: " +result);
+			 logger.info("staff email query time:: " +result);
 			
 		} catch (DataAccessException e) {
 			e.printStackTrace();
@@ -80,7 +80,7 @@ public class DigiHealthCareCreateScheduleDAO extends JdbcDaoSupport {
 			 cisResults.setResultObject(getPatientEmail);
 			 String serviceEndTime=time.getTimeZone();
 			 long result=sessionTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
-			 logger.info("save staff member query time:: " +result);
+			 logger.info("patient email query time:: " +result);
 			
 		} catch (DataAccessException e) {
 			e.printStackTrace();
