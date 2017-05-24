@@ -12,8 +12,7 @@ public class EmailCommunication {
 	
 	public String sendMailWithAuth(String host, String user, String password,
 	        String port, String to, String body, String subject) throws Exception{
-	    // TODO Auto-generated method stub
-	    
+	   
 	    
 	    Properties props = System.getProperties();
 
@@ -48,15 +47,128 @@ public class EmailCommunication {
 	          Transport.send(message);
 	          transport.close();
 	         
-	          //success = "success";
+	        
 	      } finally {
-//	          transport.close();
+	         
 	      }
 	      return "0";
 	    
 	    
 	}
 	
+	public CISResults sendStaffMail(String staffEmail) {
+		// TODO Auto-generated method stub
+		CISResults cisResult = new CISResults();
+		
+		String msg="<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
+                "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n" +
+                "<head>\n" +
+                "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n" +
+                "<title></title>\n" +
+                "</head>\n" +
+                "\n" +
+                "<body>\n" +
+                 "<p>Arcturus Care </b><br />"+
+                 
+  				"<p>Your schedule has been created. "+
+                 
+                "<br />\n"+
+                "<br />\n"+
+                "  Thanks,<br />\n" +
+                "<br />\n"+
+                " Arcturus Team<br />\n" +
+
+                "  <br />\n" +
+
+                "</body>\n" +
+                "</html>";
+	String subject = CISConstants.SUBJECT;
+	 try {
+		 String result = sendMailWithAuth(CISConstants.EMAILHOST,CISConstants.EMAILUSERNAME,CISConstants.EMAILPASSWORD,CISConstants.PORT,staffEmail, msg, subject);
+	  
+	 } catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+		return cisResult;
+	}
+	
+	
+	public CISResults sendPatientMail(String patientEmail) {
+		// TODO Auto-generated method stub
+		CISResults cisResult = new CISResults();
+		
+		String msg="<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
+                "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n" +
+                "<head>\n" +
+                "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n" +
+                "<title></title>\n" +
+                "</head>\n" +
+                "\n" +
+                "<body>\n" +
+                 "<p>Arcturus Care </b><br />"+
+                 
+  				"<p>Your schedule has been created. "+
+                 
+                "<br />\n"+
+                "<br />\n"+
+                "  Thanks,<br />\n" +
+                "<br />\n"+
+                " Arcturus Team<br />\n" +
+
+                "  <br />\n" +
+
+                "</body>\n" +
+                "</html>";
+	String subject = CISConstants.SUBJECT;
+	 try {
+		 String result = sendMailWithAuth(CISConstants.EMAILHOST,CISConstants.EMAILUSERNAME,CISConstants.EMAILPASSWORD,CISConstants.PORT,patientEmail, msg, subject);
+	  
+	 } catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+		return cisResult;
+	}
+	
+	
+	public CISResults sendAdminMail() {
+		// TODO Auto-generated method stub
+		CISResults cisResult = new CISResults();
+		String emailId=CISConstants.ADMINEMAILID;
+		
+		String msg="<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
+                "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n" +
+                "<head>\n" +
+                "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n" +
+                "<title></title>\n" +
+                "</head>\n" +
+                "\n" +
+                "<body>\n" +
+                 "<p>Arcturus Care </b><br />"+
+                 
+                "<p>Your schedule has been created. "+
+                 
+                "<br />\n"+
+                "<br />\n"+
+                "  Thanks,<br />\n" +
+                "<br />\n"+
+                " Arcturus Team<br />\n" +
+
+                "  <br />\n" +
+
+                "</body>\n" +
+                "</html>";
+	String subject = CISConstants.SUBJECT;
+	 try {
+		 String result = sendMailWithAuth(CISConstants.EMAILHOST,CISConstants.EMAILUSERNAME,CISConstants.EMAILPASSWORD,CISConstants.PORT,emailId, msg, subject);
+	  
+	 } catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+		return cisResult;
+	}
 
 }
 
