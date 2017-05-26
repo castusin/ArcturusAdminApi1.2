@@ -2,6 +2,7 @@ package com.digitalhealthcare;
 
 
 import java.sql.Date;
+import java.util.List;
 
 public class DigiHealthCareCreateScheduleModel {
 	
@@ -11,15 +12,16 @@ public class DigiHealthCareCreateScheduleModel {
 	int totalDay;
 	String status;
 	int staffId;
-	String startDateTime;
-	String endDateTime;
+	//String startDateTime;
+	//String endDateTime;
 	String patientId;
 	String type;
 	String aptWith;
 	String seriesStatus;
 	int recurenceTime;
-	
-    public DigiHealthCareCreateScheduleModel(int staffId, int aptId, int aptseriesId, String startDateTime, String endDateTime, String patientId, String type, String aptWith, String seriesStatus, int recurenceTime, int aptpersonId, int totalDay, String status) {
+	public List<StartDateTime> startTimeList;
+	public List<EndDateTime> endTimeList;
+    public DigiHealthCareCreateScheduleModel(int staffId, int aptId, int aptseriesId, List<StartDateTime> startDateTime, List<EndDateTime> endDateTime, String patientId, String type, String aptWith, String seriesStatus, int recurenceTime, int aptpersonId, int totalDay, String status, List<StartDateTime> startTimeList, List<EndDateTime> endTimeList) {
 		super();
 		this.aptpersonId=aptpersonId;
 		this.totalDay=totalDay;
@@ -27,8 +29,8 @@ public class DigiHealthCareCreateScheduleModel {
 		this.staffId=staffId;
 		this.aptId=aptId;
 		this.aptseriesId=aptseriesId;
-		this.startDateTime=startDateTime;
-		this.endDateTime=endDateTime;
+		this.startTimeList=startTimeList;
+		this.endTimeList=endTimeList;
 		this.patientId=patientId;
 		this.type=type;
 		this.aptWith=aptWith;
@@ -36,6 +38,26 @@ public class DigiHealthCareCreateScheduleModel {
 		this.recurenceTime=recurenceTime;
 		
 
+	}
+
+
+	public List<StartDateTime> getStartTimeList() {
+		return startTimeList;
+	}
+
+
+	public void setStartTimeList(List<StartDateTime> startTimeList) {
+		this.startTimeList = startTimeList;
+	}
+
+
+	public List<EndDateTime> getEndTimeList() {
+		return endTimeList;
+	}
+
+
+	public void setEndTimeList(List<EndDateTime> endTimeList) {
+		this.endTimeList = endTimeList;
 	}
 
 
@@ -100,26 +122,9 @@ public class DigiHealthCareCreateScheduleModel {
 	}
 
 
-	public String getStartDateTime() {
-		return startDateTime;
-	}
+	
 
-
-	public void setStartDateTime(String startDateTime) {
-		this.startDateTime = startDateTime;
-	}
-
-
-	public String getEndDateTime() {
-		return endDateTime;
-	}
-
-
-	public void setEndDateTime(String endDateTime) {
-		this.endDateTime = endDateTime;
-	}
-
-
+	
 	public String getPatientId() {
 		return patientId;
 	}
