@@ -12,7 +12,7 @@ import com.cis.testServiceTime;
 public class DigiHealthCareCreateScheduleDAO extends JdbcDaoSupport {
 
 	public CISResults createSchedule(int aptId, int aptSeriesId,
-			int staffId, String patientId, String startDateTime, String endDateTime,int totalDay,String type, String aptWith, String createDate,String seriesStatus,
+			String staffId, String patientId, String startDateTime, String endDateTime,int totalDay,String type, String aptWith, String createDate,String seriesStatus,
 			
 			 int recurenceTime ) {
 		CISResults cisResults=new CISResults();

@@ -52,7 +52,7 @@ public class DigiHealthCareCreateScheduleBL {
 	     String createDate=time.getTimeZone();
 	     int recurrenceTime=createSchedule.getRecurenceTime();
 		 String seriesStatus=CISConstants.seriesStatus2;
-		 int staffId=createSchedule.getStaffId();
+		// int staffId=createSchedule.getStaffId();
 		 int totalDay=CISConstants.totalDay2;
 		 String patientId=createSchedule.getPatientId();
 		 
@@ -75,6 +75,12 @@ public class DigiHealthCareCreateScheduleBL {
 		  
 		     String y =  createSchedule.getEndTimeList().get(i).endDateTime;
 		     System.out.println("Endtime"+y);
+		     
+		     String z =  createSchedule.getStaffIdList().get(i).staffId;
+		     System.out.println("Endtime"+z);
+		     
+		     String p =  createSchedule.getAptWithList().get(i).aptWith;
+		     System.out.println("Endtime"+p);
 		 
 		 // Now start logic
 		     seriesStatus=CISConstants.seriesStatus1;
@@ -112,7 +118,7 @@ public class DigiHealthCareCreateScheduleBL {
 	          endDatetime=endDatetime+endDateTime;
 	         // cisResults.setParkDetails(parkDetailslist);   
 	         
-	           cisResults = createScheduleDAO.createSchedule(aptId,aptSeriesId,staffId,createSchedule.getPatientId(),startDateTime,endDatetime,totalDay,createSchedule.getType(),createSchedule.getAptWith(),createDate,seriesStatus,recurrenceTime);
+	           cisResults = createScheduleDAO.createSchedule(aptId,aptSeriesId,z,createSchedule.getPatientId(),startDateTime,endDatetime,totalDay,createSchedule.getType(),p,createDate,seriesStatus,recurrenceTime);
 	           //cisResults.setStartTimeList(startDatetimelist);
 	          
 	          // cisResults.setEndTimeList(endDatetimelist);
@@ -132,24 +138,28 @@ public class DigiHealthCareCreateScheduleBL {
 			     String y =  createSchedule.getEndTimeList().get(i).endDateTime;
 			     System.out.println("Endtime"+y);
 			 
+			     String z =  createSchedule.getStaffIdList().get(i).staffId;
+			     System.out.println("Endtime"+z);
+			     
+			     String p =  createSchedule.getAptWithList().get(i).aptWith;
+			     System.out.println("Endtime"+p);
 			 
-			 
-			 cisResults = createScheduleDAO.createSchedule(aptId,aptSeriesId,staffId,createSchedule.getPatientId(),x,y,totalDay,createSchedule.getType(),createSchedule.getAptWith(),createDate,seriesStatus,recurrenceTime);
+			 cisResults = createScheduleDAO.createSchedule(aptId,aptSeriesId,z,createSchedule.getPatientId(),x,y,totalDay,createSchedule.getType(),p,createDate,seriesStatus,recurrenceTime);
 		 } 
 		 }
 		 if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
 	      {
-			  cisResults=createScheduleDAO.getStaffEmail(staffId);
+			  /*cisResults=createScheduleDAO.getStaffEmail(staffId);
 			  String staffEmail="";
 			  DigiHealthCareSaveStaffMemberModel  staffEmailId=(DigiHealthCareSaveStaffMemberModel)cisResults.getResultObject();
-			  staffEmail=staffEmailId.getEmailId();
+			  staffEmail=staffEmailId.getEmailId();*/
 			  cisResults=createScheduleDAO.getPatientEmail(patientId);
 			  String patientEmail="";
 			  DigiHealthCarePatientModel  patientEmailId=(DigiHealthCarePatientModel)cisResults.getResultObject();
 			  patientEmail=patientEmailId.getEmailId();
 			  if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
 			   {
-				  cisResults=sendMail.sendStaffMail(staffEmail);
+				 // cisResults=sendMail.sendStaffMail(staffEmail);
 				  cisResults=sendMail.sendPatientMail(patientEmail);
 				  cisResults=sendMail.sendAdminMail();
 			   }
@@ -165,61 +175,4 @@ public class DigiHealthCareCreateScheduleBL {
 
 }
 		
-	    // String endTime=endTimeList.getEndDateTime();
-	    // List<StartDateTime> startDatetimelist = null;
-	    // List<EndDateTime> endDatetimelist = null;
-		
-		
-		
-		 // recurrence code
-		 
-		 
-		/* if(recurrenceTime>=1){
-			 seriesStatus=CISConstants.seriesStatus1;
-	         String startDateTime=x;
-	         String enddateTime=y;
-	         String endDateTime = "";
-	        
-	         // Logic to split Enddate time 
-	         String[] allStrings = enddateTime.split("\\s");
-	            for (int i = 4; i < allStrings.length; i++){
-	                endDateTime = endDateTime + " " + allStrings[i];
-	           
-	        }*/
-	            // Logic to Get recursive next week datetime
-	         
-	         /* for (int i=1; i<=recurrenceTime; i++) {
-	          aptId = count.incrementAndGet();
-	          SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd yyyy HH:hh:ss");
-	          Date d1 = sdf.parse(startDateTime);
-	          Calendar c = Calendar.getInstance();
-	          c.setTime(d1); // Now use today date.
-	          c.add(Calendar.DATE, 7); // Adding 5 days
-	          String output = sdf.format(c.getTime());
-	          startDateTime=output;
-
-	          // Concat Enddate with end time Lodic
-	          String[] allStrings1 = startDateTime.split("\\s");
-	          StringBuilder strBuilder = new StringBuilder();
-
-	           for (int k = 0; k < allStrings1.length-1; k++) {
-	           strBuilder.append(allStrings1[k]);
-	           strBuilder.append(" ");
-	           }
-	          String endDatetime= strBuilder.toString();
-	          endDatetime=endDatetime+endDateTime;
-	         // cisResults.setParkDetails(parkDetailslist);   
-	         
-	           cisResults = createScheduleDAO.createSchedule(aptId,aptSeriesId,staffId,createSchedule.getPatientId(),startDateTime,endDatetime,totalDay,createSchedule.getType(),createSchedule.getAptWith(),createDate,seriesStatus,recurrenceTime);
-	           cisResults.setStartTimeList(startDatetimelist);
-	          
-	           cisResults.setEndTimeList(endDatetimelist);
-	           }
-	         }*/
-		         //single insertion
-	          /* else{
-	        	   cisResults = createScheduleDAO.createSchedule(aptId,aptSeriesId,staffId,createSchedule.getPatientId(),startTimeList.getStartDateTime(),endTimeList.getEndDateTime(),totalDay,createSchedule.getType(),createSchedule.getAptWith(),createDate,seriesStatus,recurrenceTime);
-	       		
-	               }*/
-		          // mail code
-		      
+	   

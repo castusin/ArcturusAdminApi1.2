@@ -2,25 +2,41 @@
 package com.digitalhealthcare;
 
 import java.sql.Date;
+import java.util.List;
 
 public class DigiHealthCareEditSchedulePlanModel {
 	
 	String patientId;
 	int aptPersonId;
-	String startTime;
-	String endTime;
+	//String startTime;
+	//String endTime;
 	int allDay;
 	String aptWith;
-	
-    public DigiHealthCareEditSchedulePlanModel(String patientId, int aptPersonId, String startTime, String endTime, int allDay, String appWith, String aptWith ) {
+	int recurrenceTime;
+	public List<StartDateTime> startTimeList;
+	public List<EndDateTime> endTimeList;
+    public DigiHealthCareEditSchedulePlanModel(String patientId, int aptPersonId, String startTime, String endTime, int allDay, String appWith, String aptWith, List<StartDateTime> startTimeList, List<EndDateTime> endTimeList, int recurrenceTime ) {
 		super();
 		this.patientId=patientId;
 		this.aptPersonId=aptPersonId;
-		this.startTime=startTime;
-		this.endTime=endTime;
+		this.startTimeList=startTimeList;
+		this.endTimeList=endTimeList;
 		this.allDay=allDay;
 		this.aptWith=aptWith;
+		this.recurrenceTime=recurrenceTime;
 		
+	}
+
+
+
+	public int getRecurrenceTime() {
+		return recurrenceTime;
+	}
+
+
+
+	public void setRecurrenceTime(int recurrenceTime) {
+		this.recurrenceTime = recurrenceTime;
 	}
 
 
@@ -36,27 +52,30 @@ public class DigiHealthCareEditSchedulePlanModel {
 	}
 
 
-	public String getStartTime() {
-		return startTime;
+	
+	public List<StartDateTime> getStartTimeList() {
+		return startTimeList;
 	}
 
 
 
-	public void setStartTime(String startTime) {
-		this.startTime = startTime;
+	public void setStartTimeList(List<StartDateTime> startTimeList) {
+		this.startTimeList = startTimeList;
 	}
 
 
 
-	public String getEndTime() {
-		return endTime;
+	public List<EndDateTime> getEndTimeList() {
+		return endTimeList;
 	}
 
 
 
-	public void setEndTime(String endTime) {
-		this.endTime = endTime;
+	public void setEndTimeList(List<EndDateTime> endTimeList) {
+		this.endTimeList = endTimeList;
 	}
+
+
 
 	public int getAptPersonId() {
 		return aptPersonId;

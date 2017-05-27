@@ -11,29 +11,31 @@ public class DigiHealthCareCreateScheduleModel {
 	int aptpersonId;
 	int totalDay;
 	String status;
-	int staffId;
+	//int staffId;
 	//String startDateTime;
 	//String endDateTime;
 	String patientId;
 	String type;
-	String aptWith;
+	//String aptWith;
 	String seriesStatus;
 	int recurenceTime;
 	public List<StartDateTime> startTimeList;
 	public List<EndDateTime> endTimeList;
-    public DigiHealthCareCreateScheduleModel(int staffId, int aptId, int aptseriesId, List<StartDateTime> startDateTime, List<EndDateTime> endDateTime, String patientId, String type, String aptWith, String seriesStatus, int recurenceTime, int aptpersonId, int totalDay, String status, List<StartDateTime> startTimeList, List<EndDateTime> endTimeList) {
+	public List<AptWith>aptWithList;
+	public List<StaffId> staffIdList;
+    public DigiHealthCareCreateScheduleModel(int staffId, int aptId, int aptseriesId, List<StartDateTime> startDateTime, List<EndDateTime> endDateTime, String patientId, String type, String aptWith, String seriesStatus, int recurenceTime, int aptpersonId, int totalDay, String status, List<StartDateTime> startTimeList, List<EndDateTime> endTimeList, List<StaffId> staffIdList, List<AptWith> aptWithList) {
 		super();
 		this.aptpersonId=aptpersonId;
 		this.totalDay=totalDay;
 		this.status=status;
-		this.staffId=staffId;
+		this.staffIdList=staffIdList;
 		this.aptId=aptId;
 		this.aptseriesId=aptseriesId;
 		this.startTimeList=startTimeList;
 		this.endTimeList=endTimeList;
 		this.patientId=patientId;
 		this.type=type;
-		this.aptWith=aptWith;
+		this.aptWithList=aptWithList;
 		this.seriesStatus=seriesStatus;
 		this.recurenceTime=recurenceTime;
 		
@@ -112,19 +114,6 @@ public class DigiHealthCareCreateScheduleModel {
 	}
 
 
-	public int getStaffId() {
-		return staffId;
-	}
-
-
-	public void setStaffId(int staffId) {
-		this.staffId = staffId;
-	}
-
-
-	
-
-	
 	public String getPatientId() {
 		return patientId;
 	}
@@ -145,13 +134,24 @@ public class DigiHealthCareCreateScheduleModel {
 	}
 
 
-	public String getAptWith() {
-		return aptWith;
+
+	public List<AptWith> getAptWithList() {
+		return aptWithList;
 	}
 
 
-	public void setAptWith(String aptWith) {
-		this.aptWith = aptWith;
+	public void setAptWithList(List<AptWith> aptWithList) {
+		this.aptWithList = aptWithList;
+	}
+
+
+	public List<StaffId> getStaffIdList() {
+		return staffIdList;
+	}
+
+
+	public void setStaffIdList(List<StaffId> staffIdList) {
+		this.staffIdList = staffIdList;
 	}
 
 
