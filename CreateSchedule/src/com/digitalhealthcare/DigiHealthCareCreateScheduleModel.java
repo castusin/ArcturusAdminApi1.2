@@ -1,180 +1,146 @@
 package com.digitalhealthcare;
 
 
-import java.sql.Date;
 import java.util.List;
 
 public class DigiHealthCareCreateScheduleModel {
 	
-	int aptId;
+	String aptId;
 	int aptseriesId;
 	int aptpersonId;
 	int totalDay;
 	String status;
-	//int staffId;
-	//String startDateTime;
-	//String endDateTime;
 	String patientId;
 	String type;
-	//String aptWith;
 	String seriesStatus;
 	int recurenceTime;
-	public List<StartDateTime> startTimeList;
-	public List<EndDateTime> endTimeList;
-	public List<AptWith>aptWithList;
-	public List<StaffId> staffIdList;
-    public DigiHealthCareCreateScheduleModel(int staffId, int aptId, int aptseriesId, List<StartDateTime> startDateTime, List<EndDateTime> endDateTime, String patientId, String type, String aptWith, String seriesStatus, int recurenceTime, int aptpersonId, int totalDay, String status, List<StartDateTime> startTimeList, List<EndDateTime> endTimeList, List<StaffId> staffIdList, List<AptWith> aptWithList) {
+	String day;
+	boolean val;
+	
+	public List<Appointments> aptList;
+    public DigiHealthCareCreateScheduleModel(int staffId, String aptId, int aptseriesId, List<StartDateTime> startDateTime, List<EndDateTime> endDateTime, String patientId, String type, String aptWith, String seriesStatus, int recurenceTime, int aptpersonId, int totalDay, String status, List<StartDateTime> startTimeList, List<EndDateTime> endTimeList, List<StaffId> staffIdList, List<AptWith> aptWithList, List<Appointments> aptList, String day, boolean val) {
 		super();
 		this.aptpersonId=aptpersonId;
 		this.totalDay=totalDay;
 		this.status=status;
-		this.staffIdList=staffIdList;
 		this.aptId=aptId;
 		this.aptseriesId=aptseriesId;
-		this.startTimeList=startTimeList;
-		this.endTimeList=endTimeList;
 		this.patientId=patientId;
 		this.type=type;
-		this.aptWithList=aptWithList;
 		this.seriesStatus=seriesStatus;
 		this.recurenceTime=recurenceTime;
-		
+		this.aptList=aptList;
+		this.day=day;
+		this.val=val;
+		}
 
+
+	
+
+	public String getDay() {
+		return day;
 	}
 
-
-	public List<StartDateTime> getStartTimeList() {
-		return startTimeList;
+	public void setDay(String day) {
+		this.day = day;
 	}
 
-
-	public void setStartTimeList(List<StartDateTime> startTimeList) {
-		this.startTimeList = startTimeList;
+	public boolean isVal() {
+		return val;
 	}
 
-
-	public List<EndDateTime> getEndTimeList() {
-		return endTimeList;
+	public void setVal(boolean val) {
+		this.val = val;
 	}
-
-
-	public void setEndTimeList(List<EndDateTime> endTimeList) {
-		this.endTimeList = endTimeList;
-	}
-
 
 	public int getAptpersonId() {
 		return aptpersonId;
 	}
 
-
 	public void setAptpersonId(int aptpersonId) {
 		this.aptpersonId = aptpersonId;
 	}
-
-
 
 	public int getTotalDay() {
 		return totalDay;
 	}
 
-
 	public void setTotalDay(int totalDay) {
 		this.totalDay = totalDay;
 	}
-
 
 	public String getStatus() {
 		return status;
 	}
 
-
 	public void setStatus(String status) {
 		this.status = status;
 	}
 
+	
 
-	public int getAptId() {
+	public String getAptId() {
 		return aptId;
 	}
 
 
-	public void setAptId(int aptId) {
+
+
+	public void setAptId(String aptId) {
 		this.aptId = aptId;
 	}
+
+
 
 
 	public int getAptseriesId() {
 		return aptseriesId;
 	}
 
-
 	public void setAptseriesId(int aptseriesId) {
 		this.aptseriesId = aptseriesId;
 	}
-
 
 	public String getPatientId() {
 		return patientId;
 	}
 
-
 	public void setPatientId(String patientId) {
 		this.patientId = patientId;
 	}
-
 
 	public String getType() {
 		return type;
 	}
 
-
 	public void setType(String type) {
 		this.type = type;
 	}
+	
 
-
-
-	public List<AptWith> getAptWithList() {
-		return aptWithList;
+	public List<Appointments> getAptList() {
+		return aptList;
 	}
 
-
-	public void setAptWithList(List<AptWith> aptWithList) {
-		this.aptWithList = aptWithList;
+	public void setAptList(List<Appointments> aptList) {
+		this.aptList = aptList;
 	}
-
-
-	public List<StaffId> getStaffIdList() {
-		return staffIdList;
-	}
-
-
-	public void setStaffIdList(List<StaffId> staffIdList) {
-		this.staffIdList = staffIdList;
-	}
-
 
 	public String getSeriesStatus() {
 		return seriesStatus;
 	}
 
-
 	public void setSeriesStatus(String seriesStatus) {
 		this.seriesStatus = seriesStatus;
 	}
-
-
 
 	public int getRecurenceTime() {
 		return recurenceTime;
 	}
 
-
 	public void setRecurenceTime(int recurenceTime) {
 		this.recurenceTime = recurenceTime;
 	}
-
 
 	public DigiHealthCareCreateScheduleModel(){
 		

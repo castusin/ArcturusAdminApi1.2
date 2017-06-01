@@ -1,4 +1,3 @@
-
 package com.digitalhealthcare;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cis.CISConstants;
@@ -16,7 +16,7 @@ import com.google.gson.Gson;
 import com.validation.CommonCISValidation;
 
 /**
- * Rest Controller : Edit schedule plan Service
+ * Rest Controller : Delete schedule plan Service
  * 
  * @author Castus Info Solutions
  * 
@@ -26,27 +26,25 @@ import com.validation.CommonCISValidation;
  * 
  */
 @RestController
-public class DigiHealthCareEditSchedulePlanRest {
+public class DigiHealthCareDeleteSchedulePlanRest {
 	
+	@RequestMapping(value="/deleteSchedule",method=RequestMethod.GET,produces={"application/json"})
 	
-	@RequestMapping(value="/editSchedulePlan",method=RequestMethod.POST,consumes=MediaType.APPLICATION_JSON_VALUE)
-	
-	public String editSchedulePlan(HttpServletRequest request,@RequestBody DigiHealthCareEditSchedulePlanModel editSchedulePlan) throws Throwable{
+	public String deleteSchedule(@RequestParam ("aptId") int aptId){
 		 
-		Logger logger = Logger.getLogger(DigiHealthCareEditSchedulePlanRest.class);
+		Logger logger = Logger.getLogger(DigiHealthCareDeleteSchedulePlanRest.class);
 			
             CommonCISValidation CommonCISValidation=new CommonCISValidation();
-		    CISResults cisResults=CommonCISValidation.editSchedulePlanValidation(request,editSchedulePlan);
-		    if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
-		     {
-		    	DigiHealthCareEditSchedulePlanWebservice editSchedulePlanWebservice= new DigiHealthCareEditSchedulePlanWebservice();
-		       cisResults  = editSchedulePlanWebservice.editSchedulePlan(editSchedulePlan);
-		       logger.info(" DigitalHealthCare: edit schedule plan rest service :"+cisResults);
-		     }
+		   // CISResults cisResults=CommonCISValidation.editSchedulePlanValidation(request,editSchedulePlan);
+		   // if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
+		    // {
+            DigiHealthCareDeleteSchedulePlanWebservice deleteSchedulePlanWebservice= new DigiHealthCareDeleteSchedulePlanWebservice();
+		    	CISResults cisResults  = deleteSchedulePlanWebservice.deleteSchedule(aptId);
+		       logger.info(" DigitalHealthCare: delete staff member rest service :"+cisResults);
+		    // }
 		       return returnJsonData(cisResults);
 	 }
-	 
-	 
+ 
 	 private String returnJsonData(Object src){
 			// TODO Auto-generated method stub
 	        Gson gson = new Gson();

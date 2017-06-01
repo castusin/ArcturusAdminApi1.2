@@ -18,8 +18,9 @@ public class DigiHealthCareAdminViewPlansModel {
     public int aptseriesId;
     public String patiendId;
     public String seriesStatus;
-    
-    public DigiHealthCareAdminViewPlansModel( int aptId, int aptPersonId, String userId, Date dateTime, String type, String aptWith, Date createDate, String status, String patiendId, String title, String startsAt, String endsAt, String seriesStatus, int aptseriesId) {
+    public String day;
+    public boolean val;
+    public DigiHealthCareAdminViewPlansModel( int aptId, int aptPersonId, String userId, Date dateTime, String type, String aptWith, Date createDate, String status, String patiendId, String title, String startsAt, String endsAt, String seriesStatus, int aptseriesId, String day, boolean val) {
 		super();
 		//this.patientId = patientId;
 		this.aptId=aptId;
@@ -34,8 +35,30 @@ public class DigiHealthCareAdminViewPlansModel {
 		this.endsAt=endsAt;
 		this.seriesStatus=seriesStatus;
 		this.aptseriesId=aptseriesId;
-		
+		this.day=day;
+		this.val=val;
 	}
+
+    
+	public String getDay() {
+		return day;
+	}
+
+
+	public void setDay(String day) {
+		this.day = day;
+	}
+
+
+	public boolean isVal() {
+		return val;
+	}
+
+
+	public void setVal(boolean val) {
+		this.val = val;
+	}
+
 
 	public Date getDateTime() {
 		return dateTime;

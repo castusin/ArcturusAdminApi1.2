@@ -15,7 +15,7 @@ public class DigiHealthCareDeleteStaffMemberWebservice {
 	DigiHealthCareDeleteStaffMemberBL deleteStaffMemberBL=new DigiHealthCareDeleteStaffMemberBL();
 		public CISResults deleteStaffMember(int staffId){
 		 CISResults cisResult = deleteStaffMemberBL.deleteStaffMember(staffId);
-		 logger.info(" DigitalHealthCare: delete schedule plan WebService :"+cisResult);
+		 logger.info(" DigitalHealthCare: delete staff member WebService :"+cisResult);
 		return cisResult;
 	}
 }
