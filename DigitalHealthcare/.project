@@ -21,12 +21,12 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>org.eclipse.m2e.core.maven2Builder</name>
+			<name>org.eclipse.wst.validation.validationbuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>org.eclipse.wst.validation.validationbuilder</name>
+			<name>org.eclipse.m2e.core.maven2Builder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
@@ -69,6 +69,16 @@
 			<name>CreateSchedule</name>
 			<type>2</type>
 			<location>E:/GitHub/ArcturusAdminApi1.2/CreateSchedule/src</location>
+		</link>
+		<link>
+			<name>DeleteSchedulePlan</name>
+			<type>2</type>
+			<location>E:/GitHub/ArcturusAdminApi1.2/DeleteSchedulePlan/src</location>
+		</link>
+		<link>
+			<name>DeleteStaffMember</name>
+			<type>2</type>
+			<location>E:/GitHub/ArcturusAdminApi1.2/DeleteStaffMember/src</location>
 		</link>
 		<link>
 			<name>EditSchedulePlan</name>

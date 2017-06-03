@@ -41,13 +41,13 @@ public class DigiHealthCareAdminViewPlansRest {
  
 		 
 		 CommonCISValidation CommonCISValidation=new CommonCISValidation();
-		 CISResults cisResults=CommonCISValidation.adminViewPlansValidation(patientId,request);
-		if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
-		  {
+		// CISResults cisResults=CommonCISValidation.adminViewPlansValidation(patientId,request);
+		//if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
+		 // {
 			DigiHealthCareAdminViewPlansWebservice adminViewPlansWebservice= new DigiHealthCareAdminViewPlansWebservice();
-			   cisResults  = adminViewPlansWebservice.adminViewPlans(patientId);
+			CISResults  cisResults  = adminViewPlansWebservice.adminViewPlans(patientId);
 		  logger.info(" DigitalHealthCare: admin view Plans :"+cisResults);
-		}
+		//}
 		
 		// Capture Service End time
 		 String serviceEndTime=time.getTimeZone();

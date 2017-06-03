@@ -37,10 +37,11 @@
 		<property name="dataSource" ref="ds" />
 	</bean>
 	
-	<!-- <bean id="sessionHandler" class="com.cis.CISSessionDAO">
+	<bean id="deleteStaffMember" class="com.digitalhealthcare.DigiHealthCareDeleteStaffMemberDAO">
 		<property name="dataSource" ref="ds" />
 	</bean>
-	 -->
+	
+	
 	
  	
 <!-- Development  DB connections     --> 

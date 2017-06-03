@@ -6,6 +6,8 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="src" path="DeleteSchedulePlan"/>
+	<classpathentry kind="src" path="DeleteStaffMember"/>
 	<classpathentry kind="src" path="CreateSchedule"/>
 	<classpathentry kind="src" path="UpdateStaffDetails"/>
 	<classpathentry kind="src" path="GetStaffMemberDetails"/>
@@ -27,12 +29,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry exported="true" kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
@@ -55,5 +52,10 @@
 	<classpathentry kind="lib" path="E:/GitHub/ArcturusAdminApi1.2/JARS/spring-context-4.1.4.RELEASE.jar"/>
 	<classpathentry kind="lib" path="E:/GitHub/ArcturusAdminApi1.2/JARS/spring-dao-2.0.6.jar"/>
 	<classpathentry kind="lib" path="E:/GitHub/ArcturusAdminApi1.2/JARS/spring-jdbc-4.0.6.RELEASE.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
