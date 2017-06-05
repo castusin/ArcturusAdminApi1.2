@@ -1,20 +1,19 @@
 package com.cis;
 
-
-
-
 public class CISConstants {
 	public static final String RESPONSE_SUCCESS = "0";
 	public static final String RESPONSE_FAILURE="1";
 	public static final int OTP_TIME=10;
 	public static final int SESSION_TIME=1440;
 	public static final String TIME_ZONE="CST";
+	public static final String TIME_ZONE2="IST";
 	public static final String SESSION_STATUS="Session is Expired";
 	public static final String OTP_TIME_STATUS="OTP is expired";
 	public static final String USA_COUNTRY_CODE="1";
 	public static final String YES = "Y";
 	public static final String GS_DATE_FORMAT = "yyyy/MM/dd HH:mm:ss";
 	public static final String GS_DATE_FORMAT2 ="yyyy-MM-dd'T'HH:mm:ss";
+	public static final String GS_DATE_FORMAT3 ="EEE, dd MMM yyyy HH:mm:ss zzz";
 	public static final String NO = "N";
 	public static final String SQL_ERROR = "GS - SQL Error";
 	public static final String SQL_ERROR_CODE = "1001";
@@ -47,9 +46,23 @@ public class CISConstants {
 	public static final String TYPE="longsms";
 	public static final String AccountType="P";
 	public static final String AccountType2="F";
-
+	public static final String seriesStatus1="Y";
+	public static final String seriesStatus2="N";
+	public static final int totalDay1=0;
+	public static final int totalDay2=1;
+	public static final String ADMINPHONENUMBER="167846213390";
+	public static final String ADMINEMAILID="prasad9620@gmail.com";
+	public static final String EMAILHOST="castusinfo.com";
+	public static final String EMAILUSERNAME="arcturus@castusinfo.com";
+	public static final String EMAILPASSWORD="arcturus";
+	public static final String PORT="25";
+	public static final String SMS_FAILED = "Sms failed to delivery ";
+	public static final String MAIL_FAILED = "Email failed to delivery ";
+	public static final String SUBJECT ="Arcturus";
+	public static final String CANCEL ="cancelled";
+	
 	public CISConstants() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 }

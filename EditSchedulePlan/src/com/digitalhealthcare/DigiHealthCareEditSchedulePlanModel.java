@@ -1,26 +1,101 @@
 
 package com.digitalhealthcare;
 
-import java.sql.Date;
+import java.util.List;
 
 public class DigiHealthCareEditSchedulePlanModel {
 	
 	String patientId;
-	int aptPersonId;
-	String startTime;
-	String endTime;
 	int allDay;
-	String aptWith;
+	int recurrenceTime;
+	String aptId;
+	int aptseriesId;
+	int aptpersonId;
+	String type;
+	String seriesStatus;
 	
-    public DigiHealthCareEditSchedulePlanModel(String patientId, int aptPersonId, String startTime, String endTime, int allDay, String appWith, String aptWith ) {
+	public List<Appointments> aptList;
+	
+    public DigiHealthCareEditSchedulePlanModel(String patientId, int aptPersonId, String startTime, String endTime, int allDay, String appWith, String aptWith, List<StartDateTime> startTimeList, List<EndDateTime> endTimeList, int recurrenceTime, List<StaffId> staffIdList, List<AptWith> aptWithList, List<Appointments> aptList, String aptId, int aptseriesId, int aptpersonId, String seriesStatus ) {
 		super();
 		this.patientId=patientId;
-		this.aptPersonId=aptPersonId;
-		this.startTime=startTime;
-		this.endTime=endTime;
 		this.allDay=allDay;
-		this.aptWith=aptWith;
+		this.aptList=aptList;
+		this.recurrenceTime=recurrenceTime;
+		this.aptId=aptId;
+		this.aptseriesId=aptseriesId;
+		this.aptpersonId=aptpersonId;
+		this.seriesStatus=seriesStatus;
 		
+	}
+
+
+	public String getAptId() {
+		return aptId;
+	}
+
+
+	public void setAptId(String aptId) {
+		this.aptId = aptId;
+	}
+
+
+	public int getAptseriesId() {
+		return aptseriesId;
+	}
+
+
+
+	public void setAptseriesId(int aptseriesId) {
+		this.aptseriesId = aptseriesId;
+	}
+
+
+
+	public int getAptpersonId() {
+		return aptpersonId;
+	}
+
+
+
+	public void setAptpersonId(int aptpersonId) {
+		this.aptpersonId = aptpersonId;
+	}
+
+
+
+	public String getType() {
+		return type;
+	}
+
+
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+
+
+	public String getSeriesStatus() {
+		return seriesStatus;
+	}
+
+
+
+	public void setSeriesStatus(String seriesStatus) {
+		this.seriesStatus = seriesStatus;
+	}
+
+
+
+	public int getRecurrenceTime() {
+		return recurrenceTime;
+	}
+
+
+
+	public void setRecurrenceTime(int recurrenceTime) {
+		this.recurrenceTime = recurrenceTime;
 	}
 
 
@@ -36,39 +111,8 @@ public class DigiHealthCareEditSchedulePlanModel {
 	}
 
 
-	public String getStartTime() {
-		return startTime;
-	}
-
-
-
-	public void setStartTime(String startTime) {
-		this.startTime = startTime;
-	}
-
-
-
-	public String getEndTime() {
-		return endTime;
-	}
-
-
-
-	public void setEndTime(String endTime) {
-		this.endTime = endTime;
-	}
-
-	public int getAptPersonId() {
-		return aptPersonId;
-	}
-
-
-
-	public void setAptPersonId(int aptPersonId) {
-		this.aptPersonId = aptPersonId;
-	}
-
-
+	
+	
 
 	public int getAllDay() {
 		return allDay;
@@ -80,14 +124,16 @@ public class DigiHealthCareEditSchedulePlanModel {
 		this.allDay = allDay;
 	}
 
-	public String getAptWith() {
-		return aptWith;
+
+	
+	public List<Appointments> getAptList() {
+		return aptList;
 	}
 
 
 
-	public void setAptWith(String aptWith) {
-		this.aptWith = aptWith;
+	public void setAptList(List<Appointments> aptList) {
+		this.aptList = aptList;
 	}
 
 

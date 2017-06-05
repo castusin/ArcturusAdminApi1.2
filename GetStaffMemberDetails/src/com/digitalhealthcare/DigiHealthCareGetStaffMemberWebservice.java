@@ -13,8 +13,8 @@ public class DigiHealthCareGetStaffMemberWebservice {
 	
 	DigiHealthCareGetStaffMemberBL getStaffMemberBL=new DigiHealthCareGetStaffMemberBL();
 
-		public CISResults getStaffList(String staffId) {
-		 CISResults cisResult = getStaffMemberBL.getStaffList(staffId);
+		public CISResults getStaffList(DigiHealthCareSaveStaffMemberModel viewStaffmember) {
+		 CISResults cisResult = getStaffMemberBL.getStaffList(viewStaffmember);
 		 logger.info(" DigitalHealthCare:get staff members WebService :"+cisResult);
 		return cisResult;
 	}

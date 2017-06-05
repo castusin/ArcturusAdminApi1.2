@@ -12,7 +12,7 @@ public class DigiHealthCareAdminViewPlansMapper implements RowMapper{
 	
 	public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
 		DigiHealthCareAdminViewPlansModel adminViewPlans = new DigiHealthCareAdminViewPlansModel();
-		adminViewPlans.setAptId(rs.getInt("Apt_id"));
+		adminViewPlans.setAptId(rs.getString("Apt_id"));
 		adminViewPlans.setAptseriesId(rs.getInt("Apt_series_id"));
 		adminViewPlans.setAptPersonId(rs.getInt("Apt_person_id"));
 		adminViewPlans.setPatiendId(rs.getString("Patient_id"));

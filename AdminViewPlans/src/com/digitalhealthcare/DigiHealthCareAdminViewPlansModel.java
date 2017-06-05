@@ -5,7 +5,7 @@ import java.sql.Date;
 
 public class DigiHealthCareAdminViewPlansModel {
 	//public String patientId;
-    public int aptId;
+    public String aptId;
     public int aptPersonId;
     //public String userId;
     public Date dateTime;
@@ -18,24 +18,62 @@ public class DigiHealthCareAdminViewPlansModel {
     public int aptseriesId;
     public String patiendId;
     public String seriesStatus;
+    public String day;
+    public boolean val;
+  
+
     
-    public DigiHealthCareAdminViewPlansModel( int aptId, int aptPersonId, String userId, Date dateTime, String type, String aptWith, Date createDate, String status, String patiendId, String title, String startsAt, String endsAt, String seriesStatus, int aptseriesId) {
+	public DigiHealthCareAdminViewPlansModel(String aptId, int aptPersonId,
+			Date dateTime, String title, String aptWith, Date createDate,
+			String status, String startsAt, String endsAt, int aptseriesId,
+			String patiendId, String seriesStatus, String day, boolean val) {
 		super();
-		//this.patientId = patientId;
-		this.aptId=aptId;
-		this.aptPersonId=aptPersonId;
-		this.patiendId=patiendId;
-		this.dateTime=dateTime;
-		this.title=title;
-		this.aptWith=aptWith;
-		this.createDate=createDate;
-		this.status=status;
-		this.startsAt=startsAt;
-		this.endsAt=endsAt;
-		this.seriesStatus=seriesStatus;
-		this.aptseriesId=aptseriesId;
-		
+		this.aptId = aptId;
+		this.aptPersonId = aptPersonId;
+		this.dateTime = dateTime;
+		this.title = title;
+		this.aptWith = aptWith;
+		this.createDate = createDate;
+		this.status = status;
+		this.startsAt = startsAt;
+		this.endsAt = endsAt;
+		this.aptseriesId = aptseriesId;
+		this.patiendId = patiendId;
+		this.seriesStatus = seriesStatus;
+		this.day = day;
+		this.val = val;
 	}
+
+
+	public String getAptId() {
+		return aptId;
+	}
+
+
+	public void setAptId(String aptId) {
+		this.aptId = aptId;
+	}
+
+
+	public String getDay() {
+		return day;
+	}
+
+
+	public void setDay(String day) {
+		this.day = day;
+	}
+
+
+	public boolean isVal() {
+		return val;
+	}
+
+
+	public void setVal(boolean val) {
+		this.val = val;
+	}
+
 
 	public Date getDateTime() {
 		return dateTime;
@@ -53,13 +91,7 @@ public class DigiHealthCareAdminViewPlansModel {
 		this.createDate = createDate;
 	}
 
-	public int getAptId() {
-		return aptId;
-	}
-
-	public void setAptId(int aptId) {
-		this.aptId = aptId;
-	}
+	
 
 	public int getAptPersonId() {
 		return aptPersonId;
