@@ -14,9 +14,9 @@ import com.cis.testServiceTime;
 public class DigiHealthCareCreateScheduleDAO extends JdbcDaoSupport {
 
 	public CISResults createSchedule(String aptId, int aptSeriesId,
-			int staffId, String patientId, String startDateTime, String endDateTime,int totalDay,String type, String aptWith, String createDate,String seriesStatus,
+			int staffId, String patientId, String startDateTime, String endDateTime,int totalDay,String type, String aptWith, String createDate,String seriesStatus
 			
-			 int recurenceTime ) {
+			 ) {
 		CISResults cisResults=new CISResults();
 		cisResults.setResponseCode(CISConstants.RESPONSE_SUCCESS);
 		Logger logger = Logger.getLogger(DigiHealthCareCreateScheduleDAO.class);
@@ -106,7 +106,7 @@ public class DigiHealthCareCreateScheduleDAO extends JdbcDaoSupport {
 			 TimeCheck time=new TimeCheck();
 			 testServiceTime sessionTimeCheck=new testServiceTime();
 			 String serviceStartTime=time.getTimeZone();
-			 getJdbcTemplate().update(DigiHealthCareCreateScheduleQuery.SQL_CREATESCHEDULES,aptId,aptSeriesId,staffid,patientId,startDateTime,endDatetime,totalDay,type,appwith,createDate,seriesStatus);
+			 getJdbcTemplate().update(DigiHealthCareCreateScheduleQuery.SQL_CREATESCHEDULES,aptId,aptSeriesId,staffid,patientId,startDateTime,endDatetime,type,appwith,createDate,seriesStatus,recurrenceTime);
 			 String serviceEndTime=time.getTimeZone();
 			 long result=sessionTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
 			 logger.info("save staff member query time:: " +result);

@@ -133,7 +133,7 @@ public class DigiHealthCareCreateScheduleBL {
 		          endDatetime=endDatetime+endDateTime;
 		         // cisResults.setParkDetails(parkDetailslist);   
 		         	          
-		          cisResults = createScheduleDAO.createSchedule(aptId,aptSeriesId,staffid,createSchedule.getPatientId(),startDateTime,endDatetime,totalDay,createSchedule.getType(),appwith,createDate,seriesStatus,recurrenceTime);
+		          cisResults = createScheduleDAO.createSchedule(aptId,aptSeriesId,staffid,createSchedule.getPatientId(),startDateTime,endDatetime,totalDay,createSchedule.getType(),appwith,createDate,seriesStatus);
 		          cisResults = createScheduleDAO.createSchedules(aptId,aptSeriesId,staffid,createSchedule.getPatientId(),startDateTime,endDatetime,totalDay,createSchedule.getType(),appwith,createDate,seriesStatus,recurrenceTime);
 	          }else{
 	        	    c.setTime(d1);
@@ -187,7 +187,7 @@ public class DigiHealthCareCreateScheduleBL {
 	         String[] allStrings = enddateTime.split("\\s");
 	            for (int j = 4; j < allStrings.length; j++){
 	                endDateTime = endDateTime + " " + allStrings[j];
-	                cisResults = createScheduleDAO.createSchedule(aptId,aptSeriesId,staffid,createSchedule.getPatientId(),startDateTime,endTime,totalDay,createSchedule.getType(),appwith,createDate,seriesStatus,recurrenceTime);
+	                cisResults = createScheduleDAO.createSchedule(aptId,aptSeriesId,staffid,createSchedule.getPatientId(),startDateTime,endTime,totalDay,createSchedule.getType(),appwith,createDate,seriesStatus);
 			  			        
 	            }
 	         

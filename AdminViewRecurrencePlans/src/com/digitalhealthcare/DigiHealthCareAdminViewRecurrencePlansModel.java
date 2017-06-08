@@ -17,9 +17,10 @@ public class DigiHealthCareAdminViewRecurrencePlansModel {
     public int aptseriesId;
     public String patiendId;
     public String seriesStatus;
-    public String day;
+   // public String day;
     public boolean val;
-    public DigiHealthCareAdminViewRecurrencePlansModel( String aptId, int aptPersonId, String userId, Date dateTime, String type, String aptWith, Date createDate, String status, String patiendId, String title, String startsAt, String endsAt, String seriesStatus, int aptseriesId, String day, boolean val) {
+    public int recurrence;
+    public DigiHealthCareAdminViewRecurrencePlansModel( String aptId, int aptPersonId, String userId, Date dateTime, String type, String aptWith, Date createDate, String status, String patiendId, String title, String startsAt, String endsAt, String seriesStatus, int aptseriesId, String day, boolean val, int recurrence) {
 		super();
 		//this.patientId = patientId;
 		this.aptId=aptId;
@@ -34,19 +35,23 @@ public class DigiHealthCareAdminViewRecurrencePlansModel {
 		this.endsAt=endsAt;
 		this.seriesStatus=seriesStatus;
 		this.aptseriesId=aptseriesId;
-		this.day=day;
+		//this.day=day;
 		this.val=val;
+		this.recurrence=recurrence;
 	}
 
     
-	public String getDay() {
-		return day;
+	
+	public int getRecurrence() {
+		return recurrence;
 	}
 
 
-	public void setDay(String day) {
-		this.day = day;
+
+	public void setRecurrence(int recurrence) {
+		this.recurrence = recurrence;
 	}
+
 
 
 	public boolean isVal() {

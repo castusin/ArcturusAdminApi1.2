@@ -11,7 +11,9 @@ import org.springframework.jdbc.core.RowMapper;
 public class DigiHealthCareAdminViewRecurrencePlansMapper implements RowMapper{
 	
 	public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
+		
 		DigiHealthCareAdminViewRecurrencePlansModel adminViewPlans = new DigiHealthCareAdminViewRecurrencePlansModel();
+		
 		adminViewPlans.setAptId(rs.getString("Apt_id"));
 		adminViewPlans.setAptseriesId(rs.getInt("Apt_series_id"));
 		adminViewPlans.setAptPersonId(rs.getInt("Apt_person_id"));
@@ -24,7 +26,7 @@ public class DigiHealthCareAdminViewRecurrencePlansMapper implements RowMapper{
 		adminViewPlans.setAptWith(rs.getString("Apt_with"));
 		adminViewPlans.setCreateDate(rs.getDate("Create_date"));
 		adminViewPlans.setStatus(rs.getString("Status"));
-		
+		adminViewPlans.setRecurrence(rs.getInt("Recurrence"));
 		
 		adminViewPlans.setSeriesStatus(rs.getString("Series_status"));
 		return adminViewPlans;

@@ -1,8 +1,11 @@
 package com.digitalhealthcare;
 
 
-import java.sql.Date;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -18,14 +21,35 @@ import com.cis.testServiceTime;
 public class DigiHealthCareAdminViewRecurrencePlansDAO extends JdbcDaoSupport {
 
 
-	public CISResults adminViewPlans(String patientId) {
+	public CISResults adminViewPlans(String patientId) throws Throwable {
 		Logger logger = Logger.getLogger(DigiHealthCareAdminViewRecurrencePlansDAO.class);
 		DigiHealthCareAdminViewRecurrencePlansModel adminViewPlans=new DigiHealthCareAdminViewRecurrencePlansModel();
 		CISResults cisResults=new CISResults();
 		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd yyyy HH:hh:ss");
+		//String date=adminViewPlans.getStartsAt();
+		 
+		
+		 Date newDate=new Date();
+		 String currentDate=sdf.format(newDate);
+		 
+		// String x=adminViewPlans.getStartsAt();
+		 
+		 
+		 
+		 
 		//accountType="P";
-		Object[] inputs = new Object[]{patientId};
+		Object[] inputs = new Object[]{patientId,currentDate};
 		cisResults.setResponseCode(CISConstants.RESPONSE_SUCCESS);
+		//SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd yyyy HH:hh:ss");
+		//String date=adminViewPlans.getStartsAt();
+		 
+		
+		/* Date newDate=new Date();
+		 String currentDate=sdf.format(newDate);*/
+		
+		
+		
 		
 		try{
 			TimeCheck time=new TimeCheck();

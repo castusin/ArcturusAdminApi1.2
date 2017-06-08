@@ -21,7 +21,7 @@ public class DigiHealthCareAdminViewRecurrencePlansBL {
 	ApplicationContext ctx=new ClassPathXmlApplicationContext("spring-servlet.xml"); 
 	DigiHealthCareAdminViewRecurrencePlansDAO adminViewRecPlansDAO=(DigiHealthCareAdminViewRecurrencePlansDAO)ctx.getBean("adminViewRecurrencePlans");
 
-	public CISResults adminViewPlans(String patientId){
+	public CISResults adminViewPlans(String patientId) throws Throwable{
 		
 		final Logger logger = Logger.getLogger(DigiHealthCareAdminViewRecurrencePlansBL.class);
 		// Capture service Start time

@@ -12,7 +12,7 @@ public class DigiHealthCareAdminViewRecurrencePlansWebservice {
 	
 	DigiHealthCareAdminViewRecurrencePlansBL adminViewRecPlansBL=new DigiHealthCareAdminViewRecurrencePlansBL();
 
-		public CISResults adminViewPlans(String patientId) {
+		public CISResults adminViewPlans(String patientId) throws Throwable {
 		 CISResults cisResult = adminViewRecPlansBL.adminViewPlans(patientId);
 		 logger.info(" DigitalHealthCare:Admin view recursive plans WebService :"+cisResult);
 		return cisResult;

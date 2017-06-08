@@ -28,7 +28,7 @@ public class DigiHealthCareAdminViewRecurrencePlansRest {
 	
 	@RequestMapping(value="/adminViewRecurrencePlans",method=RequestMethod.GET,produces={"application/json"})
 	
-		public String adminViewPlans(@RequestParam ("patientId") String patientId,HttpServletRequest request){	 
+		public String adminViewPlans(@RequestParam ("patientId") String patientId,HttpServletRequest request) throws Throwable{	 
 		 Logger logger = Logger.getLogger(DigiHealthCareAdminViewPlansRest.class);
 		 /*String requestParameters = "firstName=" + firstName + "&lastName=" +lastName + "&phoneNumber="+phoneNumber+ "&emailId="+emailId+ "&gender="+gender;*/
 		  //logger.info("Digital HealthCare view patients Request Parameters :"+requestParameters);
