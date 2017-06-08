@@ -22,7 +22,7 @@ public class DigiHealthCareGetStaffMemberMapper implements RowMapper{
 		getStafflist.setAddress1(rs.getString("Address1"));
 		getStafflist.setAddress2(rs.getString("Address2"));
 		getStafflist.setCity(rs.getString("City"));
-		getStafflist.setCountry(rs.getString("Country"));
+		getStafflist.setCounty(rs.getString("county"));
 		getStafflist.setState(rs.getString("State"));
 		getStafflist.setZipcode(rs.getInt("Zipcode"));
 		getStafflist.setActiveInd(rs.getString("Activeind"));

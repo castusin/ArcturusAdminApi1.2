@@ -2,12 +2,6 @@ package com.cis;
 
 import java.util.List;
 
-import com.digitalhealthcare.DigiHealthCareViewPatientsService;
-
-
-
-
-
 public class CISResults {
 	public static final String GS_DATE_FORMAT = "yyyy/MM/dd HH:mm:ss";
 	String responseCode; // 0 - success, any positive number error
@@ -15,9 +9,26 @@ public class CISResults {
 	String warningMessage; // if any
 	String dateFormat;
 	Object resultObject;
-	public List<DigiHealthCareViewPatientsService> patientDetails;
+	//public List<DigiHealthCareViewPatientsService> patientDetails;
+	/*public List<StartDateTime> startTimeList;
+	public List<EndDateTime> endTimeList;
 	
-	
+	public List<StartDateTime> getStartTimeList() {
+		return startTimeList;
+	}
+
+	public void setStartTimeList(List<StartDateTime> startTimeList) {
+		this.startTimeList = startTimeList;
+	}
+
+	public List<EndDateTime> getEndTimeList() {
+		return endTimeList;
+	}
+
+	public void setEndTimeList(List<EndDateTime> endTimeList) {
+		this.endTimeList = endTimeList;
+	}
+*/
 	public String getDateErrorFormat() {
 		return dateFormat;
 	}
@@ -68,7 +79,7 @@ public class CISResults {
 		this.warningMessage = warningMessage;
 	}
 
-	public List<DigiHealthCareViewPatientsService> getPatientDetails() {
+	/*public List<DigiHealthCareViewPatientsService> getPatientDetails() {
 		return patientDetails;
 	}
 
@@ -76,7 +87,7 @@ public class CISResults {
 			List<DigiHealthCareViewPatientsService> patientDetails) {
 		this.patientDetails = patientDetails;
 	}
-
+*/
 	
 
 	

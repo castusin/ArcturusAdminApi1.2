@@ -44,7 +44,7 @@ public class DigiHealthCareEditSchedulePlanBL {
 	     TimeZone obj = TimeZone.getTimeZone(CISConstants.TIME_ZONE);
 	     formatter.setTimeZone(obj);
 	     String createDate=time.getTimeZone();
-	     int totalDay=CISConstants.totalDay2;
+	     int totalDay=CISConstants.totalDay;
 		
 		 
 		 

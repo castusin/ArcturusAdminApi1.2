@@ -8,6 +8,8 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+
+
 public class EmailCommunication {
 	
 	public String sendMailWithAuth(String host, String user, String password,
@@ -56,7 +58,7 @@ public class EmailCommunication {
 	    
 	}
 	
-	public CISResults sendStaffMail(String staffEmail) {
+	public CISResults sendStaffMail(String staffEmail, String startTime, String endTime) {
 		// TODO Auto-generated method stub
 		CISResults cisResult = new CISResults();
 		
@@ -71,6 +73,9 @@ public class EmailCommunication {
                  "<p>Arcturus Care </b><br />"+
                  
   				"<p>Your schedule has been created. "+
+  				
+				"<p><b>StartDateTime</b> :"+startTime+"</b><br />"+
+				"<p><b>EndDateTime</b> :"+endTime+"</b><br />"+
                  
                 "<br />\n"+
                 "<br />\n"+
@@ -94,7 +99,7 @@ public class EmailCommunication {
 	}
 	
 	
-	public CISResults sendPatientMail(String patientEmail) {
+	public CISResults sendPatientMail(String patientEmail, String appwith, String startTime, String endTime, String type, String name, String fname, String lname, String lastName) {
 		// TODO Auto-generated method stub
 		CISResults cisResult = new CISResults();
 		
@@ -107,10 +112,19 @@ public class EmailCommunication {
                 "\n" +
                 "<body>\n" +
                  "<p>Arcturus Care </b><br />"+
-                 
-  				"<p>Your schedule has been created. "+
+                
+  				
+				"<p>" + name +" " + lastName +" schedule has been created. "+
                  
                 "<br />\n"+
+                
+				"<p><b>StaffName</b> : "+ fname +" "+ name +"</b><br />"+
+				"<p><b>Type</b> :"+type+"</b><br />"+
+				"<p><b>StartDateTime</b> :"+startTime+"</b><br />"+
+				"<p><b>EndDateTime</b> :"+endTime+"</b><br />"+
+				
+                
+                
                 "<br />\n"+
                 "  Thanks,<br />\n" +
                 "<br />\n"+
@@ -132,7 +146,7 @@ public class EmailCommunication {
 	}
 	
 	
-	public CISResults sendAdminMail() {
+	public CISResults sendAdminMail( String appwith, String startTime, String endTime, String type, String name, String fname, String lname,String lastName) {
 		// TODO Auto-generated method stub
 		CISResults cisResult = new CISResults();
 		String emailId=CISConstants.ADMINEMAILID;
@@ -147,9 +161,19 @@ public class EmailCommunication {
                 "<body>\n" +
                  "<p>Arcturus Care </b><br />"+
                  
-                "<p>Your schedule has been created. "+
+           
+  				
+  				"<p>" + name + " " + lastName +" schedule has been created. "+
                  
                 "<br />\n"+
+                
+				"<p><b>StaffName</b> : "+ fname +" "+ lname+"</b><br />"+
+				"<p>Type :"+type+"</b><br />"+
+				"<p>StartDateTime :"+startTime+"</b><br />"+
+				"<p>EndDateTime :"+endTime+"</b><br />"+
+				
+                
+                
                 "<br />\n"+
                 "  Thanks,<br />\n" +
                 "<br />\n"+
@@ -169,6 +193,7 @@ public class EmailCommunication {
 	}
 		return cisResult;
 	}
+	
 
 }
 

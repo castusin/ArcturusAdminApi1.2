@@ -6,6 +6,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="src" path="AdminViewRecurrencePlans"/>
 	<classpathentry kind="src" path="DeleteSchedulePlan"/>
 	<classpathentry kind="src" path="DeleteStaffMember"/>
 	<classpathentry kind="src" path="CreateSchedule"/>
