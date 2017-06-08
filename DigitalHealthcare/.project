@@ -46,6 +46,11 @@
 			<location>E:/GitHub/ArcturusAdminApi1.2/AdminViewPlans/src</location>
 		</link>
 		<link>
+			<name>AdminViewRecurrencePlans</name>
+			<type>2</type>
+			<location>E:/GitHub/ArcturusAdminApi1.2/AdminViewRecurrencePlans/src</location>
+		</link>
+		<link>
 			<name>CISCommunication</name>
 			<type>2</type>
 			<location>E:/GitHub/ArcturusadminApi1.1/CISCommunication/src</location>

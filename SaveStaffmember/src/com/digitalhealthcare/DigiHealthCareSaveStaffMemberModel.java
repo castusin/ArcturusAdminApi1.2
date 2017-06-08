@@ -15,12 +15,12 @@ public class DigiHealthCareSaveStaffMemberModel {
 	String address1;
 	String address2;
 	String city;
-	String country;
+	String county;
 	String state;
 	int zipcode;
 	String activeInd;
 	Date createDate;
-    public DigiHealthCareSaveStaffMemberModel(int staffId, String fName, String lName, String emailId, String serviceType, String phone1, String phone2, String address1, String address2, String city, String country, String state, int zipcode, String activeInd, Date createDate ) {
+    public DigiHealthCareSaveStaffMemberModel(int staffId, String fName, String lName, String emailId, String serviceType, String phone1, String phone2, String address1, String address2, String city, String country, String state, int zipcode, String activeInd, Date createDate, String county ) {
 		super();
 		this.staffId=staffId;
 		this.fName=fName;
@@ -32,7 +32,7 @@ public class DigiHealthCareSaveStaffMemberModel {
 		this.address1=address1;
 		this.address2=address2;
 		this.city=city;
-		this.country=country;
+		this.county=county;
 		this.state=state;
 		this.zipcode=zipcode;
 		this.activeInd=activeInd;
@@ -161,14 +161,17 @@ public class DigiHealthCareSaveStaffMemberModel {
 
 
 
-	public String getCountry() {
-		return country;
+	
+
+
+	public String getCounty() {
+		return county;
 	}
 
 
 
-	public void setCountry(String country) {
-		this.country = country;
+	public void setCounty(String county) {
+		this.county = county;
 	}
 
 

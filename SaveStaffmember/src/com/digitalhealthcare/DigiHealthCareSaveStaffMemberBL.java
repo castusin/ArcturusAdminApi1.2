@@ -35,7 +35,7 @@ public class DigiHealthCareSaveStaffMemberBL {
 	     TimeZone obj = TimeZone.getTimeZone(CISConstants.TIME_ZONE);
 	     formatter.setTimeZone(obj);
 	     String createDate=time.getTimeZone();
-		CISResults cisResult = saveStaffMemberDAO.saveStaffMember(staffId,saveStaffmember.getfName(),saveStaffmember.getlName(),saveStaffmember.getServiceType(),saveStaffmember.getEmailId(),saveStaffmember.getPhone1(),saveStaffmember.getPhone2(),saveStaffmember.getAddress1(),saveStaffmember.getAddress2(),saveStaffmember.getCity(),saveStaffmember.getCountry(),saveStaffmember.getState(),saveStaffmember.getZipcode(),saveStaffmember.getActiveInd(),createDate);
+		CISResults cisResult = saveStaffMemberDAO.saveStaffMember(staffId,saveStaffmember.getfName(),saveStaffmember.getlName(),saveStaffmember.getServiceType(),saveStaffmember.getEmailId(),saveStaffmember.getPhone1(),saveStaffmember.getPhone2(),saveStaffmember.getAddress1(),saveStaffmember.getAddress2(),saveStaffmember.getCity(),saveStaffmember.getCounty(),saveStaffmember.getState(),saveStaffmember.getZipcode(),saveStaffmember.getActiveInd(),createDate);
 		
 		// Capture Service End time
 		  String serviceEndTime=time.getTimeZone();

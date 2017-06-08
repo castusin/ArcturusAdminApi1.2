@@ -10,11 +10,30 @@ import java.util.List;
 public class DigiHealthCarePatientModel {
 	
 	public String emailId;
-	
-	public DigiHealthCarePatientModel(String emailId ) {
+	public String firstName;
+	public String lastName;
+	public DigiHealthCarePatientModel(String emailId, String firstName, String lastName ) {
 		super();
 		this.emailId = emailId;
+		this.firstName=firstName;
+		this.lastName=lastName;
 		}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
 	public String getEmailId() {
 		return emailId;

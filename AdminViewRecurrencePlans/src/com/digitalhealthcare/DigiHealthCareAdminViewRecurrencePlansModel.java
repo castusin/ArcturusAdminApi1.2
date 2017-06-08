@@ -1,9 +1,8 @@
-
 package com.digitalhealthcare;
 
 import java.sql.Date;
 
-public class DigiHealthCareAdminViewPlansModel {
+public class DigiHealthCareAdminViewRecurrencePlansModel {
 	//public String patientId;
     public String aptId;
     public int aptPersonId;
@@ -20,7 +19,7 @@ public class DigiHealthCareAdminViewPlansModel {
     public String seriesStatus;
     public String day;
     public boolean val;
-    public DigiHealthCareAdminViewPlansModel( String aptId, int aptPersonId, String userId, Date dateTime, String type, String aptWith, Date createDate, String status, String patiendId, String title, String startsAt, String endsAt, String seriesStatus, int aptseriesId, String day, boolean val) {
+    public DigiHealthCareAdminViewRecurrencePlansModel( String aptId, int aptPersonId, String userId, Date dateTime, String type, String aptWith, Date createDate, String status, String patiendId, String title, String startsAt, String endsAt, String seriesStatus, int aptseriesId, String day, boolean val) {
 		super();
 		//this.patientId = patientId;
 		this.aptId=aptId;
@@ -160,23 +159,8 @@ public class DigiHealthCareAdminViewPlansModel {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-/*
-	
 
-
-	public String getPatientId() {
-		return patientId;
-	}
-
-
-
-	public void setPatientId(String patientId) {
-		this.patientId = patientId;
-	}
-
-
-*/
-	public DigiHealthCareAdminViewPlansModel(){
+	public DigiHealthCareAdminViewRecurrencePlansModel(){
 		
 	}
 

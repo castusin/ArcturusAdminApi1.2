@@ -32,7 +32,7 @@ public class DigiHealthCareGetStaffMemberBL {
 		  
 		
 		 
-		CISResults cisResult = getStaffMemberDAO.getStaffList(viewStaffmember.getStaffId(),viewStaffmember.getfName(),viewStaffmember.getlName(),viewStaffmember.getServiceType(),viewStaffmember.getEmailId(),viewStaffmember.getPhone1(),viewStaffmember.getPhone2(),viewStaffmember.getAddress1(),viewStaffmember.getAddress2(),viewStaffmember.getCity(),viewStaffmember.getCountry(),viewStaffmember.getState(),viewStaffmember.getZipcode(),viewStaffmember.getActiveInd(),viewStaffmember.getCreateDate());
+		CISResults cisResult = getStaffMemberDAO.getStaffList(viewStaffmember.getStaffId(),viewStaffmember.getfName(),viewStaffmember.getlName(),viewStaffmember.getServiceType(),viewStaffmember.getEmailId(),viewStaffmember.getPhone1(),viewStaffmember.getPhone2(),viewStaffmember.getAddress1(),viewStaffmember.getAddress2(),viewStaffmember.getCity(),viewStaffmember.getCounty(),viewStaffmember.getState(),viewStaffmember.getZipcode(),viewStaffmember.getActiveInd(),viewStaffmember.getCreateDate());
 		
 		// Capture Service End time
 		String serviceEndTime=time.getTimeZone();

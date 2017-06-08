@@ -13,6 +13,8 @@ public class DigiHealthCareSaveStaffMemberMapper implements RowMapper{
 	public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
 		DigiHealthCareSaveStaffMemberModel getStafflist = new DigiHealthCareSaveStaffMemberModel();
 		getStafflist.setEmailId(rs.getString("Emailid"));
+		getStafflist.setfName(rs.getString("Fname"));
+		getStafflist.setlName(rs.getString("Lname"));
 		return getStafflist;
 	}
 

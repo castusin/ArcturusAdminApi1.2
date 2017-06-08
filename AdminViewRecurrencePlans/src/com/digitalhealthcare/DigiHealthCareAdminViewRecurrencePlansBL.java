@@ -1,4 +1,3 @@
-
 package com.digitalhealthcare;
 
 
@@ -17,25 +16,28 @@ import com.cis.TimeCheck;
 import com.cis.testServiceTime;
 
 
-public class DigiHealthCareUpdateStaffDetailsBL {
+public class DigiHealthCareAdminViewRecurrencePlansBL {
 
 	ApplicationContext ctx=new ClassPathXmlApplicationContext("spring-servlet.xml"); 
-	DigiHealthCareUpdateStaffDetailsDAO updateStaffDetailsDAO=(DigiHealthCareUpdateStaffDetailsDAO)ctx.getBean("updateStaffDetails");
+	DigiHealthCareAdminViewRecurrencePlansDAO adminViewRecPlansDAO=(DigiHealthCareAdminViewRecurrencePlansDAO)ctx.getBean("adminViewRecurrencePlans");
 
-	public CISResults updateStaffDetails(DigiHealthCareSaveStaffMemberModel updateStaff){
+	public CISResults adminViewPlans(String patientId){
 		
-		final Logger logger = Logger.getLogger(DigiHealthCareEditSchedulePlanBL.class);
+		final Logger logger = Logger.getLogger(DigiHealthCareAdminViewRecurrencePlansBL.class);
 		// Capture service Start time
 		TimeCheck time=new TimeCheck();
 		 testServiceTime seriveTimeCheck=new testServiceTime();
 		 String serviceStartTime=time.getTimeZone();
+		  
+		
 		 
-		CISResults cisResult = updateStaffDetailsDAO.updateStaffDetails(updateStaff.getStaffId(),updateStaff.getfName(),updateStaff.getlName(),updateStaff.getServiceType(),updateStaff.getEmailId(),updateStaff.getPhone1(),updateStaff.getPhone2(),updateStaff.getAddress1(),updateStaff.getAddress2(),updateStaff.getCity(),updateStaff.getCounty(),updateStaff.getState(),updateStaff.getZipcode(),updateStaff.getActiveInd());
+		CISResults cisResult = adminViewRecPlansDAO.adminViewPlans(patientId);
+		logger.info("DigitalHealthCare:admin view recurrence  plansBL  service" +cisResult );
 		
 		// Capture Service End time
 		String serviceEndTime=time.getTimeZone();
 		long result=seriveTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
-		  logger.info("Database time for edit schedule plan service:: " +result );
+		  logger.info("Database time for admin view recurrence plans service:: " +result );
 		  
 		return cisResult;
 	}

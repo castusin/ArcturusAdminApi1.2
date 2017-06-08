@@ -41,6 +41,10 @@
 		<property name="dataSource" ref="ds" />
 	</bean>
 	
+	<bean id="adminViewRecurrencePlans" class="com.digitalhealthcare.DigiHealthCareAdminViewRecurrencePlansDAO">
+		<property name="dataSource" ref="ds" />
+	</bean>
+	
 	
  	
 <!-- Development  DB connections     --> 
