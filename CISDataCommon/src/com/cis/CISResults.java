@@ -2,12 +2,6 @@ package com.cis;
 
 import java.util.List;
 
-
-
-
-
-
-
 public class CISResults {
 	public static final String GS_DATE_FORMAT = "yyyy/MM/dd HH:mm:ss";
 	String responseCode; // 0 - success, any positive number error

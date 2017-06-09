@@ -120,8 +120,8 @@ public class DigiHealthCareCreateScheduleDAO extends JdbcDaoSupport {
    		return cisResults; 
 	}
 
-	public CISResults createSchedule2(String aptId, int aptSeriesId,
-			int staffid, String patientId, Date startdatetime,
+	/*public CISResults createSchedule2(String aptId, int aptSeriesId,
+			int staffid, String patientId, String startdatetime,
 			String endDatetime, int totalDay, String type, String appwith,
 			String createDate, String seriesStatus, int recurrenceTime) {
 		CISResults cisResults=new CISResults();
@@ -145,5 +145,5 @@ public class DigiHealthCareCreateScheduleDAO extends JdbcDaoSupport {
 			cisResults.setErrorMessage("Failed to get Profile Data");
 		}
    		return cisResults; 
-	}
+	}*/
 }

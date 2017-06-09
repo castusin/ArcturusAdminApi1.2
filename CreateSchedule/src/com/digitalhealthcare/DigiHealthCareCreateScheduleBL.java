@@ -140,8 +140,8 @@ public class DigiHealthCareCreateScheduleBL {
 	        	    c.add(Calendar.DATE, 7);
 	        	    d1.setTime(c.getTime().getTime());
 	        	    
-	        	    Date startdatetime = d1;
-	        	 
+	        	    Date startDtime = d1;
+	        	 String startdatetime=sdf.format(startDtime);
 	          // Concat Enddate with end time Lodic
 	          String[] allStrings1 = startDateTime.split("\\s");
 	          StringBuilder strBuilder = new StringBuilder();
@@ -154,7 +154,7 @@ public class DigiHealthCareCreateScheduleBL {
 	          endDatetime=endDatetime+endDateTime;
 	         // cisResults.setParkDetails(parkDetailslist);   
 	         
-	           cisResults = createScheduleDAO.createSchedule2(aptId,aptSeriesId,staffid,createSchedule.getPatientId(),startdatetime,endDatetime,totalDay,createSchedule.getType(),appwith,createDate,seriesStatus,recurrenceTime);
+	           cisResults = createScheduleDAO.createSchedule(aptId,aptSeriesId,staffid,createSchedule.getPatientId(),startdatetime,endDatetime,totalDay,createSchedule.getType(),appwith,createDate,seriesStatus);
 	        
 	           }
 	         }
