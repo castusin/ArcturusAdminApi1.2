@@ -31,6 +31,7 @@ public class DigiHealthCareDeleteSchedulePlanBL {
 			
 		}else{
 			 cisResult = deleteSchedulePlanDAO.deleteRecurSchedule(patientId,seriesId);
+			 cisResult = deleteSchedulePlanDAO.deleteRecurSchedules(patientId,seriesId);
 		
 		}
 			

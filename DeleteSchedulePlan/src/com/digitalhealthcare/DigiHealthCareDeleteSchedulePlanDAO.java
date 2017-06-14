@@ -57,4 +57,27 @@ public class DigiHealthCareDeleteSchedulePlanDAO extends JdbcDaoSupport {
 		}
    		return cisResults; 
 	}
+
+	public CISResults deleteRecurSchedules(String patientId, int seriesId) {
+		CISResults cisResults=new CISResults();
+		cisResults.setResponseCode(CISConstants.RESPONSE_SUCCESS);
+		Logger logger = Logger.getLogger(DigiHealthCareDeleteSchedulePlanDAO.class);
+		Object[] inputs = new Object[]{patientId,seriesId};
+		try{
+			// Capture service Start time
+			 TimeCheck time=new TimeCheck();
+			 testServiceTime sessionTimeCheck=new testServiceTime();
+			 String serviceStartTime=time.getTimeZone();
+			 getJdbcTemplate().update(DigiHealthCareDeleteSchedulePlanQuery.SQL_DELETERECURSCHEDULES,inputs);
+			 String serviceEndTime=time.getTimeZone();
+			 long result=sessionTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
+			 logger.info("delete schedule query time:: " +result);
+			
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+			cisResults.setResponseCode(CISConstants.RESPONSE_FAILURE);
+			cisResults.setErrorMessage("Failed to get Profile Data");
+		}
+   		return cisResults; 
+	}
 }

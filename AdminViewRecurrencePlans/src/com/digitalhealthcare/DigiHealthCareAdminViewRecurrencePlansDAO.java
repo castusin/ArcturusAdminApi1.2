@@ -34,23 +34,14 @@ public class DigiHealthCareAdminViewRecurrencePlansDAO extends JdbcDaoSupport {
 		 String currentDate=sdf.format(newDate);
 		 
 		// String x=adminViewPlans.getStartsAt();
-		 
-		 
-		 
-		 
+		
 		//accountType="P";
-		Object[] inputs = new Object[]{patientId,currentDate};
+		//Object[] inputs = new Object[]{patientId,currentDate};
+		Object[] inputs = new Object[]{patientId};
 		cisResults.setResponseCode(CISConstants.RESPONSE_SUCCESS);
-		//SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd yyyy HH:hh:ss");
-		//String date=adminViewPlans.getStartsAt();
-		 
-		
-		/* Date newDate=new Date();
-		 String currentDate=sdf.format(newDate);*/
 		
 		
-		
-		
+	
 		try{
 			TimeCheck time=new TimeCheck();
 			 testServiceTime sessionTimeCheck=new testServiceTime();
