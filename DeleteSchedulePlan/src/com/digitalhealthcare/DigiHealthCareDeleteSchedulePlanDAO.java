@@ -58,7 +58,7 @@ public class DigiHealthCareDeleteSchedulePlanDAO extends JdbcDaoSupport {
    		return cisResults; 
 	}
 
-	public CISResults deleteRecurSchedules(String patientId, int seriesId) {
+	public CISResults deleteRecurSeriesSchedules(String patientId, int seriesId) {
 		CISResults cisResults=new CISResults();
 		cisResults.setResponseCode(CISConstants.RESPONSE_SUCCESS);
 		Logger logger = Logger.getLogger(DigiHealthCareDeleteSchedulePlanDAO.class);
@@ -75,6 +75,32 @@ public class DigiHealthCareDeleteSchedulePlanDAO extends JdbcDaoSupport {
 			
 		} catch (DataAccessException e) {
 			e.printStackTrace();
+			cisResults.setResponseCode(CISConstants.RESPONSE_FAILURE);
+			cisResults.setErrorMessage("Failed to get Profile Data");
+		}
+   		return cisResults; 
+	}
+
+	public CISResults getPatientEmail(String patientId) {
+		CISResults cisResults=new CISResults();
+		cisResults.setResponseCode(CISConstants.RESPONSE_SUCCESS);
+		DigiHealthCarePatientModel getPatientEmail=new DigiHealthCarePatientModel();
+		Object[] inputs = new Object[]{patientId};
+		try{
+			// Capture service Start time
+			 TimeCheck time=new TimeCheck();
+			 testServiceTime sessionTimeCheck=new testServiceTime();
+			 String serviceStartTime=time.getTimeZone();
+			 DigiHealthCarePatientModel res=(DigiHealthCarePatientModel)getJdbcTemplate().queryForObject(DigiHealthCareCreateScheduleQuery.SQL_GETPATIENTEMAIL,inputs,new DigiHealthCarePatientMapper());
+		   	 //String emailId=getPatientEmail.getEmailId();
+			 cisResults.setResultObject(res);
+			 String serviceEndTime=time.getTimeZone();
+			 long result=sessionTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
+			 logger.info("patient email query time:: " +result);
+			
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+		
 			cisResults.setResponseCode(CISConstants.RESPONSE_FAILURE);
 			cisResults.setErrorMessage("Failed to get Profile Data");
 		}

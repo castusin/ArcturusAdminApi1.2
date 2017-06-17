@@ -17,6 +17,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.cis.CISConstants;
 import com.cis.CISResults;
+import com.cis.EmailCommunication;
 import com.cis.TimeCheck;
 import com.cis.testServiceTime;
 
@@ -29,7 +30,7 @@ public class DigiHealthCareEditSchedulePlanBL {
 	public CISResults editSchedulePlan(DigiHealthCareEditSchedulePlanModel editSchedulePlan) throws Throwable{
 		
 		CISResults cisResult=new CISResults();
-		
+		EmailCommunication sendMail=new EmailCommunication();
 		final Logger logger = Logger.getLogger(DigiHealthCareEditSchedulePlanBL.class);
 		// Capture service Start time
 		 TimeCheck time=new TimeCheck();
@@ -45,8 +46,12 @@ public class DigiHealthCareEditSchedulePlanBL {
 	     formatter.setTimeZone(obj);
 	     String createDate=time.getTimeZone();
 	     int totalDay=CISConstants.totalDay;
-		
-		 
+	     String patientId=editSchedulePlan.getPatientId();
+	     String type= editSchedulePlan.getType();
+	     int staffid=0;
+	     String startTime="";
+		 String endTime="";
+		 String appwith="";
 		 
 		 if(recurrenceTime>=1){
 			 
@@ -54,13 +59,13 @@ public class DigiHealthCareEditSchedulePlanBL {
 				 
 			 for (int i = 0; i < aptListSize; i++)
 			 {
-				 String startTime= editSchedulePlan.getAptList().get(i).startDateTime;
+				  startTime= editSchedulePlan.getAptList().get(i).startDateTime;
 			     
-			     String endTime =  editSchedulePlan.getAptList().get(i).endDateTime;
+			      endTime =  editSchedulePlan.getAptList().get(i).endDateTime;
 			  
-			     int staffid =  editSchedulePlan.getAptList().get(i).staffId;
+			      staffid =  editSchedulePlan.getAptList().get(i).staffId;
 			    
-			     String appwith =  editSchedulePlan.getAptList().get(i).aptWith;
+			      appwith =  editSchedulePlan.getAptList().get(i).aptWith;
 			    
 			 // Now start logic
 			    String seriesStatus=CISConstants.seriesStatus1;
@@ -106,6 +111,13 @@ public class DigiHealthCareEditSchedulePlanBL {
 		         
 		           cisResult = editSchedulePlanDAO.createSchedule(aptId,aptSeriesId,staffid,editSchedulePlan.getPatientId(),startDateTime,endDatetime,totalDay,editSchedulePlan.getType(),appwith,createDate,seriesStatus);
 		          // cisResult = editSchedulePlanDAO.deleteSchedule(aptId);
+		           
+		           cisResult=editSchedulePlanDAO.getStaffEmail(staffid);
+					  
+					DigiHealthCareSaveStaffMemberModel  staffEmailId=(DigiHealthCareSaveStaffMemberModel)cisResult.getResultObject();
+					String staffEmail=staffEmailId.getEmailId();
+					
+					cisResult=sendMail.sendStaffMail(staffEmail,startTime,endTime);
 			        
 		           }
 			 }
@@ -117,22 +129,50 @@ public class DigiHealthCareEditSchedulePlanBL {
 			 
 			 for (int i = 0; i < aptListSize; i++)
 			 {
-				 String startTime= editSchedulePlan.getAptList().get(i).startDateTime;
+				  startTime= editSchedulePlan.getAptList().get(i).startDateTime;
 			     
-			     String endTime =  editSchedulePlan.getAptList().get(i).endDateTime;
+			      endTime =  editSchedulePlan.getAptList().get(i).endDateTime;
 			  
-			     int staffid =  editSchedulePlan.getAptList().get(i).staffId;
+			      staffid =  editSchedulePlan.getAptList().get(i).staffId;
 			    
-			     String appwith =  editSchedulePlan.getAptList().get(i).aptWith;
+			      appwith =  editSchedulePlan.getAptList().get(i).aptWith;
 			 
 			 cisResult = editSchedulePlanDAO.editSchedulePlan(staffid,startTime,endTime,editSchedulePlan.getAllDay(),appwith,editSchedulePlan.getSeriesStatus(),editSchedulePlan.getPatientId(),editSchedulePlan.getAptId());
 			 }
 			 
 			 
-			 
+			 if(cisResult.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
+		      {
+				  cisResult=editSchedulePlanDAO.getStaffEmail(staffid);
+				  
+				  DigiHealthCareSaveStaffMemberModel  staffEmailId=(DigiHealthCareSaveStaffMemberModel)cisResult.getResultObject();
+				  String staffEmail=staffEmailId.getEmailId();
+				 
+				  DigiHealthCareSaveStaffMemberModel  stafffname=(DigiHealthCareSaveStaffMemberModel)cisResult.getResultObject();
+				  String fname=stafffname.getfName();
+				
+				  DigiHealthCareSaveStaffMemberModel  stafflname=(DigiHealthCareSaveStaffMemberModel)cisResult.getResultObject();
+				  String lname=stafflname.getlName();
+				  
+				  cisResult=editSchedulePlanDAO.getPatientEmail(patientId);
+				
+				  DigiHealthCarePatientModel  patientEmailId=(DigiHealthCarePatientModel)cisResult.getResultObject();
+				  String  patientEmail=patientEmailId.getEmailId();
+				 
+				  DigiHealthCarePatientModel  firstname=(DigiHealthCarePatientModel)cisResult.getResultObject();
+				  String name=firstname.getFirstName();
+				
+				  DigiHealthCarePatientModel  lastName=(DigiHealthCarePatientModel)cisResult.getResultObject();
+				  String  lastname=lastName.getLastName();
+				  
+				  if(cisResult.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
+				   {
+					  //cisResult=sendMail.sendStaffMail(staffEmail,startTime,endTime);
+					  cisResult=sendMail.sendPatientMail(patientEmail,appwith,startTime,endTime,type,name,lastname,fname,lname);
+					  cisResult=sendMail.sendAdminMail(appwith,startTime,endTime,type,name,lastname,fname,lname);
+				   }
+		      }
 		 }
-		 
-		 
 		
 		// Capture Service End time
 		String serviceEndTime=time.getTimeZone();

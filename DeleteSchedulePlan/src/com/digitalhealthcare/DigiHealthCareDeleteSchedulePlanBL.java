@@ -5,7 +5,9 @@ import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.cis.CISConstants;
 import com.cis.CISResults;
+import com.cis.EmailCommunication;
 import com.cis.TimeCheck;
 import com.cis.testServiceTime;
 
@@ -19,9 +21,11 @@ public class DigiHealthCareDeleteSchedulePlanBL {
 		
 		final Logger logger = Logger.getLogger(DigiHealthCareDeleteSchedulePlanBL.class);
 		CISResults cisResult=new CISResults();
+		EmailCommunication sendMail=new EmailCommunication();
 		DigiHealthCareAdminViewRecurrencePlansModel deleteRecur=new DigiHealthCareAdminViewRecurrencePlansModel();
 		// int recur=deleteRecur.getRecurrence();
 		// int seriesId=deleteRecur.getAptseriesId();
+		 
 		// Capture service Start time
 		 TimeCheck time=new TimeCheck();
 		 testServiceTime seriveTimeCheck=new testServiceTime();
@@ -31,10 +35,33 @@ public class DigiHealthCareDeleteSchedulePlanBL {
 			
 		}else{
 			 cisResult = deleteSchedulePlanDAO.deleteRecurSchedule(patientId,seriesId);
-			 cisResult = deleteSchedulePlanDAO.deleteRecurSchedules(patientId,seriesId);
+			 cisResult = deleteSchedulePlanDAO.deleteRecurSeriesSchedules(patientId,seriesId);
 		
 		}
 			
+		 
+		 if(cisResult.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
+	      {
+			 			  
+			  cisResult=deleteSchedulePlanDAO.getPatientEmail(patientId);
+			
+			  DigiHealthCarePatientModel  patientEmailId=(DigiHealthCarePatientModel)cisResult.getResultObject();
+			  String  patientEmail=patientEmailId.getEmailId();
+			 
+			  DigiHealthCarePatientModel  firstname=(DigiHealthCarePatientModel)cisResult.getResultObject();
+			  String name=firstname.getFirstName();
+			
+			  DigiHealthCarePatientModel  lastName=(DigiHealthCarePatientModel)cisResult.getResultObject();
+			  String  lastname=lastName.getLastName();
+			  
+			  if(cisResult.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
+			   {
+				  cisResult=sendMail.sendPatientDelMail(patientEmail,name,lastname);
+				  cisResult=sendMail.sendAdminDelMail(name,lastname);
+			   }
+	      }
+		 
+		 
 		// Capture Service End time
 		 String serviceEndTime=time.getTimeZone();
 		 long result=seriveTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
