@@ -82,9 +82,9 @@ public class DigiHealthCareCreateScheduleBL {
 		 
 		// If startTimeListSize equal to > 1 need to series id=Y or series id=N no need else blcok
 		 if(recurrenceTime>0){
-		 if(aptListSize>=1){
+		// if(aptListSize>=1){
 			 
-		 for (int i = 0; i < aptListSize; i++)
+		 for (int i = 0; i <= aptListSize; i++)
 		 {
 			  startTime= createSchedule.getAptList().get(i).startDateTime;
 		      endTime =  createSchedule.getAptList().get(i).endDateTime;
@@ -162,13 +162,13 @@ public class DigiHealthCareCreateScheduleBL {
 	    	     startDateTime=sdf.format(c.getTime());
 	    	     
 	    	 String[] allStrings1 = startDateTime.split("\\s");
-             StringBuilder strBuilder = new StringBuilder();
+             StringBuilder strBuilder1 = new StringBuilder();
 
              for (int l = 0; l < allStrings1.length-1; l++) {
-            	 strBuilder.append(allStrings1[l]);
-            	 strBuilder.append(" ");
+            	 strBuilder1.append(allStrings1[l]);
+            	 strBuilder1.append(" ");
            }
-             String startDatetime= strBuilder.toString();
+             String startDatetime= strBuilder1.toString();
              startDatetime=startDatetime+startdateTime;
 	    	 
 	    	 
@@ -187,7 +187,7 @@ public class DigiHealthCareCreateScheduleBL {
 	            	 strBuilder3.append(allStrings3[l]);
 	            	 strBuilder3.append(" ");
 	           }
-	             String endDatetime= strBuilder.toString();
+	             String endDatetime= strBuilder3.toString();
 	             endDatetime=endDatetime+endDateTime;
 	           // cisResults.setParkDetails(parkDetailslist);   
 	         
@@ -196,7 +196,7 @@ public class DigiHealthCareCreateScheduleBL {
 	           }
 	         }
 		   }
-		 }
+		 //}
 		 }else{
 			 
 			 for (int i = 0; i < aptListSize; i++)
