@@ -1,6 +1,8 @@
 
 package com.digitalhealthcare;
 
+import java.util.Date;
+
 
 public class Appointments {
 	
