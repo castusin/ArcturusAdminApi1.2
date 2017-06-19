@@ -96,7 +96,7 @@ public class DigiHealthCareCreateScheduleBL {
 	         String startDateTime=startTime;
 	         String enddateTime=endTime;
 	         String endDateTime = "";
-		 
+	         String startdateTime = "";
 	         // Logic to split Enddate time 
 	         String[] allStrings = enddateTime.split("\\s");
 	         for (int j = 4; j < allStrings.length; j++){
@@ -133,34 +133,65 @@ public class DigiHealthCareCreateScheduleBL {
 		          cisResults = createScheduleDAO.createSchedule(aptId,aptSeriesId,staffid,createSchedule.getPatientId(),startDateTime,endDatetime,totalDay,createSchedule.getType(),appwith,createDate,seriesStatus);
 		          cisResults = createScheduleDAO.createSchedules(aptId,aptSeriesId,staffid,createSchedule.getPatientId(),startDateTime,endDatetime,totalDay,createSchedule.getType(),appwith,createDate,seriesStatus,recurrenceTime);
 		          
-		          cisResults=createScheduleDAO.getStaffEmail(staffid);
+		         /* cisResults=createScheduleDAO.getStaffEmail(staffid);
 				  
 				  DigiHealthCareSaveStaffMemberModel  staffEmailId=(DigiHealthCareSaveStaffMemberModel)cisResults.getResultObject();
 				  String staffEmail=staffEmailId.getEmailId();
 				
-				  cisResults=sendMail.sendStaffMail(staffEmail,startTime,endTime);
+				  cisResults=sendMail.sendStaffMail(staffEmail,startTime,endTime);*/
 		          
 		          
 	     }else{
+	    	 
+	    	 // Logic to split Startdate time 
+	         String[] allStrings2 = startDateTime.split("\\s");
+	         for (int p = 4; p < allStrings2.length; p++){
+	        	 startdateTime = startdateTime + " " + allStrings2[p];
+	           
+	     }
+	    	 
+	    	 /*String[] allStrings1 = startDateTime.split("\\s");
+             StringBuilder strBuilder = new StringBuilder();
+
+             for (int l = 0; l < allStrings1.length-1; l++) {
+            	 strBuilder.append(allStrings1[l]);
+            	 strBuilder.append(" ");
+           }*/
+             //String startDatetime= strBuilder.toString();
+	    	     c.add(Calendar.DATE, 7);
+	    	     startDateTime=sdf.format(c.getTime());
+	    	     
+	    	 String[] allStrings1 = startDateTime.split("\\s");
+             StringBuilder strBuilder = new StringBuilder();
+
+             for (int l = 0; l < allStrings1.length-1; l++) {
+            	 strBuilder.append(allStrings1[l]);
+            	 strBuilder.append(" ");
+           }
+             String startDatetime= strBuilder.toString();
+             startDatetime=startDatetime+startdateTime;
+	    	 
+	    	 
+	    	 
 	        	 //c.setTime(d1);
-	        	 c.add(Calendar.DATE, 7);
+	        	// c.add(Calendar.DATE, 7);
 	        	// d1.setTime(c.getTime().getTime());
 	        	    
 	        	// Date startDtime = d1;
-	        	 startDateTime=sdf.format(c.getTime());
+	        	 //startDateTime=sdf.format(c.getTime());
 	             // Concat Enddate with end time Lodic
-	             String[] allStrings1 = startDateTime.split("\\s");
-	             StringBuilder strBuilder = new StringBuilder();
+	             String[] allStrings3 = startDatetime.split("\\s");
+	             StringBuilder strBuilder3 = new StringBuilder();
 
-	             for (int l = 0; l < allStrings1.length-1; l++) {
-	            	 strBuilder.append(allStrings1[l]);
-	            	 strBuilder.append(" ");
+	             for (int l = 0; l < allStrings3.length-1; l++) {
+	            	 strBuilder3.append(allStrings3[l]);
+	            	 strBuilder3.append(" ");
 	           }
 	             String endDatetime= strBuilder.toString();
 	             endDatetime=endDatetime+endDateTime;
 	           // cisResults.setParkDetails(parkDetailslist);   
 	         
-	             cisResults = createScheduleDAO.createSchedule(aptId,aptSeriesId,staffid,createSchedule.getPatientId(),startDateTime,endDatetime,totalDay,createSchedule.getType(),appwith,createDate,seriesStatus);
+	             cisResults = createScheduleDAO.createSchedule(aptId,aptSeriesId,staffid,createSchedule.getPatientId(),startDatetime,endDatetime,totalDay,createSchedule.getType(),appwith,createDate,seriesStatus);
 	        
 	           }
 	         }
