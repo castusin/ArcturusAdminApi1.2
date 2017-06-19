@@ -82,7 +82,7 @@ public class DigiHealthCareCreateScheduleBL {
 		 
 		// If startTimeListSize equal to > 1 need to series id=Y or series id=N no need else blcok
 		 if(recurrenceTime>0){
-		 if(aptListSize>1){
+		 if(aptListSize>=1){
 			 
 		 for (int i = 0; i < aptListSize; i++)
 		 {
