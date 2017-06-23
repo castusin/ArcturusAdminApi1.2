@@ -142,6 +142,41 @@ public class DigiHealthCareCreateScheduleBL {
                                
                   cisResults = createScheduleDAO.createSchedule(aptId,aptSeriesId,staffid,createSchedule.getPatientId(),startDateTime,endDatetime,totalDay,createSchedule.getType(),appwith,createDate,seriesStatus);
                   cisResults = createScheduleDAO.createSchedules(aptId,aptSeriesId,staffid,createSchedule.getPatientId(),startDateTime,endDatetime,totalDay,createSchedule.getType(),appwith,createDate,seriesStatus,recurrenceTime);
+                 
+                  
+                  
+                  if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
+                  {
+                      cisResults=createScheduleDAO.getStaffEmail(staffid);
+                      
+                      DigiHealthCareSaveStaffMemberModel  staffEmailId=(DigiHealthCareSaveStaffMemberModel)cisResults.getResultObject();
+                      String staffEmail=staffEmailId.getEmailId();
+                     
+                      DigiHealthCareSaveStaffMemberModel  stafffname=(DigiHealthCareSaveStaffMemberModel)cisResults.getResultObject();
+                      String fname=stafffname.getfName();
+                    
+                      DigiHealthCareSaveStaffMemberModel  stafflname=(DigiHealthCareSaveStaffMemberModel)cisResults.getResultObject();
+                      String lname=stafflname.getlName();
+                      
+                      cisResults=createScheduleDAO.getPatientEmail(patientId);
+                    
+                      DigiHealthCarePatientModel  patientEmailId=(DigiHealthCarePatientModel)cisResults.getResultObject();
+                      String  patientEmail=patientEmailId.getEmailId();
+                     
+                      DigiHealthCarePatientModel  firstname=(DigiHealthCarePatientModel)cisResults.getResultObject();
+                      String name=firstname.getFirstName();
+                    
+                      DigiHealthCarePatientModel  lastName=(DigiHealthCarePatientModel)cisResults.getResultObject();
+                      String  lastname=lastName.getLastName();
+                      
+                      if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
+                       {
+                          cisResults=sendMail.sendStaffMail(staffEmail,startTime,endTime,recurrenceTime);
+                          cisResults=sendMail.sendPatientMail(patientEmail,appwith,startDateTime,endDatetime,type,name,lastname,fname,lname,recurrenceTime);
+                          cisResults=sendMail.sendAdminMail(appwith,startTime,endTime,type,name,lastname,fname,lname,recurrenceTime);
+                       }
+                  }
+                  
                   
                   /*cisResults=createScheduleDAO.getStaffEmail(staffid);
                   
@@ -223,7 +258,7 @@ public class DigiHealthCareCreateScheduleBL {
      }
                  
             
-         if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
+         /*if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
           {
               cisResults=createScheduleDAO.getStaffEmail(staffid);
               
@@ -249,11 +284,11 @@ public class DigiHealthCareCreateScheduleBL {
               
               if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
                {
-                 /* cisResults=sendMail.sendStaffMail(staffEmail,startTime,endTime);*/
+                  cisResults=sendMail.sendStaffMail(staffEmail,startTime,endTime);
                   cisResults=sendMail.sendPatientMail(patientEmail,appwith,startTime,endTime,type,name,lastname,fname,lname);
                   cisResults=sendMail.sendAdminMail(appwith,startTime,endTime,type,name,lastname,fname,lname);
                }
-          }
+          }*/
         // Capture Service End time
           String serviceEndTime=time.getTimeZone();
           long result=seriveTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
