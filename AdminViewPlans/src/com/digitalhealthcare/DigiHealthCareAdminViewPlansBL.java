@@ -30,9 +30,9 @@ public class DigiHealthCareAdminViewPlansBL {
 		 testServiceTime seriveTimeCheck=new testServiceTime();
 		 String serviceStartTime=time.getTimeZone();
 		  
-		
-		 
 		CISResults cisResult = adminViewPlansDAO.adminViewPlans(patientId);
+		
+		
 		logger.info("DigitalHealthCare:admin view plansBL  service" +cisResult );
 		
 		// Capture Service End time

@@ -95,14 +95,14 @@ public class DigiHealthCareEditSchedulePlanDAO extends JdbcDaoSupport {
 
 
 	public CISResults editSchedulePlan(int staffid, String startTime,
-			String endTime, int allDay, String appwith, String seriesStatus,
+			String endTime, int allDay, String appwith, String type,String seriesStatus,
 			String patientId, String aptId) {
 		
 		CISResults cisResults=new CISResults();
 		
 		cisResults.setResponseCode(CISConstants.RESPONSE_SUCCESS);
 		Logger logger = Logger.getLogger(DigiHealthCareEditSchedulePlanDAO.class);
-		Object[] inputs = new Object[]{staffid,startTime,endTime,allDay,appwith,seriesStatus,patientId,aptId};
+		Object[] inputs = new Object[]{staffid,startTime,endTime,allDay,appwith,type,seriesStatus,patientId,aptId};
 		try{
 			// Capture service Start time
 			 TimeCheck time=new TimeCheck();

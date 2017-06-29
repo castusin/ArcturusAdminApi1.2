@@ -21,7 +21,7 @@ public class DigiHealthCareSaveStaffMemberBL {
 
 	ApplicationContext ctx=new ClassPathXmlApplicationContext("spring-servlet.xml"); 
 	DigiHealthCareSaveStaffMemberDAO saveStaffMemberDAO=(DigiHealthCareSaveStaffMemberDAO)ctx.getBean("saveStaffMember");
-	 private static final AtomicInteger count = new AtomicInteger(111101);
+	// private static final AtomicInteger count = new AtomicInteger(111101);
 	public CISResults saveStaffMember( DigiHealthCareSaveStaffMemberModel saveStaffmember){
 		
 		final Logger logger = Logger.getLogger(DigiHealthCareEditSchedulePlanBL.class);
@@ -29,13 +29,13 @@ public class DigiHealthCareSaveStaffMemberBL {
 		 TimeCheck time=new TimeCheck();
 		 testServiceTime seriveTimeCheck=new testServiceTime();
 		 String serviceStartTime=time.getTimeZone();
-		 int staffId = count.incrementAndGet();
+		// int staffId = count.incrementAndGet();
 		 Calendar currentdate = Calendar.getInstance();
 	     DateFormat formatter = new SimpleDateFormat(CISConstants.GS_DATE_FORMAT);
 	     TimeZone obj = TimeZone.getTimeZone(CISConstants.TIME_ZONE);
 	     formatter.setTimeZone(obj);
 	     String createDate=time.getTimeZone();
-		CISResults cisResult = saveStaffMemberDAO.saveStaffMember(staffId,saveStaffmember.getfName(),saveStaffmember.getlName(),saveStaffmember.getServiceType(),saveStaffmember.getEmailId(),saveStaffmember.getPhone1(),saveStaffmember.getPhone2(),saveStaffmember.getAddress1(),saveStaffmember.getAddress2(),saveStaffmember.getCity(),saveStaffmember.getCounty(),saveStaffmember.getState(),saveStaffmember.getZipcode(),saveStaffmember.getActiveInd(),createDate);
+		CISResults cisResult = saveStaffMemberDAO.saveStaffMember(saveStaffmember.getfName(),saveStaffmember.getlName(),saveStaffmember.getServiceType(),saveStaffmember.getEmailId(),saveStaffmember.getPhone1(),saveStaffmember.getPhone2(),saveStaffmember.getAddress1(),saveStaffmember.getAddress2(),saveStaffmember.getCity(),saveStaffmember.getCounty(),saveStaffmember.getState(),saveStaffmember.getZipcode(),saveStaffmember.getActiveInd(),createDate);
 		
 		// Capture Service End time
 		  String serviceEndTime=time.getTimeZone();

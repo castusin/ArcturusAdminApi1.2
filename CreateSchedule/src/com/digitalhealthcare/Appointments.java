@@ -11,16 +11,19 @@ public class Appointments {
 	int staffId;
 	String startDateTime;
 	String endDateTime;
-	
+	//String type;
 
-	public Appointments(String aptWith, int staffId, String startDateTime, String endDateTime) {
+	public Appointments(String aptWith, int staffId, String startDateTime, String endDateTime, String type) {
 		super();
 		this.aptWith = aptWith;
 		this.staffId=staffId;
 		this.startDateTime=startDateTime;
 		this.endDateTime=endDateTime;
-	
+		//this.type=type;
 	}
+
+
+	
 
 
 	public int getStaffId() {

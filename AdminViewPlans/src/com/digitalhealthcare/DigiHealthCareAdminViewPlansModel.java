@@ -2,6 +2,7 @@
 package com.digitalhealthcare;
 
 import java.sql.Date;
+import java.util.List;
 
 public class DigiHealthCareAdminViewPlansModel {
 	//public String patientId;
@@ -20,7 +21,8 @@ public class DigiHealthCareAdminViewPlansModel {
     public String seriesStatus;
     public String day;
     public boolean val;
-    public DigiHealthCareAdminViewPlansModel( String aptId, int aptPersonId, String userId, Date dateTime, String type, String aptWith, Date createDate, String status, String patiendId, String title, String startsAt, String endsAt, String seriesStatus, int aptseriesId, String day, boolean val) {
+    public List<Color> getcolors;
+    public DigiHealthCareAdminViewPlansModel( String aptId, int aptPersonId, String userId, Date dateTime, String type, String aptWith, Date createDate, String status, String patiendId, String title, String startsAt, String endsAt, String seriesStatus, int aptseriesId, String day, boolean val, List<Color> getcolors) {
 		super();
 		//this.patientId = patientId;
 		this.aptId=aptId;
@@ -37,9 +39,20 @@ public class DigiHealthCareAdminViewPlansModel {
 		this.aptseriesId=aptseriesId;
 		this.day=day;
 		this.val=val;
+		this.getcolors=getcolors;
 	}
 
     
+	public List<Color> getGetcolors() {
+		return getcolors;
+	}
+
+
+	public void setGetcolors(List<Color> getcolors) {
+		this.getcolors = getcolors;
+	}
+
+
 	public String getDay() {
 		return day;
 	}

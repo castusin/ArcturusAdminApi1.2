@@ -52,7 +52,7 @@ public class DigiHealthCareEditSchedulePlanBL {
 	     String startTime="";
 		 String endTime="";
 		 String appwith="";
-		 
+		 //String type=editSchedulePlan.getType();
 		 if(recurrenceTime>=1){
 			 
 			 cisResult = editSchedulePlanDAO.deleteSchedulePlan(aptSeriesId);
@@ -66,6 +66,8 @@ public class DigiHealthCareEditSchedulePlanBL {
 			      staffid =  editSchedulePlan.getAptList().get(i).staffId;
 			    
 			      appwith =  editSchedulePlan.getAptList().get(i).aptWith;
+			      
+			     // type =  editSchedulePlan.getAptList().get(i).type;
 			    
 			 // Now start logic
 			    String seriesStatus=CISConstants.seriesStatus1;
@@ -137,7 +139,7 @@ public class DigiHealthCareEditSchedulePlanBL {
 			    
 			      appwith =  editSchedulePlan.getAptList().get(i).aptWith;
 			 
-			 cisResult = editSchedulePlanDAO.editSchedulePlan(staffid,startTime,endTime,editSchedulePlan.getAllDay(),appwith,editSchedulePlan.getSeriesStatus(),editSchedulePlan.getPatientId(),editSchedulePlan.getAptId());
+			 cisResult = editSchedulePlanDAO.editSchedulePlan(staffid,startTime,endTime,editSchedulePlan.getAllDay(),appwith,editSchedulePlan.getType(),editSchedulePlan.getSeriesStatus(),editSchedulePlan.getPatientId(),editSchedulePlan.getAptId());
 			 }
 			 
 			 
