@@ -21,35 +21,39 @@ public class DigiHealthCareAdminViewPlansModel {
     public String seriesStatus;
     public String day;
     public boolean val;
-    public List<Color> getcolors;
-    public DigiHealthCareAdminViewPlansModel( String aptId, int aptPersonId, String userId, Date dateTime, String type, String aptWith, Date createDate, String status, String patiendId, String title, String startsAt, String endsAt, String seriesStatus, int aptseriesId, String day, boolean val, List<Color> getcolors) {
+    public Object color;
+
+	public Object getColor() {
+		return color;
+	}
+
+
+	public void setColor(Object color) {
+		this.color = color;
+	}
+
+
+	public DigiHealthCareAdminViewPlansModel(String aptId, int aptPersonId,
+			Date dateTime, String title, String aptWith, Date createDate,
+			String status, String startsAt, String endsAt, int aptseriesId,
+			String patiendId, String seriesStatus, String day, boolean val,
+			Object color) {
 		super();
-		//this.patientId = patientId;
-		this.aptId=aptId;
-		this.aptPersonId=aptPersonId;
-		this.patiendId=patiendId;
-		this.dateTime=dateTime;
-		this.title=title;
-		this.aptWith=aptWith;
-		this.createDate=createDate;
-		this.status=status;
-		this.startsAt=startsAt;
-		this.endsAt=endsAt;
-		this.seriesStatus=seriesStatus;
-		this.aptseriesId=aptseriesId;
-		this.day=day;
-		this.val=val;
-		this.getcolors=getcolors;
-	}
-
-    
-	public List<Color> getGetcolors() {
-		return getcolors;
-	}
-
-
-	public void setGetcolors(List<Color> getcolors) {
-		this.getcolors = getcolors;
+		this.aptId = aptId;
+		this.aptPersonId = aptPersonId;
+		this.dateTime = dateTime;
+		this.title = title;
+		this.aptWith = aptWith;
+		this.createDate = createDate;
+		this.status = status;
+		this.startsAt = startsAt;
+		this.endsAt = endsAt;
+		this.aptseriesId = aptseriesId;
+		this.patiendId = patiendId;
+		this.seriesStatus = seriesStatus;
+		this.day = day;
+		this.val = val;
+		this.color = color;
 	}
 
 
@@ -193,4 +197,6 @@ public class DigiHealthCareAdminViewPlansModel {
 		
 	}
 
+
+	
 }

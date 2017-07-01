@@ -30,6 +30,19 @@ public class DigiHealthCareDeleteSchedulePlanBL {
 		 TimeCheck time=new TimeCheck();
 		 testServiceTime seriveTimeCheck=new testServiceTime();
 		 String serviceStartTime=time.getTimeZone();
+		 
+		 
+		  cisResult=deleteSchedulePlanDAO.getPatientDetails(patientId,aptId);
+		  PatientDetailsModel  patientDetails=(PatientDetailsModel)cisResult.getResultObject();
+		  String type=patientDetails.getType();
+		  String startTime=patientDetails.getStartTime();
+		 
+		  cisResult=deleteSchedulePlanDAO.getStaffDetails(patientId,aptId);
+		  StaffDetails  staffDetails=(StaffDetails)cisResult.getResultObject();
+		  String firstName=staffDetails.getStaffname();
+		  String Lastname=staffDetails.getStaflname();
+		  String StaffemailId=staffDetails.getStaffmail();
+		  
 		 if(seriesId==0){
 			 cisResult = deleteSchedulePlanDAO.deleteSchedule(aptId,patientId);
 			
@@ -54,10 +67,15 @@ public class DigiHealthCareDeleteSchedulePlanBL {
 			  DigiHealthCarePatientModel  lastName=(DigiHealthCarePatientModel)cisResult.getResultObject();
 			  String  lastname=lastName.getLastName();
 			  
+			 
+			  
+			  String cc= StaffemailId ;
+              String bcc= CISConstants.ADMINEMAILID ;
+			  
 			  if(cisResult.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
 			   {
-				  cisResult=sendMail.sendPatientDelMail(patientEmail,name,lastname);
-				  cisResult=sendMail.sendAdminDelMail(name,lastname);
+				  cisResult=sendMail.sendPatientDelMail(patientEmail,type,startTime,firstName,Lastname,cc,bcc);
+				 //cisResult=sendMail.sendAdminDelMail(name,lastname,cc,bcc);
 			   }
 	      }
 		 
