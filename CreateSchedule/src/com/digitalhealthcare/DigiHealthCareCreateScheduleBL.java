@@ -153,10 +153,10 @@ public class DigiHealthCareCreateScheduleBL {
                       String staffEmail=staffEmailId.getEmailId();
                      
                       DigiHealthCareSaveStaffMemberModel  stafffname=(DigiHealthCareSaveStaffMemberModel)cisResults.getResultObject();
-                      String fname=stafffname.getfName();
+                      String Stfname=stafffname.getfName();
                     
                       DigiHealthCareSaveStaffMemberModel  stafflname=(DigiHealthCareSaveStaffMemberModel)cisResults.getResultObject();
-                      String lname=stafflname.getlName();
+                      String Stlname=stafflname.getlName();
                       
                       cisResults=createScheduleDAO.getPatientEmail(patientId);
                     
@@ -183,7 +183,7 @@ public class DigiHealthCareCreateScheduleBL {
                       if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
                        {
                        // cisResults=sendMail.sendStaffMail(staffEmail,startTime,endTime,recurrenceTime,cc,bcc);
-                          cisResults=sendMail.sendPatientMail(patientEmail,appwith,startTime,endTime,type,name,lastname,fname,lname,recurrenceTime,cc,bcc);
+                          cisResults=sendMail.sendPatientMail(patientEmail,appwith,startTime,endTime,type,Stfname,Stlname,recurrenceTime,cc,bcc);
                          // cisResults=sendMail.sendAdminMail(appwith,startTime,endTime,type,name,lastname,fname,lname,recurrenceTime,cc,bcc);
                        }
                       
@@ -302,7 +302,7 @@ public class DigiHealthCareCreateScheduleBL {
                         if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
                          {
                           //cisResults=sendMail.sendStaffMail(staffEmail,startTime,endTime,recurrenceTime,cc,bcc);
-                            cisResults=sendMail.sendPatientMailSingle(patientEmail,appwith,startTime,endTime,type,name,lastname,fname,lname,recurrenceTime,cc,bcc);
+                            cisResults=sendMail.sendPatientMailSingle(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,cc,bcc);
                            // cisResults=sendMail.sendAdminMail(appwith,startTime,endTime,type,name,lastname,fname,lname,recurrenceTime,cc,bcc);
                          }
                     }

@@ -150,7 +150,7 @@ public class DigiHealthCareEditSchedulePlanBL {
 					  if(cisResult.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
 					   {
 						  //cisResult=sendMail.sendStaffMail(staffEmail,startTime,endTime,recurrenceTime);
-						  cisResult=sendMail.sendPatientUpdateMail(patientEmail,appwith,startTime,endTime,type,name,lastname,fname,lname,recurrenceTime,cc,bcc);
+						  cisResult=sendMail.sendPatientUpdateMail(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,cc,bcc);
 						  //cisResult=sendMail.sendAdminMail(appwith,startTime,endTime,type,name,lastname,fname,lname,recurrenceTime);
 					   }
 			        
@@ -204,7 +204,7 @@ public class DigiHealthCareEditSchedulePlanBL {
 				  if(cisResult.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
 				   {
 					 // cisResult=sendMail.sendStaffMail(staffEmail,startTime,endTime,recurrenceTime);
-					  cisResult=sendMail.sendPatientMail(patientEmail,appwith,startTime,endTime,type,name,lastname,fname,lname,recurrenceTime,cc,bcc);
+					  cisResult=sendMail.sendPatienSingleUpdatetMail(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,cc,bcc);
 					  //cisResult=sendMail.sendAdminMail(appwith,startTime,endTime,type,name,lastname,fname,lname,recurrenceTime);
 				   }
 		      }
