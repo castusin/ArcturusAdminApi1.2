@@ -1,4 +1,5 @@
 
+
 package com.digitalhealthcare;
 
 
@@ -7,32 +8,23 @@ import java.sql.Timestamp;
 import java.util.List;
 
 
-public class DigiHealthCarePatientModel {
+public class PatientModel {
 	
 	public String emailId;
 	public String firstName;
 	public String lastName;
-	public int phone;
-	public DigiHealthCarePatientModel(String emailId, String firstName, String lastName, int phone ) {
+	
+	public PatientModel(String emailId, String firstName, String lastName ) {
 		super();
 		this.emailId = emailId;
 		this.firstName=firstName;
 		this.lastName=lastName;
-		this.phone=phone;
+		
 		}
 
 	
 
-	public int getPhone() {
-		return phone;
-	}
-
-
-
-	public void setPhone(int phone) {
-		this.phone = phone;
-	}
-
+	
 
 
 	public String getLastName() {
@@ -58,7 +50,7 @@ public class DigiHealthCarePatientModel {
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
-	public DigiHealthCarePatientModel(){
+	public PatientModel(){
 		
 	}
 

@@ -71,11 +71,15 @@ public class DigiHealthCareDeleteSchedulePlanBL {
 			  
 			  String cc= StaffemailId ;
               String bcc= CISConstants.ADMINEMAILID ;
+              
+              String subject="Your schedule has been cancelled.";
 			  
 			  if(cisResult.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
 			   {
 				  cisResult=sendMail.sendPatientDelMail(patientEmail,type,startTime,firstName,Lastname,cc,bcc);
 				 //cisResult=sendMail.sendAdminDelMail(name,lastname,cc,bcc);
+				  cisResult=deleteSchedulePlanDAO.messageText(aptId,patientId,subject);
+                  
 			   }
 	      }
 		 

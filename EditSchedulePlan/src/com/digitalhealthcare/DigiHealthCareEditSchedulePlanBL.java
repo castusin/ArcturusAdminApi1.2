@@ -147,11 +147,15 @@ public class DigiHealthCareEditSchedulePlanBL {
 						    String cc= staffEmail ;
 	                        String bcc= CISConstants.ADMINEMAILID ;
 	                        
+	                        
+	                        
 					  if(cisResult.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
 					   {
 						  //cisResult=sendMail.sendStaffMail(staffEmail,startTime,endTime,recurrenceTime);
 						  cisResult=sendMail.sendPatientUpdateMail(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,cc,bcc);
 						  //cisResult=sendMail.sendAdminMail(appwith,startTime,endTime,type,name,lastname,fname,lname,recurrenceTime);
+					  
+						 
 					   }
 			        
 		           }}
@@ -191,21 +195,27 @@ public class DigiHealthCareEditSchedulePlanBL {
 				  
 				  cisResult=editSchedulePlanDAO.getPatientEmail(patientId);
 				
-				  DigiHealthCarePatientModel  patientEmailId=(DigiHealthCarePatientModel)cisResult.getResultObject();
+				  PatientModel  patientEmailId=(PatientModel)cisResult.getResultObject();
 				  String  patientEmail=patientEmailId.getEmailId();
 				 
-				  DigiHealthCarePatientModel  firstname=(DigiHealthCarePatientModel)cisResult.getResultObject();
+				  PatientModel  firstname=(PatientModel)cisResult.getResultObject();
 				  String name=firstname.getFirstName();
 				
-				  DigiHealthCarePatientModel  lastName=(DigiHealthCarePatientModel)cisResult.getResultObject();
+				  PatientModel  lastName=(PatientModel)cisResult.getResultObject();
 				  String  lastname=lastName.getLastName();
 				  String cc= staffEmail ;
                   String bcc= CISConstants.ADMINEMAILID ;
+                  
+                  String subject="Your schedule has been updated";
+                  
 				  if(cisResult.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
 				   {
 					 // cisResult=sendMail.sendStaffMail(staffEmail,startTime,endTime,recurrenceTime);
 					  cisResult=sendMail.sendPatienSingleUpdatetMail(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,cc,bcc);
 					  //cisResult=sendMail.sendAdminMail(appwith,startTime,endTime,type,name,lastname,fname,lname,recurrenceTime);
+				   
+					  cisResult=editSchedulePlanDAO.messageText(subject,editSchedulePlan.getPatientId(),aptId);
+                      
 				   }
 		      }
 		 }

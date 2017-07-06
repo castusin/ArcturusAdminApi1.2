@@ -9,6 +9,8 @@ public class DigiHealthCareEditSchedulePlanQuery {
 
 	 public static String SQL_DELETESTAFFMEMBER = " delete  from Appointments_table where Apt_series_id=? "; 
 
+	 public static String SQL_EDITMESSAGE="UPDATE Messages_table set Message_text =? where Patient_id=? and Apt_id=?" ;
+		
 
 }
 //aptPersonId,startTime,endTime,allDay,aptWith,patientId

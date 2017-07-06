@@ -57,6 +57,13 @@ public class DigiHealthCareCreateScheduleBL {
           String upToNCharacters = aptId.substring(0, Math.min(aptId.length(), 8));
           aptId=upToNCharacters;
           
+          //messageID
+          
+           sessionId = UUID.randomUUID().toString();
+          String messageId=DigestUtils.sha1Hex(sessionId);
+          upToNCharacters = messageId.substring(0, Math.min(aptId.length(), 6));
+          messageId=upToNCharacters;
+          
          int aptSeriesId = counts.incrementAndGet();
          Calendar currentdate = Calendar.getInstance();
          DateFormat formatter = new SimpleDateFormat(CISConstants.GS_DATE_FORMAT);
@@ -168,7 +175,9 @@ public class DigiHealthCareCreateScheduleBL {
                     
                       DigiHealthCarePatientModel  lastName=(DigiHealthCarePatientModel)cisResults.getResultObject();
                       String  lastname=lastName.getLastName();
-                      
+                      DigiHealthCarePatientModel  phone=(DigiHealthCarePatientModel)cisResults.getResultObject();
+                     
+                      int phoneNumber=phone.getPhone();
                       
                       
                       // Message info       
@@ -176,7 +185,7 @@ public class DigiHealthCareCreateScheduleBL {
                       String cc= staffEmail ;
                       String bcc= CISConstants.ADMINEMAILID ;
                       
-                      
+                      String subject="Your schedule has been created";
                       
                       
                       
@@ -185,8 +194,13 @@ public class DigiHealthCareCreateScheduleBL {
                        // cisResults=sendMail.sendStaffMail(staffEmail,startTime,endTime,recurrenceTime,cc,bcc);
                           cisResults=sendMail.sendPatientMail(patientEmail,appwith,startTime,endTime,type,Stfname,Stlname,recurrenceTime,cc,bcc);
                          // cisResults=sendMail.sendAdminMail(appwith,startTime,endTime,type,name,lastname,fname,lname,recurrenceTime,cc,bcc);
+                        
+                          cisResults=createScheduleDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate);
+                          
+                       
                        }
                       
+                    
                     
                   }
                   
@@ -288,6 +302,9 @@ public class DigiHealthCareCreateScheduleBL {
                       
                         DigiHealthCarePatientModel  lastName=(DigiHealthCarePatientModel)cisResults.getResultObject();
                         String  lastname=lastName.getLastName();
+                        DigiHealthCarePatientModel  phone=(DigiHealthCarePatientModel)cisResults.getResultObject();
+                        
+                        int phoneNumber=phone.getPhone();
                         
                         
                         // Message info       
@@ -296,6 +313,7 @@ public class DigiHealthCareCreateScheduleBL {
                         String bcc= CISConstants.ADMINEMAILID ;
                         
                         
+                        String subject="Your schedule has been created";
                         
                         
                         
@@ -304,7 +322,12 @@ public class DigiHealthCareCreateScheduleBL {
                           //cisResults=sendMail.sendStaffMail(staffEmail,startTime,endTime,recurrenceTime,cc,bcc);
                             cisResults=sendMail.sendPatientMailSingle(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,cc,bcc);
                            // cisResults=sendMail.sendAdminMail(appwith,startTime,endTime,type,name,lastname,fname,lname,recurrenceTime,cc,bcc);
+                        
+                            cisResults=createScheduleDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate);
+                            
                          }
+                        
+                        
                     }
                     
              }

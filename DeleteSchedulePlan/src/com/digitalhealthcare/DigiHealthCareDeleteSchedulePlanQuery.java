@@ -8,5 +8,6 @@ public class DigiHealthCareDeleteSchedulePlanQuery {
 
 	public static String SQL_DELETERECURSCHEDULES = " delete  from Appointment_series where  Patient_id=? and Apt_series_id=?"; 
 
-
+	public static String SQL_DELETEMESSAGE = "UPDATE Messages_table set Message_text =? where Patient_id=? and Apt_id=?"; 
+	
 }

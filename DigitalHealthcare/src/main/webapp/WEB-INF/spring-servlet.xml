@@ -51,12 +51,23 @@
  	
 <!-- Development  DB connections     --> 
 
-<bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">  
+<!-- <bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">  
 <property name="driverClassName" value="com.mysql.jdbc.Driver" />  
 <property name="url" value="jdbc:mysql://204.93.169.64:3306/littlepa_homecare"/>  
 <property name="username" value="littlepa_sm"/>  
 <property name="password" value="password1" />  
 </bean> 
+ -->
+
+
+<!-- Production DB connections     -->
+ 
+  <bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">   
+  <property name="driverClassName" value="com.mysql.jdbc.Driver" />   
+  <property name="url" value="jdbc:mysql://204.93.169.64:3306/castusin_arcturusdb" />   
+  <property name="username" value="castusin_arcturu" />    
+  <property name="password" value="arcturus1@3"/>  
+  </bean>  
 
 
 
