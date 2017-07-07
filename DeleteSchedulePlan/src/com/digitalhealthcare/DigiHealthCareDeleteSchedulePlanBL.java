@@ -1,6 +1,13 @@
 package com.digitalhealthcare;
 
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.TimeZone;
+import java.util.UUID;
+
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -25,9 +32,19 @@ public class DigiHealthCareDeleteSchedulePlanBL {
 		DigiHealthCareAdminViewRecurrencePlansModel deleteRecur=new DigiHealthCareAdminViewRecurrencePlansModel();
 		// int recur=deleteRecur.getRecurrence();
 		// int seriesId=deleteRecur.getAptseriesId();
-		 
+		 String sessionId = UUID.randomUUID().toString();
+         String messageId=DigestUtils.sha1Hex(sessionId);
+         String  upToNCharacters = messageId.substring(0, Math.min(aptId.length(), 6));
+         messageId=upToNCharacters;
+         TimeCheck time=new TimeCheck();
+         Calendar currentdate = Calendar.getInstance();
+	     DateFormat formatter = new SimpleDateFormat(CISConstants.GS_DATE_FORMAT);
+	     TimeZone obj = TimeZone.getTimeZone(CISConstants.TIME_ZONE);
+	     formatter.setTimeZone(obj);
+	     String createDate=time.getTimeZone();
+	     
 		// Capture service Start time
-		 TimeCheck time=new TimeCheck();
+		// TimeCheck time=new TimeCheck();
 		 testServiceTime seriveTimeCheck=new testServiceTime();
 		 String serviceStartTime=time.getTimeZone();
 		 
@@ -66,7 +83,9 @@ public class DigiHealthCareDeleteSchedulePlanBL {
 			
 			  DigiHealthCarePatientModel  lastName=(DigiHealthCarePatientModel)cisResult.getResultObject();
 			  String  lastname=lastName.getLastName();
-			  
+			  DigiHealthCarePatientModel  phone=(DigiHealthCarePatientModel)cisResult.getResultObject();
+              
+              String phoneNumber=phone.getPhone();
 			 
 			  
 			  String cc= StaffemailId ;
@@ -78,7 +97,7 @@ public class DigiHealthCareDeleteSchedulePlanBL {
 			   {
 				  cisResult=sendMail.sendPatientDelMail(patientEmail,type,startTime,firstName,Lastname,cc,bcc);
 				 //cisResult=sendMail.sendAdminDelMail(name,lastname,cc,bcc);
-				  cisResult=deleteSchedulePlanDAO.messageText(aptId,patientId,subject);
+				  cisResult=deleteSchedulePlanDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate);
                   
 			   }
 	      }

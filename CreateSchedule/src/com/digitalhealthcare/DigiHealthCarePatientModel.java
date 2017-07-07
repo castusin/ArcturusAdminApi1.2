@@ -12,8 +12,8 @@ public class DigiHealthCarePatientModel {
 	public String emailId;
 	public String firstName;
 	public String lastName;
-	public int phone;
-	public DigiHealthCarePatientModel(String emailId, String firstName, String lastName, int phone ) {
+	public String phone;
+	public DigiHealthCarePatientModel(String emailId, String firstName, String lastName, String phone ) {
 		super();
 		this.emailId = emailId;
 		this.firstName=firstName;
@@ -23,15 +23,21 @@ public class DigiHealthCarePatientModel {
 
 	
 
-	public int getPhone() {
+
+
+	public String getPhone() {
 		return phone;
 	}
 
 
 
-	public void setPhone(int phone) {
+
+
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+
+
 
 
 

@@ -160,7 +160,7 @@ public class DigiHealthCareEditSchedulePlanDAO extends JdbcDaoSupport {
 			 TimeCheck time=new TimeCheck();
 			 testServiceTime sessionTimeCheck=new testServiceTime();
 			 String serviceStartTime=time.getTimeZone();
-			 PatientModel res=(PatientModel)getJdbcTemplate().queryForObject(DigiHealthCareCreateScheduleQuery.SQL_GETPATIENTEMAILS,inputs,new PatientMapper());
+			 DigiHealthCarePatientModel res=(DigiHealthCarePatientModel)getJdbcTemplate().queryForObject(DigiHealthCareCreateScheduleQuery.SQL_GETPATIENTEMAIL,inputs,new DigiHealthCarePatientMapper());
 		   	 //String emailId=getPatientEmail.getEmailId();
 			 cisResults.setResultObject(res);
 			 String serviceEndTime=time.getTimeZone();
@@ -177,21 +177,21 @@ public class DigiHealthCareEditSchedulePlanDAO extends JdbcDaoSupport {
 	}
 
 
-	public CISResults messageText(String subject, String patientId, String aptId) {
-		// TODO Auto-generated method stub
+	public CISResults messageText(String messageId, String aptId, String patientId,String phoneNumber, String patientEmail,  String subject, String createDate) {
+			// TODO Auto-generated method stub
 
 		CISResults cisResults=new CISResults();
 		
 		cisResults.setResponseCode(CISConstants.RESPONSE_SUCCESS);
 		Logger logger = Logger.getLogger(DigiHealthCareEditSchedulePlanDAO.class);
-		Object[] inputs = new Object[]{subject,patientId,aptId};
+		//Object[] inputs = new Object[]{subject,patientId,aptId};
 		try{
 			// Capture service Start time
 			 TimeCheck time=new TimeCheck();
 			 testServiceTime sessionTimeCheck=new testServiceTime();
 			 String serviceStartTime=time.getTimeZone();
-			 getJdbcTemplate().update(DigiHealthCareEditSchedulePlanQuery.SQL_EDITMESSAGE,inputs);
-			 String serviceEndTime=time.getTimeZone();
+			 getJdbcTemplate().update(DigiHealthCareCreateScheduleQuery.SQL_MESSAGETEXT,messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate);
+				 String serviceEndTime=time.getTimeZone();
 			 long result=sessionTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
 			 logger.info("edit scheludle plan query time:: " +result);
 			

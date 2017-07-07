@@ -52,6 +52,11 @@ public class DigiHealthCareEditSchedulePlanBL {
 	     String startTime="";
 		 String endTime="";
 		 String appwith="";
+		 
+	  	 String sessionId = UUID.randomUUID().toString();
+         String messageId=DigestUtils.sha1Hex(sessionId);
+         String  upToNCharacters = messageId.substring(0, Math.min(aptId.length(), 6));
+         messageId=upToNCharacters;
 		 //String type=editSchedulePlan.getType();
 		 if(recurrenceTime>=1){
 			 
@@ -85,9 +90,9 @@ public class DigiHealthCareEditSchedulePlanBL {
 		          
 		      for (int k=1; k<=recurrenceTime; k++) {
 		          //aptId = aptId+1;
-		    	  String sessionId = UUID.randomUUID().toString();
+		    	   sessionId = UUID.randomUUID().toString();
 			       aptId=DigestUtils.sha1Hex(sessionId);
-			      String upToNCharacters = aptId.substring(0, Math.min(aptId.length(), 8));
+			       upToNCharacters = aptId.substring(0, Math.min(aptId.length(), 8));
 			      aptId=upToNCharacters;
 			      
 		          SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd yyyy HH:hh:ss");
@@ -195,14 +200,19 @@ public class DigiHealthCareEditSchedulePlanBL {
 				  
 				  cisResult=editSchedulePlanDAO.getPatientEmail(patientId);
 				
-				  PatientModel  patientEmailId=(PatientModel)cisResult.getResultObject();
+				  DigiHealthCarePatientModel  patientEmailId=(DigiHealthCarePatientModel)cisResult.getResultObject();
 				  String  patientEmail=patientEmailId.getEmailId();
 				 
-				  PatientModel  firstname=(PatientModel)cisResult.getResultObject();
+				  DigiHealthCarePatientModel  firstname=(DigiHealthCarePatientModel)cisResult.getResultObject();
 				  String name=firstname.getFirstName();
 				
-				  PatientModel  lastName=(PatientModel)cisResult.getResultObject();
+				  DigiHealthCarePatientModel  lastName=(DigiHealthCarePatientModel)cisResult.getResultObject();
 				  String  lastname=lastName.getLastName();
+				  
+				  DigiHealthCarePatientModel  phone=(DigiHealthCarePatientModel)cisResult.getResultObject();
+                  
+                  String phoneNumber=phone.getPhone();
+				  
 				  String cc= staffEmail ;
                   String bcc= CISConstants.ADMINEMAILID ;
                   
@@ -214,7 +224,8 @@ public class DigiHealthCareEditSchedulePlanBL {
 					  cisResult=sendMail.sendPatienSingleUpdatetMail(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,cc,bcc);
 					  //cisResult=sendMail.sendAdminMail(appwith,startTime,endTime,type,name,lastname,fname,lname,recurrenceTime);
 				   
-					  cisResult=editSchedulePlanDAO.messageText(subject,editSchedulePlan.getPatientId(),aptId);
+					  cisResult=editSchedulePlanDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate);
+                      
                       
 				   }
 		      }

@@ -6,9 +6,9 @@ public class DigiHealthCareCreateScheduleQuery {
 	
 	public static String SQL_GETSTAFFEMAIL = " select Fname,Lname, Emailid from Staff_table where Staff_id= ? "; 
 	
-	public static String SQL_GETPATIENTEMAIL = " select First_name,Last_name,Email_id,Phone_no from Profile_table where User_id= ? "; 
+	public static String SQL_GETPATIENTEMAIL = " select First_name,Last_name,Phone_no,Email_id from Profile_table where User_id= ? "; 
 	
-	public static String SQL_GETPATIENTEMAILS = " select First_name,Last_name,Email_id from Profile_table where User_id= ? "; 
+	//public static String SQL_GETPATIENTEMAILS = " select First_name,Last_name,Email_id from Profile_table where User_id= ? "; 
 	
 	
 	public static String SQL_CREATESCHEDULES = "insert into Appointment_series(Apt_id,Apt_series_id,Apt_person_id,Patient_id,Apt_starttime,Apt_endtime,Type,Apt_with,Create_date,Series_status,Recurrence)"+"values(?,?,?,?,?,?,?,?,?,?,?)"; 

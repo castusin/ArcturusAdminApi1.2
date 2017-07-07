@@ -159,8 +159,8 @@ public class DigiHealthCareDeleteSchedulePlanDAO extends JdbcDaoSupport {
    		return cisResults; 
 	}
 
-	public CISResults messageText(String subject,String patientId,String aptId) {
-		// TODO Auto-generated method stub
+	public CISResults messageText(String messageId, String aptId, String patientId, String phoneNUmber, String patientEmail, String subject, String createDate) {
+			// TODO Auto-generated method stub
 		CISResults cisResults=new CISResults();
 		cisResults.setResponseCode(CISConstants.RESPONSE_SUCCESS);
 		Logger logger = Logger.getLogger(DigiHealthCareDeleteSchedulePlanDAO.class);
@@ -170,8 +170,8 @@ public class DigiHealthCareDeleteSchedulePlanDAO extends JdbcDaoSupport {
 			 TimeCheck time=new TimeCheck();
 			 testServiceTime sessionTimeCheck=new testServiceTime();
 			 String serviceStartTime=time.getTimeZone();
-			 getJdbcTemplate().update(DigiHealthCareDeleteSchedulePlanQuery.SQL_DELETEMESSAGE,inputs);
-			 String serviceEndTime=time.getTimeZone();
+			 getJdbcTemplate().update(DigiHealthCareCreateScheduleQuery.SQL_MESSAGETEXT,messageId,aptId,patientId,phoneNUmber,patientEmail,subject,createDate);
+				 String serviceEndTime=time.getTimeZone();
 			 long result=sessionTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
 			 logger.info("delete schedule query time:: " +result);
 			

@@ -16,7 +16,7 @@ public class DigiHealthCarePatientMapper implements RowMapper{
 		profileModel.setEmailId(rs.getString("Email_id"));
 		profileModel.setFirstName(rs.getString("First_name"));
 		profileModel.setLastName(rs.getString("Last_name"));
-		profileModel.setPhone(rs.getInt("Phone_no"));
+		profileModel.setPhone(rs.getString("Phone_no"));
 		return profileModel;
 	}
 }

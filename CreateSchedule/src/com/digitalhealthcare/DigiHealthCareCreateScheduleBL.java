@@ -177,7 +177,7 @@ public class DigiHealthCareCreateScheduleBL {
                       String  lastname=lastName.getLastName();
                       DigiHealthCarePatientModel  phone=(DigiHealthCarePatientModel)cisResults.getResultObject();
                      
-                      int phoneNumber=phone.getPhone();
+                      String phoneNumber=phone.getPhone();
                       
                       
                       // Message info       
@@ -304,7 +304,7 @@ public class DigiHealthCareCreateScheduleBL {
                         String  lastname=lastName.getLastName();
                         DigiHealthCarePatientModel  phone=(DigiHealthCarePatientModel)cisResults.getResultObject();
                         
-                        int phoneNumber=phone.getPhone();
+                        String phoneNumber=phone.getPhone();
                         
                         
                         // Message info       

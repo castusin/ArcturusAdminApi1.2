@@ -120,7 +120,7 @@ public class DigiHealthCareCreateScheduleDAO extends JdbcDaoSupport {
    		return cisResults; 
 	}
 
-	public CISResults messageText(String messageId, String aptId, String patientId,int phoneNumber, String patientEmail,  String subject, String createDate) {
+	public CISResults messageText(String messageId, String aptId, String patientId,String phoneNumber,String patientEmail,  String subject, String createDate ) {
 		// TODO Auto-generated method stub
 
 		CISResults cisResults=new CISResults();
