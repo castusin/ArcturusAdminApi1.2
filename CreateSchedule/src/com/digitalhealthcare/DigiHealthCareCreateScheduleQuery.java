@@ -18,6 +18,6 @@ public class DigiHealthCareCreateScheduleQuery {
 
 	public static String SQL_GETSTAFFDETAILS="select A.Fname,A.Lname,A.Emailid from Staff_table A join Appointments_table B on A.Staff_id=B.Apt_person_id where B.Patient_id=? and B.Apt_id=?";
 
-	public static String SQL_MESSAGETEXT = "insert into Messages_table(Message_id,Apt_id,Patient_id,phoneNumber,emailId,Message_text,Create_date)"+"values(?,?,?,?,?,?,?)"; 
+	public static String SQL_MESSAGETEXT = "insert into Messages_table(Message_id,Apt_id,Patient_id,User_id,phoneNumber,emailId,Message_text,Create_date)"+"values(?,?,?,?,?,?,?,?)"; 
 	
 }

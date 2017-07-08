@@ -185,7 +185,9 @@ public class DigiHealthCareCreateScheduleBL {
                       String cc= staffEmail ;
                       String bcc= CISConstants.ADMINEMAILID ;
                       
-                      String subject="Your schedule has been created";
+                      String subject= "Your care plan schedule has been created";
+
+                              
                       
                       
                       
@@ -312,15 +314,16 @@ public class DigiHealthCareCreateScheduleBL {
                         String cc= staffEmail ;
                         String bcc= CISConstants.ADMINEMAILID ;
                         
+                        // Hard coded will change later
                         
-                        String subject="Your schedule has been created";
+                        String subject= "Your care plan schedule has been created";
                         
                         
                         
                         if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
                          {
                           //cisResults=sendMail.sendStaffMail(staffEmail,startTime,endTime,recurrenceTime,cc,bcc);
-                            cisResults=sendMail.sendPatientMailSingle(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,cc,bcc);
+                            cisResults=sendMail.sendPatientMail(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,cc,bcc);
                            // cisResults=sendMail.sendAdminMail(appwith,startTime,endTime,type,name,lastname,fname,lname,recurrenceTime,cc,bcc);
                         
                             cisResults=createScheduleDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate);

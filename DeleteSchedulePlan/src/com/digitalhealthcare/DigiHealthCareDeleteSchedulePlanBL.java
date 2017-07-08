@@ -91,7 +91,8 @@ public class DigiHealthCareDeleteSchedulePlanBL {
 			  String cc= StaffemailId ;
               String bcc= CISConstants.ADMINEMAILID ;
               
-              String subject="Your schedule has been cancelled.";
+              String subject="Your care plan schedule has been deleted.";
+              
 			  
 			  if(cisResult.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
 			   {
