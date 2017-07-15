@@ -30,18 +30,18 @@ public class DigiHealthCareDeleteSchedulePlanRest {
 	
 	@RequestMapping(value="/deleteSchedule",method=RequestMethod.GET,produces={"application/json"})
 	
-	public String deleteSchedule(@RequestParam ("aptId") String aptId,@RequestParam ("patientId") String patientId,@RequestParam ("seriesId") int seriesId){
+	public String deleteSchedule(@RequestParam ("aptId") String aptId,@RequestParam ("patientId") String patientId,@RequestParam ("seriesId") int seriesId,HttpServletRequest request){
 		 
 		Logger logger = Logger.getLogger(DigiHealthCareDeleteSchedulePlanRest.class);
 			
             CommonCISValidation CommonCISValidation=new CommonCISValidation();
-		   // CISResults cisResults=CommonCISValidation.editSchedulePlanValidation(request,editSchedulePlan);
-		   // if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
-		    // {
+		    CISResults cisResults=CommonCISValidation.deleteSchedulePlanValidation(aptId,patientId,seriesId,request);
+		    if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
+		     {
             DigiHealthCareDeleteSchedulePlanWebservice deleteSchedulePlanWebservice= new DigiHealthCareDeleteSchedulePlanWebservice();
-		    	CISResults cisResults  = deleteSchedulePlanWebservice.deleteSchedule(aptId,patientId,seriesId);
+		    	 cisResults  = deleteSchedulePlanWebservice.deleteSchedule(aptId,patientId,seriesId);
 		       logger.info(" DigitalHealthCare: delete staff member rest service :"+cisResults);
-		    // }
+		    }
 		       return returnJsonData(cisResults);
 	 }
  

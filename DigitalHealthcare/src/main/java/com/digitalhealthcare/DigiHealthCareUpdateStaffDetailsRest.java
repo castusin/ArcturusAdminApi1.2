@@ -31,18 +31,18 @@ public class DigiHealthCareUpdateStaffDetailsRest {
 	
 	@RequestMapping(value="/updateStaffDetails",method=RequestMethod.POST,consumes=MediaType.APPLICATION_JSON_VALUE)
 	
-	public String updateStaffDetails(@RequestBody DigiHealthCareSaveStaffMemberModel updateStaff){
+	public String updateStaffDetails(HttpServletRequest request,@RequestBody DigiHealthCareSaveStaffMemberModel updateStaff){
 		 
 		Logger logger = Logger.getLogger(DigiHealthCareUpdateStaffDetailsRest.class);
 			
             CommonCISValidation CommonCISValidation=new CommonCISValidation();
-		   // CISResults cisResults=CommonCISValidation.editSchedulePlanValidation(editSchedulePlan);
-		   // if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
-		    // {
-            DigiHealthCareUpdateStaffDetailsWebservice updateStaffDetailsWebservice= new DigiHealthCareUpdateStaffDetailsWebservice();
-		    	CISResults cisResults  = updateStaffDetailsWebservice.updateStaffDetails(updateStaff);
+		    CISResults cisResults=CommonCISValidation.updateStaffDetailsValidation(request,updateStaff);
+		    if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
+		     {
+            	DigiHealthCareUpdateStaffDetailsWebservice updateStaffDetailsWebservice= new DigiHealthCareUpdateStaffDetailsWebservice();
+		    	 cisResults  = updateStaffDetailsWebservice.updateStaffDetails(updateStaff);
 		       logger.info(" DigitalHealthCare: update staff details rest service :"+cisResults);
-		    // }
+		    }
 		       return returnJsonData(cisResults);
 	 }
 	 

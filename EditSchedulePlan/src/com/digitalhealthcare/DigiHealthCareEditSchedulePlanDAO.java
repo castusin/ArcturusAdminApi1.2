@@ -13,35 +13,6 @@ import com.cis.testServiceTime;
 public class DigiHealthCareEditSchedulePlanDAO extends JdbcDaoSupport {
 
 	
-	/*public CISResults editSchedulePlan(int staffid, String startTime,
-			String endTime, int allDay, String appwith, String seriesStatus,String patientId,
-			 int aptId) {
-		
-		CISResults cisResults=new CISResults();
-		
-		cisResults.setResponseCode(CISConstants.RESPONSE_SUCCESS);
-		Logger logger = Logger.getLogger(DigiHealthCareEditSchedulePlanDAO.class);
-		Object[] inputs = new Object[]{staffid,startTime,endTime,allDay,appwith,seriesStatus,patientId,aptId};
-		try{
-			// Capture service Start time
-			 TimeCheck time=new TimeCheck();
-			 testServiceTime sessionTimeCheck=new testServiceTime();
-			 String serviceStartTime=time.getTimeZone();
-			 getJdbcTemplate().update(DigiHealthCareEditSchedulePlanQuery.SQL_EDITRESCHEDULEPLAN,inputs);
-			 String serviceEndTime=time.getTimeZone();
-			 long result=sessionTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
-			 logger.info("edit scheludle plan query time:: " +result);
-			
-		} catch (DataAccessException e) {
-			e.printStackTrace();
-		
-			cisResults.setResponseCode(CISConstants.RESPONSE_FAILURE);
-			cisResults.setErrorMessage("Failed to get Profile Data");
-		}
-   		return cisResults; 
-	}
-*/
-	
 	public CISResults createSchedule(String aptId, int aptSeriesId, int staffid,
 			String patientId, String startDateTime, String endDatetime,
 			int totalDay, String type, String appwith, String createDate,
@@ -49,7 +20,6 @@ public class DigiHealthCareEditSchedulePlanDAO extends JdbcDaoSupport {
 		CISResults cisResults=new CISResults();
 		cisResults.setResponseCode(CISConstants.RESPONSE_SUCCESS);
 		Logger logger = Logger.getLogger(DigiHealthCareCreateScheduleDAO.class);
-		//Object[] inputs = new Object[]{aptPersonId,startTime,endTime,allDay,aptWith,patientId};
 		try{
 			// Capture service Start time
 			 TimeCheck time=new TimeCheck();
@@ -58,13 +28,13 @@ public class DigiHealthCareEditSchedulePlanDAO extends JdbcDaoSupport {
 			 getJdbcTemplate().update(DigiHealthCareEditSchedulePlanQuery.SQL_CREATESCHEDULE,aptId,aptSeriesId,staffid,patientId,startDateTime,endDatetime,totalDay,type,appwith,createDate,seriesStatus);
 			 String serviceEndTime=time.getTimeZone();
 			 long result=sessionTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
-			 logger.info("save staff member query time:: " +result);
+			 logger.info("create schedule query time:: " +result);
 			
 		} catch (DataAccessException e) {
 			e.printStackTrace();
 		
 			cisResults.setResponseCode(CISConstants.RESPONSE_FAILURE);
-			cisResults.setErrorMessage("Failed to get Profile Data");
+			cisResults.setErrorMessage("Failed to get  Data");
 		}
    		return cisResults; 
 	}
@@ -88,7 +58,7 @@ public class DigiHealthCareEditSchedulePlanDAO extends JdbcDaoSupport {
 		} catch (DataAccessException e) {
 			e.printStackTrace();
 			cisResults.setResponseCode(CISConstants.RESPONSE_FAILURE);
-			cisResults.setErrorMessage("Failed to get Profile Data");
+			cisResults.setErrorMessage("Failed to get  Data");
 		}
    		return cisResults; 
 	}
@@ -117,7 +87,7 @@ public class DigiHealthCareEditSchedulePlanDAO extends JdbcDaoSupport {
 			e.printStackTrace();
 		
 			cisResults.setResponseCode(CISConstants.RESPONSE_FAILURE);
-			cisResults.setErrorMessage("Failed to get Profile Data");
+			cisResults.setErrorMessage("Failed to get  Data");
 		}
    		return cisResults; 
 	}
@@ -134,7 +104,6 @@ public class DigiHealthCareEditSchedulePlanDAO extends JdbcDaoSupport {
 			 testServiceTime sessionTimeCheck=new testServiceTime();
 			 String serviceStartTime=time.getTimeZone();
 			 DigiHealthCareSaveStaffMemberModel res=(DigiHealthCareSaveStaffMemberModel)getJdbcTemplate().queryForObject(DigiHealthCareCreateScheduleQuery.SQL_GETSTAFFEMAIL,inputs,new DigiHealthCareSaveStaffMemberMapper());
-			 //String emailId=getstaffEmail.getEmailId();
 			 cisResults.setResultObject(res);
 			 String serviceEndTime=time.getTimeZone();
 			 long result=sessionTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
@@ -144,7 +113,7 @@ public class DigiHealthCareEditSchedulePlanDAO extends JdbcDaoSupport {
 			e.printStackTrace();
 		
 			cisResults.setResponseCode(CISConstants.RESPONSE_FAILURE);
-			cisResults.setErrorMessage("Failed to get Profile Data");
+			cisResults.setErrorMessage("Failed to get  Data");
 		}
    		return cisResults; 
 	}
@@ -161,8 +130,7 @@ public class DigiHealthCareEditSchedulePlanDAO extends JdbcDaoSupport {
 			 testServiceTime sessionTimeCheck=new testServiceTime();
 			 String serviceStartTime=time.getTimeZone();
 			 DigiHealthCarePatientModel res=(DigiHealthCarePatientModel)getJdbcTemplate().queryForObject(DigiHealthCareCreateScheduleQuery.SQL_GETPATIENTEMAIL,inputs,new DigiHealthCarePatientMapper());
-		   	 //String emailId=getPatientEmail.getEmailId();
-			 cisResults.setResultObject(res);
+		     cisResults.setResultObject(res);
 			 String serviceEndTime=time.getTimeZone();
 			 long result=sessionTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
 			 logger.info("patient email query time:: " +result);
@@ -171,36 +139,35 @@ public class DigiHealthCareEditSchedulePlanDAO extends JdbcDaoSupport {
 			e.printStackTrace();
 		
 			cisResults.setResponseCode(CISConstants.RESPONSE_FAILURE);
-			cisResults.setErrorMessage("Failed to get Profile Data");
+			cisResults.setErrorMessage("Failed to get  Data");
 		}
    		return cisResults; 
 	}
 
 
-	public CISResults messageText(String messageId, String aptId, String patientId,String phoneNumber, String patientEmail,  String subject, String createDate) {
+	public CISResults messageText(String messageId, String aptId, String patientId,String phoneNumber, String patientEmail,  String subject, String createDate, String messageType) {
 			// TODO Auto-generated method stub
 
 		CISResults cisResults=new CISResults();
 		
 		cisResults.setResponseCode(CISConstants.RESPONSE_SUCCESS);
 		Logger logger = Logger.getLogger(DigiHealthCareEditSchedulePlanDAO.class);
-		//Object[] inputs = new Object[]{subject,patientId,aptId};
 		try{
 			// Capture service Start time
 			 TimeCheck time=new TimeCheck();
 			 testServiceTime sessionTimeCheck=new testServiceTime();
 			 String userId="";
 			 String serviceStartTime=time.getTimeZone();
-			 getJdbcTemplate().update(DigiHealthCareCreateScheduleQuery.SQL_MESSAGETEXT,messageId,aptId,patientId,userId,phoneNumber,patientEmail,subject,createDate);
-				 String serviceEndTime=time.getTimeZone();
+			 getJdbcTemplate().update(DigiHealthCareCreateScheduleQuery.SQL_MESSAGETEXT,messageId,aptId,patientId,userId,phoneNumber,patientEmail,subject,createDate,messageType);
+			 String serviceEndTime=time.getTimeZone();
 			 long result=sessionTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
-			 logger.info("edit scheludle plan query time:: " +result);
+			 logger.info("message query time:: " +result);
 			
 		} catch (DataAccessException e) {
 			e.printStackTrace();
 		
 			cisResults.setResponseCode(CISConstants.RESPONSE_FAILURE);
-			cisResults.setErrorMessage("Failed to get Profile Data");
+			cisResults.setErrorMessage("Failed to get  Data");
 		}
    		return cisResults; 
 	}

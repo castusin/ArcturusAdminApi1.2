@@ -30,7 +30,7 @@ public class DigiHealthCareGetStaffMemberRest {
 	
 	@RequestMapping(value="/getStaffList",method=RequestMethod.GET,produces={"application/json"})
 	
-		public String getStaffList(DigiHealthCareSaveStaffMemberModel viewStaffmember){	 
+		public String getStaffList(HttpServletRequest request,DigiHealthCareSaveStaffMemberModel viewStaffmember){	 
 		 Logger logger = Logger.getLogger(DigiHealthCareGetStaffMemberRest.class);
 		 
 		// Capture service Start time
@@ -40,13 +40,13 @@ public class DigiHealthCareGetStaffMemberRest {
  
 		 
 		 CommonCISValidation CommonCISValidation=new CommonCISValidation();
-		 //CISResults cisResults=CommonCISValidation.adminViewPlansValidation(patientId,request);
-		//if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
-		//  {
-		 DigiHealthCareGetStaffMemberWebservice staffMemberWebservice= new DigiHealthCareGetStaffMemberWebservice();
-			CISResults  cisResults  = staffMemberWebservice.getStaffList(viewStaffmember);
-		  logger.info(" DigitalHealthCare: get staff list rest service :"+cisResults);
-		//}
+		 CISResults cisResults=CommonCISValidation.getStaffListValidation(request,viewStaffmember);
+		 if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
+		  {
+			 DigiHealthCareGetStaffMemberWebservice staffMemberWebservice= new DigiHealthCareGetStaffMemberWebservice();
+			 cisResults  = staffMemberWebservice.getStaffList(viewStaffmember);
+			 logger.info(" DigitalHealthCare: get staff list rest service :"+cisResults);
+		}
 		
 		// Capture Service End time
 		 String serviceEndTime=time.getTimeZone();

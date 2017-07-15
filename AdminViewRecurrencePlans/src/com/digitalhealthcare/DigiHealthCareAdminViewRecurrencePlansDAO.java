@@ -27,35 +27,25 @@ public class DigiHealthCareAdminViewRecurrencePlansDAO extends JdbcDaoSupport {
 		CISResults cisResults=new CISResults();
 		Calendar cal = Calendar.getInstance();
 		SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd yyyy HH:hh:ss");
-		//String date=adminViewPlans.getStartsAt();
-		 
-		
-		 Date newDate=new Date();
-		 String currentDate=sdf.format(newDate);
-		 
-		// String x=adminViewPlans.getStartsAt();
-		
-		//accountType="P";
-		//Object[] inputs = new Object[]{patientId,currentDate};
+	    Date newDate=new Date();
+		String currentDate=sdf.format(newDate);
 		Object[] inputs = new Object[]{patientId};
 		cisResults.setResponseCode(CISConstants.RESPONSE_SUCCESS);
 		
-		
-	
 		try{
-			TimeCheck time=new TimeCheck();
+			 TimeCheck time=new TimeCheck();
 			 testServiceTime sessionTimeCheck=new testServiceTime();
 			 String serviceStartTime=time.getTimeZone();
-			List result=getJdbcTemplate().query(DigiHealthCareAdminViewRecurrencePlansQuery.SQL_ADMINVIEWRECURRENCEPLANS,inputs,new DigiHealthCareAdminViewRecurrencePlansMapper());
-			String serviceEndTime=time.getTimeZone();
-			long results=sessionTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
+			 List result=getJdbcTemplate().query(DigiHealthCareAdminViewRecurrencePlansQuery.SQL_ADMINVIEWRECURRENCEPLANS,inputs,new DigiHealthCareAdminViewRecurrencePlansMapper());
+			 String serviceEndTime=time.getTimeZone();
+			 long results=sessionTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
 			 logger.info("admin view recurrence plans query time:: " +results);
 			cisResults.setResultObject(result);
 		} catch (DataAccessException e) {
 			e.printStackTrace();
 		
 			cisResults.setResponseCode(CISConstants.RESPONSE_FAILURE);
-			cisResults.setErrorMessage("Failed to login to the system");
+			cisResults.setErrorMessage("Failed to get data");
 		}
 
    		return cisResults;  

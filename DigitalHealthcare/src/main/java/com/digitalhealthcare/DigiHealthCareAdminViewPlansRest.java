@@ -30,29 +30,24 @@ public class DigiHealthCareAdminViewPlansRest {
 	@RequestMapping(value="/adminViewPlans",method=RequestMethod.GET,produces={"application/json"})
 	
 		public String adminViewPlans(@RequestParam ("patientId") String patientId,HttpServletRequest request){	 
-		 Logger logger = Logger.getLogger(DigiHealthCareAdminViewPlansRest.class);
-		 /*String requestParameters = "firstName=" + firstName + "&lastName=" +lastName + "&phoneNumber="+phoneNumber+ "&emailId="+emailId+ "&gender="+gender;*/
-		  //logger.info("Digital HealthCare view patients Request Parameters :"+requestParameters);
-		 
+		  Logger logger = Logger.getLogger(DigiHealthCareAdminViewPlansRest.class);
 		// Capture service Start time
 		  TimeCheck time=new TimeCheck();
 		  testServiceTime sessionTimeCheck=new testServiceTime();
 		  String serviceStartTime=time.getTimeZone();
- 
-		 
-		 CommonCISValidation CommonCISValidation=new CommonCISValidation();
-		 CISResults cisResults=CommonCISValidation.adminViewPlansValidation(patientId,request);
-		if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
+		  CommonCISValidation CommonCISValidation=new CommonCISValidation();
+		  CISResults cisResults=CommonCISValidation.adminViewPlansValidation(patientId,request);
+		  if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
 		  {
-			DigiHealthCareAdminViewPlansWebservice adminViewPlansWebservice= new DigiHealthCareAdminViewPlansWebservice();
-			   cisResults  = adminViewPlansWebservice.adminViewPlans(patientId);
+			  DigiHealthCareAdminViewPlansWebservice adminViewPlansWebservice= new DigiHealthCareAdminViewPlansWebservice();
+			  cisResults  = adminViewPlansWebservice.adminViewPlans(patientId);
 		  logger.info(" DigitalHealthCare: admin view Plans :"+cisResults);
 		}
 		
 		// Capture Service End time
 		 String serviceEndTime=time.getTimeZone();
 		 long result=sessionTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
-		 logger.info("Total service time for view patients service in milli seconds :: " +result );
+		 logger.info("Total service time for admin view plans service in milli seconds :: " +result );
 		  return returnJsonData(cisResults);
 	 }
 	 	 

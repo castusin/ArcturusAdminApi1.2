@@ -25,19 +25,17 @@ public class DigiHealthCareAdminViewRecurrencePlansBL {
 		
 		final Logger logger = Logger.getLogger(DigiHealthCareAdminViewRecurrencePlansBL.class);
 		// Capture service Start time
-		TimeCheck time=new TimeCheck();
+		 TimeCheck time=new TimeCheck();
 		 testServiceTime seriveTimeCheck=new testServiceTime();
 		 String serviceStartTime=time.getTimeZone();
-		  
-		
 		 
-		CISResults cisResult = adminViewRecPlansDAO.adminViewPlans(patientId);
-		logger.info("DigitalHealthCare:admin view recurrence  plansBL  service" +cisResult );
+		 CISResults cisResult = adminViewRecPlansDAO.adminViewPlans(patientId);
+		 logger.info("DigitalHealthCare:admin view recurrence  plansBL  service" +cisResult );
 		
 		// Capture Service End time
-		String serviceEndTime=time.getTimeZone();
-		long result=seriveTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
-		  logger.info("Database time for admin view recurrence plans service:: " +result );
+		 String serviceEndTime=time.getTimeZone();
+		 long result=seriveTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
+		 logger.info("Database time for admin view recurrence plans service:: " +result );
 		  
 		return cisResult;
 	}

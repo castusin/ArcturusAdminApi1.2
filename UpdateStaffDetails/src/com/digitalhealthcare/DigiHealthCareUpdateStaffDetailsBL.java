@@ -35,7 +35,7 @@ public class DigiHealthCareUpdateStaffDetailsBL {
 		// Capture Service End time
 		String serviceEndTime=time.getTimeZone();
 		long result=seriveTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
-		  logger.info("Database time for edit schedule plan service:: " +result );
+		  logger.info("Database time for update staff service:: " +result );
 		  
 		return cisResult;
 	}

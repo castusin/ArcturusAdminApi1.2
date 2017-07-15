@@ -27,8 +27,6 @@ public class DigiHealthCareGetStaffMemberDAO extends JdbcDaoSupport {
 		DigiHealthCareSaveStaffMemberModel getStafflist=new DigiHealthCareSaveStaffMemberModel();
 		CISResults cisResults=new CISResults();
 		Calendar cal = Calendar.getInstance();
-		//accountType="P";
-		//Object[] inputs = new Object[]{staffId};
 		cisResults.setResponseCode(CISConstants.RESPONSE_SUCCESS);
 		
 		try{
@@ -38,13 +36,13 @@ public class DigiHealthCareGetStaffMemberDAO extends JdbcDaoSupport {
 			 List result=getJdbcTemplate().query(DigiHealthCareGetStaffMemberQuery.SQL_GETSTAFFLIST,new DigiHealthCareGetStaffMemberMapper());
 			 String serviceEndTime=time.getTimeZone();
 			 long results=sessionTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
-			 logger.info("admin view plans query time:: " +results);
+			 logger.info("get staff list query time:: " +results);
 			cisResults.setResultObject(result);
 		} catch (DataAccessException e) {
 			e.printStackTrace();
 		
 			cisResults.setResponseCode(CISConstants.RESPONSE_FAILURE);
-			cisResults.setErrorMessage("Failed to login to the system");
+			cisResults.setErrorMessage("Failed to get data");
 		}
 
    		return cisResults;  

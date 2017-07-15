@@ -20,7 +20,6 @@ public class DigiHealthCareSaveStaffMemberDAO extends JdbcDaoSupport {
 		
 		cisResults.setResponseCode(CISConstants.RESPONSE_SUCCESS);
 		Logger logger = Logger.getLogger(DigiHealthCareSaveStaffMemberDAO.class);
-		//Object[] inputs = new Object[]{aptPersonId,startTime,endTime,allDay,aptWith,patientId};
 		try{
 			// Capture service Start time
 			 TimeCheck time=new TimeCheck();
@@ -35,7 +34,7 @@ public class DigiHealthCareSaveStaffMemberDAO extends JdbcDaoSupport {
 			e.printStackTrace();
 		
 			cisResults.setResponseCode(CISConstants.RESPONSE_FAILURE);
-			cisResults.setErrorMessage("Failed to get Profile Data");
+			cisResults.setErrorMessage("Failed to get  Data");
 		}
    		return cisResults; 
 	}

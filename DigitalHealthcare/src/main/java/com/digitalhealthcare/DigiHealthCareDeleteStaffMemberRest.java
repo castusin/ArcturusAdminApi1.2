@@ -31,18 +31,18 @@ public class DigiHealthCareDeleteStaffMemberRest {
 	
 	@RequestMapping(value="/deleteStaffMember",method=RequestMethod.GET,produces={"application/json"})
 	
-	public String deleteStaffMember(@RequestParam ("staffId") int staffId){
+	public String deleteStaffMember(@RequestParam ("staffId") int staffId,HttpServletRequest request){
 		 
 		Logger logger = Logger.getLogger(DigiHealthCareDeleteStaffMemberRest.class);
 			
             CommonCISValidation CommonCISValidation=new CommonCISValidation();
-		   // CISResults cisResults=CommonCISValidation.editSchedulePlanValidation(request,editSchedulePlan);
-		   // if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
-		    // {
-            DigiHealthCareDeleteStaffMemberWebservice deleteStaffMemberWebservice= new DigiHealthCareDeleteStaffMemberWebservice();
-		    	CISResults cisResults  = deleteStaffMemberWebservice.deleteStaffMember(staffId);
-		       logger.info(" DigitalHealthCare: delete staff member rest service :"+cisResults);
-		    // }
+		    CISResults cisResults=CommonCISValidation.deleteStaffMemberValidation(staffId,request);
+		    if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
+		    {
+		    	DigiHealthCareDeleteStaffMemberWebservice deleteStaffMemberWebservice= new DigiHealthCareDeleteStaffMemberWebservice();
+		    	cisResults  = deleteStaffMemberWebservice.deleteStaffMember(staffId);
+		        logger.info(" DigitalHealthCare: delete staff member rest service :"+cisResults);
+		    }
 		       return returnJsonData(cisResults);
 	 }
  

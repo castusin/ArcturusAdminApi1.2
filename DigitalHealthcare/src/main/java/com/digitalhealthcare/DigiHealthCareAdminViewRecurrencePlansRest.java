@@ -30,22 +30,21 @@ public class DigiHealthCareAdminViewRecurrencePlansRest {
 	
 		public String adminViewPlans(@RequestParam ("patientId") String patientId,HttpServletRequest request) throws Throwable{	 
 		 Logger logger = Logger.getLogger(DigiHealthCareAdminViewPlansRest.class);
-		 /*String requestParameters = "firstName=" + firstName + "&lastName=" +lastName + "&phoneNumber="+phoneNumber+ "&emailId="+emailId+ "&gender="+gender;*/
-		  //logger.info("Digital HealthCare view patients Request Parameters :"+requestParameters);
+		 String requestParameters = "patientId=" + patientId;
+		 logger.info("Digital HealthCare admin view recurrence plans Request Parameters :"+requestParameters);
 		 
 		// Capture service Start time
 		  TimeCheck time=new TimeCheck();
 		  testServiceTime sessionTimeCheck=new testServiceTime();
 		  String serviceStartTime=time.getTimeZone();
- 
-		 
+  
 		 CommonCISValidation CommonCISValidation=new CommonCISValidation();
 		 CISResults cisResults=CommonCISValidation.adminViewPlansValidation(patientId,request);
-		if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
+		 if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
 		  {
-			DigiHealthCareAdminViewRecurrencePlansWebservice adminViewRecPlansWebservice= new DigiHealthCareAdminViewRecurrencePlansWebservice();
-			   cisResults  = adminViewRecPlansWebservice.adminViewPlans(patientId);
-		  logger.info(" DigitalHealthCare: admin view Plans :"+cisResults);
+			 	DigiHealthCareAdminViewRecurrencePlansWebservice adminViewRecPlansWebservice= new DigiHealthCareAdminViewRecurrencePlansWebservice();
+			 	cisResults  = adminViewRecPlansWebservice.adminViewPlans(patientId);
+		  logger.info(" DigitalHealthCare: admin view recurrence Plans :"+cisResults);
 		}
 		
 		// Capture Service End time

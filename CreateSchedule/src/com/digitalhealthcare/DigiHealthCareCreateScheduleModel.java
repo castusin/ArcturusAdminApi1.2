@@ -16,9 +16,9 @@ public class DigiHealthCareCreateScheduleModel {
 	int recurenceTime;
 	String day;
 	boolean val;
-	
+	String messageType;
 	public List<Appointments> aptList;
-    public DigiHealthCareCreateScheduleModel(int staffId, String aptId, int aptseriesId, List<StartDateTime> startDateTime, List<EndDateTime> endDateTime, String patientId, String type, String aptWith, String seriesStatus, int recurenceTime, int aptpersonId, int totalDay, String status, List<StartDateTime> startTimeList, List<EndDateTime> endTimeList, List<StaffId> staffIdList, List<AptWith> aptWithList, List<Appointments> aptList, String day, boolean val) {
+    public DigiHealthCareCreateScheduleModel(int staffId, String aptId, int aptseriesId, List<StartDateTime> startDateTime, List<EndDateTime> endDateTime, String patientId, String type, String aptWith, String seriesStatus, int recurenceTime, int aptpersonId, int totalDay, String status, List<StartDateTime> startTimeList, List<EndDateTime> endTimeList, List<StaffId> staffIdList, List<AptWith> aptWithList, List<Appointments> aptList, String day, boolean val, String messageType) {
 		super();
 		this.aptpersonId=aptpersonId;
 		this.totalDay=totalDay;
@@ -32,10 +32,25 @@ public class DigiHealthCareCreateScheduleModel {
 		this.aptList=aptList;
 		this.day=day;
 		this.val=val;
+		this.messageType=messageType;
 		}
 
 
 	
+
+	public String getMessageType() {
+		return messageType;
+	}
+
+
+
+
+	public void setMessageType(String messageType) {
+		this.messageType = messageType;
+	}
+
+
+
 
 	public String getDay() {
 		return day;

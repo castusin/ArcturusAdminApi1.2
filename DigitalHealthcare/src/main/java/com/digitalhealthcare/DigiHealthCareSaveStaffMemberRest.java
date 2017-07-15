@@ -30,18 +30,18 @@ public class DigiHealthCareSaveStaffMemberRest {
 	
 	@RequestMapping(value="/saveStaffMember",method=RequestMethod.POST,consumes=MediaType.APPLICATION_JSON_VALUE)
 	
-	public String saveStaffMember(@RequestBody DigiHealthCareSaveStaffMemberModel saveStaffmember){
+	public String saveStaffMember(HttpServletRequest request,@RequestBody DigiHealthCareSaveStaffMemberModel saveStaffmember){
 		 
 		Logger logger = Logger.getLogger(DigiHealthCareSaveStaffMemberRest.class);
 			
             CommonCISValidation CommonCISValidation=new CommonCISValidation();
-		   // CISResults cisResults=CommonCISValidation.editSchedulePlanValidation(request,editSchedulePlan);
-		   // if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
-		    // {
-            DigiHealthCareSaveStaffMemberWebservice saveStaffMemberWebservice= new DigiHealthCareSaveStaffMemberWebservice();
-		    	CISResults cisResults  = saveStaffMemberWebservice.saveStaffMember(saveStaffmember);
-		       logger.info(" DigitalHealthCare: save staff member rest service :"+cisResults);
-		    // }
+		    CISResults cisResults=CommonCISValidation.saveStaffMemberValidation(request,saveStaffmember);
+		    if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
+		     {
+		    	DigiHealthCareSaveStaffMemberWebservice saveStaffMemberWebservice= new DigiHealthCareSaveStaffMemberWebservice();
+		    	cisResults  = saveStaffMemberWebservice.saveStaffMember(saveStaffmember);
+		        logger.info(" DigitalHealthCare: save staff member rest service :"+cisResults);
+		     }
 		       return returnJsonData(cisResults);
 	 }
 	 

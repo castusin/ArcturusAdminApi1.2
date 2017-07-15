@@ -30,12 +30,11 @@ public class DigiHealthCareDeleteSchedulePlanBL {
 		CISResults cisResult=new CISResults();
 		EmailCommunication sendMail=new EmailCommunication();
 		DigiHealthCareAdminViewRecurrencePlansModel deleteRecur=new DigiHealthCareAdminViewRecurrencePlansModel();
-		// int recur=deleteRecur.getRecurrence();
-		// int seriesId=deleteRecur.getAptseriesId();
-		 String sessionId = UUID.randomUUID().toString();
-         String messageId=DigestUtils.sha1Hex(sessionId);
-         String  upToNCharacters = messageId.substring(0, Math.min(aptId.length(), 6));
-         messageId=upToNCharacters;
+	    String sessionId = UUID.randomUUID().toString();
+        String messageId=DigestUtils.sha1Hex(sessionId);
+        String  upToNCharacters = messageId.substring(0, Math.min(aptId.length(), 6));
+        messageId=upToNCharacters;
+        
          TimeCheck time=new TimeCheck();
          Calendar currentdate = Calendar.getInstance();
 	     DateFormat formatter = new SimpleDateFormat(CISConstants.GS_DATE_FORMAT);
@@ -44,8 +43,7 @@ public class DigiHealthCareDeleteSchedulePlanBL {
 	     String createDate=time.getTimeZone();
 	     
 		// Capture service Start time
-		// TimeCheck time=new TimeCheck();
-		 testServiceTime seriveTimeCheck=new testServiceTime();
+	     testServiceTime seriveTimeCheck=new testServiceTime();
 		 String serviceStartTime=time.getTimeZone();
 		 
 		 
@@ -92,13 +90,12 @@ public class DigiHealthCareDeleteSchedulePlanBL {
               String bcc= CISConstants.ADMINEMAILID ;
               
               String subject="Your care plan schedule has been deleted.";
-              
+              String messageType=CISConstants.RECIEVED;;
 			  
 			  if(cisResult.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
 			   {
 				  cisResult=sendMail.sendPatientDelMail(patientEmail,type,startTime,firstName,Lastname,cc,bcc);
-				 //cisResult=sendMail.sendAdminDelMail(name,lastname,cc,bcc);
-				  cisResult=deleteSchedulePlanDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate);
+				  cisResult=deleteSchedulePlanDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate,messageType);
                   
 			   }
 	      }

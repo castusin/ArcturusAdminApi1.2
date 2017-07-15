@@ -3,18 +3,13 @@ package com.digitalhealthcare;
 
 
 import java.sql.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
-import java.util.TimeZone;
 
 import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.cis.CISConstants;
 import com.cis.CISResults;
 import com.cis.TimeCheck;
 import com.cis.testServiceTime;
@@ -31,35 +26,29 @@ public class DigiHealthCareAdminViewPlansBL {
 		final Logger logger = Logger.getLogger(DigiHealthCareAdminViewPlansBL.class);
 		// Capture service Start time
 		
-		TimeCheck time=new TimeCheck();
-		
+		 TimeCheck time=new TimeCheck();
 		 testServiceTime seriveTimeCheck=new testServiceTime();
 		 String serviceStartTime=time.getTimeZone();
 		 CISResults cisResult = new CISResults();
-		//CISResults cisResult = adminViewPlansDAO.adminViewPlans(patientId);
-		List<DigiHealthCareAdminViewPlansModel> adminViewPlans = adminViewPlansDAO.adminDigitalViewPlans(patientId);
+		 List<DigiHealthCareAdminViewPlansModel> adminViewPlans = adminViewPlansDAO.adminViewplans(patientId);
 		
-		
-		ArrayList<Object> appointments = new ArrayList<Object>();
-		 
-		for (int i = 0; i < adminViewPlans.size(); i++) {
+		 ArrayList<Object> appointments = new ArrayList<Object>();
+		 for (int i = 0; i < adminViewPlans.size(); i++) {
 			
-		DigiHealthCareAdminViewPlansModel digiAdminViewPlanModel = new DigiHealthCareAdminViewPlansModel();
-		Color color = new Color();
+			 DigiHealthCareAdminViewPlansModel digiAdminViewPlanModel = new DigiHealthCareAdminViewPlansModel();
+			 Color color = new Color();
 			
-			String serviceType= adminViewPlans.get(i).title;
-			String aptId=adminViewPlans.get(i).aptId;
-			int aptPersonId=adminViewPlans.get(i).aptPersonId;
-			String aptWith=adminViewPlans.get(i).aptWith;
-			Date createDate=adminViewPlans.get(i).createDate;
-			String startsAt=adminViewPlans.get(i).startsAt;
-			String endsAt=adminViewPlans.get(i).endsAt;
-			int aptseriesId=adminViewPlans.get(i).aptseriesId;
-			String patiendId=adminViewPlans.get(i).patiendId;
-			String seriesStatus=adminViewPlans.get(i).seriesStatus;
-			boolean val=adminViewPlans.get(i).val;
-			
-			
+			 String serviceType= adminViewPlans.get(i).title;
+			 String aptId=adminViewPlans.get(i).aptId;
+			 int aptPersonId=adminViewPlans.get(i).aptPersonId;
+			 String aptWith=adminViewPlans.get(i).aptWith;
+			 Date createDate=adminViewPlans.get(i).createDate;
+			 String startsAt=adminViewPlans.get(i).startsAt;
+			 String endsAt=adminViewPlans.get(i).endsAt;
+			 int aptseriesId=adminViewPlans.get(i).aptseriesId;
+			 String patiendId=adminViewPlans.get(i).patiendId;
+			 String seriesStatus=adminViewPlans.get(i).seriesStatus;
+			 boolean val=adminViewPlans.get(i).val;
 			
 			 digiAdminViewPlanModel.setTitle(serviceType);
 			 digiAdminViewPlanModel.setAptId(aptId);
@@ -72,15 +61,10 @@ public class DigiHealthCareAdminViewPlansBL {
 			 digiAdminViewPlanModel.setPatiendId(patiendId);
 			 digiAdminViewPlanModel.setSeriesStatus(seriesStatus);
 			 digiAdminViewPlanModel.setVal(val);
-			 
-			
-			
-			
-			 
-			 
+			  
 			 if(serviceType.equalsIgnoreCase("Chaplain"))
 		      {
-				 color.setPrimary("#0C61AB");
+				  color.setPrimary("#0C61AB");
 		    	  color.setSecondary("#0C61AB");
 		    	 digiAdminViewPlanModel.setColor(color);
 		      }
@@ -114,28 +98,16 @@ public class DigiHealthCareAdminViewPlansBL {
 		    	 
 		       }
 		      
-			
 			 appointments.add(digiAdminViewPlanModel);
-			
 		}
 		
-		
-		 
-
 		 cisResult.setResultObject(appointments);
-		
-		
-		
-		
-		
-		
-		
-		logger.info("DigitalHealthCare:admin view plansBL  service" +cisResult );
+		 logger.info("DigitalHealthCare:admin view plansBL  service" +cisResult );
 		
 		// Capture Service End time
-		String serviceEndTime=time.getTimeZone();
-		long result=seriveTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
-		  logger.info("Database time for admin view plans service:: " +result );
+		 String serviceEndTime=time.getTimeZone();
+		 long result=seriveTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
+		 logger.info("Database time for admin view plans service:: " +result );
 		  
 		return cisResult;
 	}
