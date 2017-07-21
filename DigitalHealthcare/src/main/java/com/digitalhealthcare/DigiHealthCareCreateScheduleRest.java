@@ -36,13 +36,13 @@ public class DigiHealthCareCreateScheduleRest {
 		Logger logger = Logger.getLogger(DigiHealthCareCreateScheduleRest.class);
 			
             CommonCISValidation CommonCISValidation=new CommonCISValidation();
-		    CISResults cisResults=CommonCISValidation.createScheduleValidation(createSchedule,request);
-		    if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
-		    {
+		   // CISResults cisResults=CommonCISValidation.createScheduleValidation(createSchedule,request);
+		    //if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
+		   // {
 			   	 DigiHealthCareCreateScheduleWebservice createScheduleWebservice= new DigiHealthCareCreateScheduleWebservice();
-		    	 cisResults  = createScheduleWebservice.createSchedule(createSchedule);
+			   	 CISResults cisResults  = createScheduleWebservice.createSchedule(createSchedule);
 		       logger.info(" DigitalHealthCare: create schedule rest service :"+cisResults);
-		     }
+		    // }
 		       return returnJsonData(cisResults);
 	 }
 	

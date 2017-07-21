@@ -36,13 +36,13 @@ public class DigiHealthCareEditSchedulePlanRest {
 		Logger logger = Logger.getLogger(DigiHealthCareEditSchedulePlanRest.class);
 			
             CommonCISValidation CommonCISValidation=new CommonCISValidation();
-		    CISResults cisResults=CommonCISValidation.editSchedulePlanValidation(request,editSchedulePlan);
-		    if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
-		     {
+		   // CISResults cisResults=CommonCISValidation.editSchedulePlanValidation(request,editSchedulePlan);
+		    //if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
+		   //  {
 		    	DigiHealthCareEditSchedulePlanWebservice editSchedulePlanWebservice= new DigiHealthCareEditSchedulePlanWebservice();
-		    	cisResults  = editSchedulePlanWebservice.editSchedulePlan(editSchedulePlan);
+		    	CISResults cisResults  = editSchedulePlanWebservice.editSchedulePlan(editSchedulePlan);
 		       logger.info(" DigitalHealthCare: edit schedule plan rest service :"+cisResults);
-		     }
+		   //  }
 		       return returnJsonData(cisResults);
 	 }
 	 

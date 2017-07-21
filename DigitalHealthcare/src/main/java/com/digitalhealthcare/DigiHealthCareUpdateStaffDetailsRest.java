@@ -36,13 +36,13 @@ public class DigiHealthCareUpdateStaffDetailsRest {
 		Logger logger = Logger.getLogger(DigiHealthCareUpdateStaffDetailsRest.class);
 			
             CommonCISValidation CommonCISValidation=new CommonCISValidation();
-		    CISResults cisResults=CommonCISValidation.updateStaffDetailsValidation(request,updateStaff);
-		    if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
-		     {
+		   // CISResults cisResults=CommonCISValidation.updateStaffDetailsValidation(request,updateStaff);
+		   // if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
+		    // {
             	DigiHealthCareUpdateStaffDetailsWebservice updateStaffDetailsWebservice= new DigiHealthCareUpdateStaffDetailsWebservice();
-		    	 cisResults  = updateStaffDetailsWebservice.updateStaffDetails(updateStaff);
+            	CISResults cisResults  = updateStaffDetailsWebservice.updateStaffDetails(updateStaff);
 		       logger.info(" DigitalHealthCare: update staff details rest service :"+cisResults);
-		    }
+		    //}
 		       return returnJsonData(cisResults);
 	 }
 	 

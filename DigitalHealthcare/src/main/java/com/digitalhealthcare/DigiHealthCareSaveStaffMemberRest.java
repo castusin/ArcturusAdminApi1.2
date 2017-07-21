@@ -35,13 +35,13 @@ public class DigiHealthCareSaveStaffMemberRest {
 		Logger logger = Logger.getLogger(DigiHealthCareSaveStaffMemberRest.class);
 			
             CommonCISValidation CommonCISValidation=new CommonCISValidation();
-		    CISResults cisResults=CommonCISValidation.saveStaffMemberValidation(request,saveStaffmember);
-		    if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
-		     {
+		   // CISResults cisResults=CommonCISValidation.saveStaffMemberValidation(request,saveStaffmember);
+		    //if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
+		    // {
 		    	DigiHealthCareSaveStaffMemberWebservice saveStaffMemberWebservice= new DigiHealthCareSaveStaffMemberWebservice();
-		    	cisResults  = saveStaffMemberWebservice.saveStaffMember(saveStaffmember);
+		    	CISResults cisResults  = saveStaffMemberWebservice.saveStaffMember(saveStaffmember);
 		        logger.info(" DigitalHealthCare: save staff member rest service :"+cisResults);
-		     }
+		    // }
 		       return returnJsonData(cisResults);
 	 }
 	 

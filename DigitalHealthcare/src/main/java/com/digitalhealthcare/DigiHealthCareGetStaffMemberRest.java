@@ -40,13 +40,13 @@ public class DigiHealthCareGetStaffMemberRest {
  
 		 
 		 CommonCISValidation CommonCISValidation=new CommonCISValidation();
-		 CISResults cisResults=CommonCISValidation.getStaffListValidation(request,viewStaffmember);
-		 if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
-		  {
+		// CISResults cisResults=CommonCISValidation.getStaffListValidation(request,viewStaffmember);
+		 //if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
+		 // {
 			 DigiHealthCareGetStaffMemberWebservice staffMemberWebservice= new DigiHealthCareGetStaffMemberWebservice();
-			 cisResults  = staffMemberWebservice.getStaffList(viewStaffmember);
+			 CISResults cisResults  = staffMemberWebservice.getStaffList(viewStaffmember);
 			 logger.info(" DigitalHealthCare: get staff list rest service :"+cisResults);
-		}
+		//}
 		
 		// Capture Service End time
 		 String serviceEndTime=time.getTimeZone();
