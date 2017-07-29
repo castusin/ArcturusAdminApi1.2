@@ -17,8 +17,9 @@ public class DigiHealthCareCreateScheduleModel {
 	String day;
 	boolean val;
 	String messageType;
+	String scheduleType;
 	public List<Appointments> aptList;
-    public DigiHealthCareCreateScheduleModel(int staffId, String aptId, int aptseriesId, List<StartDateTime> startDateTime, List<EndDateTime> endDateTime, String patientId, String type, String aptWith, String seriesStatus, int recurenceTime, int aptpersonId, int totalDay, String status, List<StartDateTime> startTimeList, List<EndDateTime> endTimeList, List<StaffId> staffIdList, List<AptWith> aptWithList, List<Appointments> aptList, String day, boolean val, String messageType) {
+    public DigiHealthCareCreateScheduleModel(int staffId, String aptId, int aptseriesId, List<StartDateTime> startDateTime, List<EndDateTime> endDateTime, String patientId, String type, String aptWith, String seriesStatus, int recurenceTime, int aptpersonId, int totalDay, String status, List<StartDateTime> startTimeList, List<EndDateTime> endTimeList, List<StaffId> staffIdList, List<AptWith> aptWithList, List<Appointments> aptList, String day, boolean val, String messageType, String scheduleType) {
 		super();
 		this.aptpersonId=aptpersonId;
 		this.totalDay=totalDay;
@@ -33,10 +34,25 @@ public class DigiHealthCareCreateScheduleModel {
 		this.day=day;
 		this.val=val;
 		this.messageType=messageType;
+		this.scheduleType=scheduleType;
 		}
 
 
 	
+
+	public String getScheduleType() {
+		return scheduleType;
+	}
+
+
+
+
+	public void setScheduleType(String scheduleType) {
+		this.scheduleType = scheduleType;
+	}
+
+
+
 
 	public String getMessageType() {
 		return messageType;
