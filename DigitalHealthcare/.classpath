@@ -6,6 +6,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="src" path="ViewMessages"/>
 	<classpathentry kind="src" path="AdminViewRecurrencePlans"/>
 	<classpathentry kind="src" path="DeleteSchedulePlan"/>
 	<classpathentry kind="src" path="DeleteStaffMember"/>
@@ -53,7 +54,7 @@
 	<classpathentry kind="lib" path="E:/GitHub/ArcturusAdminApi1.2/JARS/spring-context-4.1.4.RELEASE.jar"/>
 	<classpathentry kind="lib" path="E:/GitHub/ArcturusAdminApi1.2/JARS/spring-dao-2.0.6.jar"/>
 	<classpathentry kind="lib" path="E:/GitHub/ArcturusAdminApi1.2/JARS/spring-jdbc-4.0.6.RELEASE.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>

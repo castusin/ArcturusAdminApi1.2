@@ -18,6 +18,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.cis.CISConstants;
 import com.cis.CISResults;
 import com.cis.EmailCommunication;
+import com.cis.SMSCommunication;
 import com.cis.TimeCheck;
 import com.cis.testServiceTime;
 
@@ -31,6 +32,7 @@ public class DigiHealthCareEditSchedulePlanBL {
 		
 		CISResults cisResult=new CISResults();
 		EmailCommunication sendMail=new EmailCommunication();
+		SMSCommunication smsCommunicaiton=new SMSCommunication();
 		final Logger logger = Logger.getLogger(DigiHealthCareEditSchedulePlanBL.class);
 		// Capture service Start time
 		 TimeCheck time=new TimeCheck();
@@ -137,16 +139,20 @@ public class DigiHealthCareEditSchedulePlanBL {
 						
 							DigiHealthCarePatientModel  lastName=(DigiHealthCarePatientModel)cisResult.getResultObject();
 							String  lastname=lastName.getLastName();
+							
+							DigiHealthCarePatientModel  phone=(DigiHealthCarePatientModel)cisResult.getResultObject();
+							String  phoneNumber=phone.getPhone();
 						  
 						    String cc= staffEmail ;
 	                        String bcc= CISConstants.ADMINEMAILID ;
 	                        
-	                        
-	                        
+	                        String directorMail="udaykatikala@gmail.com";
+	                        String dirPhone=CISConstants.DIRPHONE;
 					  if(cisResult.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
 					   {
-						  cisResult=sendMail.sendPatientUpdateMail(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,cc,bcc);
-						 
+						  cisResult=sendMail.sendPatientUpdateMail(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,cc,bcc,directorMail);
+						  cisResult=smsCommunicaiton.sendUpdateSMS(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,cc,bcc,directorMail,phoneNumber,dirPhone);
+	                      
 					   }
 			        
 		           }}
@@ -204,9 +210,10 @@ public class DigiHealthCareEditSchedulePlanBL {
                   
                  String subject= "Your care plan schedule has been updated";
                  String messageType=CISConstants.RECIEVED;
+                 String directorMail="udaykatikala@gmail.com";
 				  if(cisResult.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
 				   {
-						  cisResult=sendMail.sendPatientMail(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,cc,bcc);
+						  cisResult=sendMail.sendPatientMail(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,cc,bcc,directorMail);
 				
 						  cisResult=editSchedulePlanDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate,messageType);
                       

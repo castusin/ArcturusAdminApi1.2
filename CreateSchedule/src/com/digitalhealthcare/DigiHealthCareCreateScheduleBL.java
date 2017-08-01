@@ -22,6 +22,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.cis.CISConstants;
 import com.cis.CISResults;
 import com.cis.EmailCommunication;
+import com.cis.SMSCommunication;
 import com.cis.TimeCheck;
 import com.cis.testServiceTime;
 
@@ -38,7 +39,8 @@ public class DigiHealthCareCreateScheduleBL {
         final Logger logger = Logger.getLogger(DigiHealthCareEditSchedulePlanBL.class);
         
         EmailCommunication sendMail=new EmailCommunication();
-        
+        SMSCommunication smsCommunicaiton=new SMSCommunication();
+        String directorMail="udaykatikala@gmail.com";
         // Capture service Start time
         
          CISResults cisResults=new CISResults();
@@ -173,15 +175,16 @@ public class DigiHealthCareCreateScheduleBL {
                       String subject= "Your care plan schedule has been created";
 
                       String messageType=CISConstants.RECIEVED;     
-                      
-                      
+                      String dirPhone=CISConstants.DIRPHONE;
+                   
                       
                       if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
                        {
-                          cisResults=sendMail.sendPatientMail(patientEmail,appwith,startTime,endTime,type,Stfname,Stlname,recurrenceTime,cc,bcc);
+                          cisResults=sendMail.sendPatientMail(patientEmail,appwith,startTime,endTime,type,Stfname,Stlname,recurrenceTime,cc,bcc,directorMail);
                         
                           cisResults=createScheduleDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate,messageType);
                        
+                          cisResults=smsCommunicaiton.sendRegistrationSMS(patientEmail,appwith,startTime,endTime,type,Stfname,Stlname,recurrenceTime,cc,bcc,directorMail,phoneNumber,dirPhone);
                        }
                      
                   }
@@ -286,7 +289,7 @@ public class DigiHealthCareCreateScheduleBL {
                         
                         if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
                          {
-                             cisResults=sendMail.sendPatientMail(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,cc,bcc);
+                             cisResults=sendMail.sendPatientMail(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,cc,bcc,directorMail);
                         
                             cisResults=createScheduleDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate,messageType);
                             
@@ -452,11 +455,11 @@ public class DigiHealthCareCreateScheduleBL {
 
 	                      String messageType=CISConstants.RECIEVED;     
 	                      
-	                      
+	                      String directorMail="udaykatikala@gmail.com";
 	                      
 	                      if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
 	                       {
-	                          cisResults=sendMail.sendPatientMail(patientEmail,appwith,startTime,endTime,type,Stfname,Stlname,recurrenceTime,cc,bcc);
+	                          cisResults=sendMail.sendPatientMail(patientEmail,appwith,startTime,endTime,type,Stfname,Stlname,recurrenceTime,cc,bcc,directorMail);
 	                        
 	                          cisResults=createScheduleDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate,messageType);
 	                       
@@ -560,11 +563,11 @@ public class DigiHealthCareCreateScheduleBL {
 	                        String subject= "Your care plan schedule has been created";
 	                        
 	                        String messageType=CISConstants.RECIEVED;     
-	                        
+	                        String directorMail="udaykatikala@gmail.com";
 	                        
 	                        if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
 	                         {
-	                             cisResults=sendMail.sendPatientMail(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,cc,bcc);
+	                             cisResults=sendMail.sendPatientMail(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,cc,bcc,directorMail);
 	                        
 	                            cisResults=createScheduleDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate,messageType);
 	                            
@@ -725,12 +728,12 @@ public class DigiHealthCareCreateScheduleBL {
                       String subject= "Your care plan schedule has been created";
 
                       String messageType=CISConstants.RECIEVED;     
-                      
+                      String directorMail="udaykatikala@gmail.com";
                       
                       
                       if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
                        {
-                          cisResults=sendMail.sendPatientMail(patientEmail,appwith,startTime,endTime,type,Stfname,Stlname,recurrenceTime,cc,bcc);
+                          cisResults=sendMail.sendPatientMail(patientEmail,appwith,startTime,endTime,type,Stfname,Stlname,recurrenceTime,cc,bcc,directorMail);
                         
                           cisResults=createScheduleDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate,messageType);
                        
@@ -835,10 +838,10 @@ public class DigiHealthCareCreateScheduleBL {
                         
                         String messageType=CISConstants.RECIEVED;     
                         
-                        
+                        String directorMail="udaykatikala@gmail.com";
                         if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
                          {
-                             cisResults=sendMail.sendPatientMail(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,cc,bcc);
+                             cisResults=sendMail.sendPatientMail(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,cc,bcc,directorMail);
                         
                             cisResults=createScheduleDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate,messageType);
                             

@@ -48,6 +48,10 @@
 	<bean id="deleteSchedulePlan" class="com.digitalhealthcare.DigiHealthCareDeleteSchedulePlanDAO">
 		<property name="dataSource" ref="ds" />
 	</bean>
+	
+	<bean id="viewMessages" class="com.digitalhealthcare.ViewMessagesDAO">
+		<property name="dataSource" ref="ds" />
+	</bean>
  	
 <!-- Development  DB connections     --> 
 

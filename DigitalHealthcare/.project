@@ -105,5 +105,10 @@
 			<type>2</type>
 			<location>E:/GitHub/ArcturusAdminApi1.2/UpdateStaffDetails/src</location>
 		</link>
+		<link>
+			<name>ViewMessages</name>
+			<type>2</type>
+			<location>E:/GitHub/ArcturusAdminApi1.2/ViewMessages/src</location>
+		</link>
 	</linkedResources>
 </projectDescription>

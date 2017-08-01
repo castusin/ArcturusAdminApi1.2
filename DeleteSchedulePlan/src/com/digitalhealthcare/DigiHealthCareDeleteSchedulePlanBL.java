@@ -15,6 +15,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.cis.CISConstants;
 import com.cis.CISResults;
 import com.cis.EmailCommunication;
+import com.cis.SMSCommunication;
 import com.cis.TimeCheck;
 import com.cis.testServiceTime;
 
@@ -24,11 +25,12 @@ public class DigiHealthCareDeleteSchedulePlanBL {
 	ApplicationContext ctx=new ClassPathXmlApplicationContext("spring-servlet.xml"); 
 	DigiHealthCareDeleteSchedulePlanDAO deleteSchedulePlanDAO=(DigiHealthCareDeleteSchedulePlanDAO)ctx.getBean("deleteSchedulePlan");
 
-	public CISResults deleteSchedule(String aptId, String patientId, int seriesId){
+	public CISResults deleteSchedule(String aptId, String patientId, int seriesId) throws Throwable{
 		
 		final Logger logger = Logger.getLogger(DigiHealthCareDeleteSchedulePlanBL.class);
 		CISResults cisResult=new CISResults();
 		EmailCommunication sendMail=new EmailCommunication();
+		SMSCommunication smsCommunicaiton=new SMSCommunication();
 		DigiHealthCareAdminViewRecurrencePlansModel deleteRecur=new DigiHealthCareAdminViewRecurrencePlansModel();
 	    String sessionId = UUID.randomUUID().toString();
         String messageId=DigestUtils.sha1Hex(sessionId);
@@ -91,11 +93,13 @@ public class DigiHealthCareDeleteSchedulePlanBL {
               
               String subject="Your care plan schedule has been deleted.";
               String messageType=CISConstants.RECIEVED;;
-			  
+              String directorMail="udaykatikala@gmail.com";
+              String dirPhone=CISConstants.DIRPHONE;
 			  if(cisResult.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
 			   {
-				  cisResult=sendMail.sendPatientDelMail(patientEmail,type,startTime,firstName,Lastname,cc,bcc);
+				  cisResult=sendMail.sendPatientDelMail(patientEmail,type,startTime,firstName,Lastname,cc,bcc,directorMail);
 				  cisResult=deleteSchedulePlanDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate,messageType);
+				  cisResult=smsCommunicaiton.sendDeleteSMS(patientEmail,type,startTime,firstName,Lastname,cc,bcc,directorMail,phoneNumber,dirPhone);
                   
 			   }
 	      }

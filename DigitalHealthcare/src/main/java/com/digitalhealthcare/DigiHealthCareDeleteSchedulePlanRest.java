@@ -30,7 +30,7 @@ public class DigiHealthCareDeleteSchedulePlanRest {
 	
 	@RequestMapping(value="/deleteSchedule",method=RequestMethod.GET,produces={"application/json"})
 	
-	public String deleteSchedule(@RequestParam ("aptId") String aptId,@RequestParam ("patientId") String patientId,@RequestParam ("seriesId") int seriesId,HttpServletRequest request){
+	public String deleteSchedule(@RequestParam ("aptId") String aptId,@RequestParam ("patientId") String patientId,@RequestParam ("seriesId") int seriesId,HttpServletRequest request) throws Throwable{
 		 
 		Logger logger = Logger.getLogger(DigiHealthCareDeleteSchedulePlanRest.class);
 			
