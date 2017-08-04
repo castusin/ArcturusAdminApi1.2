@@ -211,12 +211,14 @@ public class DigiHealthCareEditSchedulePlanBL {
                  String subject= "Your care plan schedule has been updated";
                  String messageType=CISConstants.RECIEVED;
                  String directorMail="udaykatikala@gmail.com";
+                 String dirPhone=CISConstants.DIRPHONE;
 				  if(cisResult.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
 				   {
 						  cisResult=sendMail.sendPatientMail(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,cc,bcc,directorMail);
 				
 						  cisResult=editSchedulePlanDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate,messageType);
-                      
+						  cisResult=smsCommunicaiton.sendUpdateSMS(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,cc,bcc,directorMail,phoneNumber,dirPhone);
+	                      
                       
 				   }
 		      }
