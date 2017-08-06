@@ -224,86 +224,7 @@ public class DigiHealthCareCreateScheduleBL {
              }
            }
          }
-         }else{
-             
-             for (int i = 0; i < aptListSize; i++)
-             {
-                  startTime= createSchedule.getAptList().get(i).startDateTime;
-                  endTime =  createSchedule.getAptList().get(i).endDateTime;
-                  staffid =  createSchedule.getAptList().get(i).staffId;
-                  appwith =  createSchedule.getAptList().get(i).aptWith;
-             
-                  // Now start logic
-                  seriesStatus=CISConstants.seriesStatus2;
-                  String startDateTime=startTime;
-                  String enddateTime=endTime;
-                  String endDateTime = "";
-             
-                  sessionId = UUID.randomUUID().toString();
-                  aptId=DigestUtils.sha1Hex(sessionId);
-                  upToNCharacters = aptId.substring(0, Math.min(aptId.length(), 8));
-                  aptId=upToNCharacters;
-              
-                // Logic to split Enddate time 
-                  String[] allStrings = enddateTime.split("\\s");
-                  for (int j = 4; j < allStrings.length; j++){
-                    endDateTime = endDateTime + " " + allStrings[j];
-                    cisResults = createScheduleDAO.createSchedule(aptId,aptSeriesId,staffid,createSchedule.getPatientId(),startDateTime,endTime,totalDay,createSchedule.getType(),appwith,createDate,seriesStatus);
-                  
-                    if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
-                    {
-                        cisResults=createScheduleDAO.getStaffEmail(staffid);
-                        
-                        DigiHealthCareSaveStaffMemberModel  staffEmailId=(DigiHealthCareSaveStaffMemberModel)cisResults.getResultObject();
-                        String staffEmail=staffEmailId.getEmailId();
-                       
-                        DigiHealthCareSaveStaffMemberModel  stafffname=(DigiHealthCareSaveStaffMemberModel)cisResults.getResultObject();
-                        String fname=stafffname.getfName();
-                      
-                        DigiHealthCareSaveStaffMemberModel  stafflname=(DigiHealthCareSaveStaffMemberModel)cisResults.getResultObject();
-                        String lname=stafflname.getlName();
-                        
-                        cisResults=createScheduleDAO.getPatientEmail(patientId);
-                      
-                        DigiHealthCarePatientModel  patientEmailId=(DigiHealthCarePatientModel)cisResults.getResultObject();
-                        String  patientEmail=patientEmailId.getEmailId();
-                       
-                        DigiHealthCarePatientModel  firstname=(DigiHealthCarePatientModel)cisResults.getResultObject();
-                        String name=firstname.getFirstName();
-                      
-                        DigiHealthCarePatientModel  lastName=(DigiHealthCarePatientModel)cisResults.getResultObject();
-                        String  lastname=lastName.getLastName();
-                        DigiHealthCarePatientModel  phone=(DigiHealthCarePatientModel)cisResults.getResultObject();
-                        
-                        String phoneNumber=phone.getPhone();
-                        
-                        String cc= staffEmail ;
-                        String bcc= CISConstants.ADMINEMAILID ;
-                        
-                        // Hard coded will change later
-                        
-                        String subject= "Your care plan schedule has been created";
-                        
-                        String messageType=CISConstants.RECIEVED;     
-                        String dirPhone=CISConstants.DIRPHONE;
-                        
-                        if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
-                         {
-                             cisResults=sendMail.sendPatientMail(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,cc,bcc,directorMail);
-                        
-                             cisResults=createScheduleDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate,messageType);
-                             cisResults=smsCommunicaiton.sendRegistrationSMSworecurrence(patientEmail,appwith,startTime,endTime,type,recurrenceTime,cc,bcc,directorMail,phoneNumber,dirPhone);
-                            
-                         }
-                        
-                        
-                    }
-                    
-             }
-                  
-                  
          }
-     }
            
         // Capture Service End time
           String serviceEndTime=time.getTimeZone();
@@ -504,86 +425,7 @@ public class DigiHealthCareCreateScheduleBL {
 	             }
 	           }
 	         }
-	         }else{
-	             
-	             for (int i = 0; i < aptListSize; i++)
-	             {
-	                  startTime= createSchedule.getAptList().get(i).startDateTime;
-	                  endTime =  createSchedule.getAptList().get(i).endDateTime;
-	                  staffid =  createSchedule.getAptList().get(i).staffId;
-	                  appwith =  createSchedule.getAptList().get(i).aptWith;
-	             
-	                  // Now start logic
-	                  seriesStatus=CISConstants.seriesStatus2;
-	                  String startDateTime=startTime;
-	                  String enddateTime=endTime;
-	                  String endDateTime = "";
-	             
-	                  sessionId = UUID.randomUUID().toString();
-	                  aptId=DigestUtils.sha1Hex(sessionId);
-	                  upToNCharacters = aptId.substring(0, Math.min(aptId.length(), 8));
-	                  aptId=upToNCharacters;
-	              
-	                // Logic to split Enddate time 
-	                  String[] allStrings = enddateTime.split("\\s");
-	                  for (int j = 4; j < allStrings.length; j++){
-	                    endDateTime = endDateTime + " " + allStrings[j];
-	                    cisResults = createScheduleDAO.createSchedule(aptId,aptSeriesId,staffid,createSchedule.getPatientId(),startDateTime,endTime,totalDay,createSchedule.getType(),appwith,createDate,seriesStatus);
-	                  
-	                    if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
-	                    {
-	                        cisResults=createScheduleDAO.getStaffEmail(staffid);
-	                        
-	                        DigiHealthCareSaveStaffMemberModel  staffEmailId=(DigiHealthCareSaveStaffMemberModel)cisResults.getResultObject();
-	                        String staffEmail=staffEmailId.getEmailId();
-	                       
-	                        DigiHealthCareSaveStaffMemberModel  stafffname=(DigiHealthCareSaveStaffMemberModel)cisResults.getResultObject();
-	                        String fname=stafffname.getfName();
-	                      
-	                        DigiHealthCareSaveStaffMemberModel  stafflname=(DigiHealthCareSaveStaffMemberModel)cisResults.getResultObject();
-	                        String lname=stafflname.getlName();
-	                        
-	                        cisResults=createScheduleDAO.getPatientEmail(patientId);
-	                      
-	                        DigiHealthCarePatientModel  patientEmailId=(DigiHealthCarePatientModel)cisResults.getResultObject();
-	                        String  patientEmail=patientEmailId.getEmailId();
-	                       
-	                        DigiHealthCarePatientModel  firstname=(DigiHealthCarePatientModel)cisResults.getResultObject();
-	                        String name=firstname.getFirstName();
-	                      
-	                        DigiHealthCarePatientModel  lastName=(DigiHealthCarePatientModel)cisResults.getResultObject();
-	                        String  lastname=lastName.getLastName();
-	                        DigiHealthCarePatientModel  phone=(DigiHealthCarePatientModel)cisResults.getResultObject();
-	                        
-	                        String phoneNumber=phone.getPhone();
-	                        
-	                        String cc= staffEmail ;
-	                        String bcc= CISConstants.ADMINEMAILID ;
-	                        
-	                        // Hard coded will change later
-	                        
-	                        String subject= "Your care plan schedule has been created";
-	                        
-	                        String messageType=CISConstants.RECIEVED;     
-	                        String directorMail="udaykatikala@gmail.com";
-	                        
-	                        if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
-	                         {
-	                             cisResults=sendMail.sendPatientMail(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,cc,bcc,directorMail);
-	                        
-	                            cisResults=createScheduleDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate,messageType);
-	                            
-	                         }
-	                        
-	                        
-	                    }
-	                    
-	             }
-	                  
-	                  
 	         }
-	     }
-	           
 	        // Capture Service End time
 	          String serviceEndTime=time.getTimeZone();
 	          long result=seriveTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
@@ -779,85 +621,7 @@ public class DigiHealthCareCreateScheduleBL {
              }
            }
          }
-         }else{
-             
-             for (int i = 0; i < aptListSize; i++)
-             {
-                  startTime= createSchedule.getAptList().get(i).startDateTime;
-                  endTime =  createSchedule.getAptList().get(i).endDateTime;
-                  staffid =  createSchedule.getAptList().get(i).staffId;
-                  appwith =  createSchedule.getAptList().get(i).aptWith;
-             
-                  // Now start logic
-                  seriesStatus=CISConstants.seriesStatus2;
-                  String startDateTime=startTime;
-                  String enddateTime=endTime;
-                  String endDateTime = "";
-             
-                  sessionId = UUID.randomUUID().toString();
-                  aptId=DigestUtils.sha1Hex(sessionId);
-                  upToNCharacters = aptId.substring(0, Math.min(aptId.length(), 8));
-                  aptId=upToNCharacters;
-              
-                // Logic to split Enddate time 
-                  String[] allStrings = enddateTime.split("\\s");
-                  for (int j = 4; j < allStrings.length; j++){
-                    endDateTime = endDateTime + " " + allStrings[j];
-                    cisResults = createScheduleDAO.createSchedule(aptId,aptSeriesId,staffid,createSchedule.getPatientId(),startDateTime,endTime,totalDay,createSchedule.getType(),appwith,createDate,seriesStatus);
-                  
-                    if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
-                    {
-                        cisResults=createScheduleDAO.getStaffEmail(staffid);
-                        
-                        DigiHealthCareSaveStaffMemberModel  staffEmailId=(DigiHealthCareSaveStaffMemberModel)cisResults.getResultObject();
-                        String staffEmail=staffEmailId.getEmailId();
-                       
-                        DigiHealthCareSaveStaffMemberModel  stafffname=(DigiHealthCareSaveStaffMemberModel)cisResults.getResultObject();
-                        String fname=stafffname.getfName();
-                      
-                        DigiHealthCareSaveStaffMemberModel  stafflname=(DigiHealthCareSaveStaffMemberModel)cisResults.getResultObject();
-                        String lname=stafflname.getlName();
-                        
-                        cisResults=createScheduleDAO.getPatientEmail(patientId);
-                      
-                        DigiHealthCarePatientModel  patientEmailId=(DigiHealthCarePatientModel)cisResults.getResultObject();
-                        String  patientEmail=patientEmailId.getEmailId();
-                       
-                        DigiHealthCarePatientModel  firstname=(DigiHealthCarePatientModel)cisResults.getResultObject();
-                        String name=firstname.getFirstName();
-                      
-                        DigiHealthCarePatientModel  lastName=(DigiHealthCarePatientModel)cisResults.getResultObject();
-                        String  lastname=lastName.getLastName();
-                        DigiHealthCarePatientModel  phone=(DigiHealthCarePatientModel)cisResults.getResultObject();
-                        
-                        String phoneNumber=phone.getPhone();
-                        
-                        String cc= staffEmail ;
-                        String bcc= CISConstants.ADMINEMAILID ;
-                        
-                        // Hard coded will change later
-                        
-                        String subject= "Your care plan schedule has been created";
-                        
-                        String messageType=CISConstants.RECIEVED;     
-                        
-                        String directorMail="udaykatikala@gmail.com";
-                        if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
-                         {
-                             cisResults=sendMail.sendPatientMail(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,cc,bcc,directorMail);
-                        
-                            cisResults=createScheduleDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate,messageType);
-                            
-                         }
-                        
-                        
-                    }
-                    
-             }
-                  
-                  
          }
-     }
            
         // Capture Service End time
           String serviceEndTime=time.getTimeZone();
@@ -866,5 +630,139 @@ public class DigiHealthCareCreateScheduleBL {
          
         return cisResults;
          }
+
+	public CISResults createSingleSchedule(
+			DigiHealthCareCreateScheduleModel createSchedule) throws Throwable {
+
+
+		 final Logger logger = Logger.getLogger(DigiHealthCareEditSchedulePlanBL.class);
+	        
+	        EmailCommunication sendMail=new EmailCommunication();
+	        SMSCommunication smsCommunicaiton=new SMSCommunication();
+	        String directorMail="udaykatikala@gmail.com";
+	        // Capture service Start time
+	        
+	         CISResults cisResults=new CISResults();
+	         Appointments aptList=new Appointments();
+	         
+	         TimeCheck time=new TimeCheck();
+	         testServiceTime seriveTimeCheck=new testServiceTime();
+	         String serviceStartTime=time.getTimeZone();
+	         
+	         // generating aptid
+	         
+	         String sessionId = UUID.randomUUID().toString();
+	         String aptId=DigestUtils.sha1Hex(sessionId);
+	         String upToNCharacters = aptId.substring(0, Math.min(aptId.length(), 8));
+	         aptId=upToNCharacters;
+	          
+	          //messageID
+	          
+	          sessionId = UUID.randomUUID().toString();
+	          String messageId=DigestUtils.sha1Hex(sessionId);
+	          upToNCharacters = messageId.substring(0, Math.min(messageId.length(), 6));
+	          messageId=upToNCharacters;
+	          int aptSeriesId = counts.incrementAndGet();
+	          Calendar currentdate = Calendar.getInstance();
+	          DateFormat formatter = new SimpleDateFormat(CISConstants.GS_DATE_FORMAT);
+	          TimeZone obj = TimeZone.getTimeZone(CISConstants.TIME_ZONE);
+	          formatter.setTimeZone(obj);
+	          String createDate=time.getTimeZone();
+	          int recurrenceTime=createSchedule.getRecurenceTime();
+	          String seriesStatus=CISConstants.seriesStatus2;
+	          int totalDay=CISConstants.totalDay;
+	          String patientId=createSchedule.getPatientId();
+	          int aptListSize=createSchedule.getAptList().size();
+	        
+	          String startTime="";
+	          String endTime="";
+	          String appwith="";
+	          int staffid=0;
+	          String type= createSchedule.getType();
+	          for (int i = 0; i < aptListSize; i++)
+	             {
+	                  startTime= createSchedule.getAptList().get(i).startDateTime;
+	                  endTime =  createSchedule.getAptList().get(i).endDateTime;
+	                  staffid =  createSchedule.getAptList().get(i).staffId;
+	                  appwith =  createSchedule.getAptList().get(i).aptWith;
+	             
+	                  // Now start logic
+	                  seriesStatus=CISConstants.seriesStatus2;
+	                  String startDateTime=startTime;
+	                  String enddateTime=endTime;
+	                  String endDateTime = "";
+	             
+	                  sessionId = UUID.randomUUID().toString();
+	                  aptId=DigestUtils.sha1Hex(sessionId);
+	                  upToNCharacters = aptId.substring(0, Math.min(aptId.length(), 8));
+	                  aptId=upToNCharacters;
+	              
+	                // Logic to split Enddate time 
+	                  String[] allStrings = enddateTime.split("\\s");
+	                  for (int j = 4; j < allStrings.length; j++){
+	                    endDateTime = endDateTime + " " + allStrings[j];
+	                    cisResults = createScheduleDAO.createSchedule(aptId,aptSeriesId,staffid,createSchedule.getPatientId(),startDateTime,endTime,totalDay,createSchedule.getType(),appwith,createDate,seriesStatus);
+	                  
+	                    if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
+	                    {
+	                        cisResults=createScheduleDAO.getStaffEmail(staffid);
+	                        
+	                        DigiHealthCareSaveStaffMemberModel  staffEmailId=(DigiHealthCareSaveStaffMemberModel)cisResults.getResultObject();
+	                        String staffEmail=staffEmailId.getEmailId();
+	                       
+	                        DigiHealthCareSaveStaffMemberModel  stafffname=(DigiHealthCareSaveStaffMemberModel)cisResults.getResultObject();
+	                        String fname=stafffname.getfName();
+	                      
+	                        DigiHealthCareSaveStaffMemberModel  stafflname=(DigiHealthCareSaveStaffMemberModel)cisResults.getResultObject();
+	                        String lname=stafflname.getlName();
+	                        
+	                        cisResults=createScheduleDAO.getPatientEmail(patientId);
+	                      
+	                        DigiHealthCarePatientModel  patientEmailId=(DigiHealthCarePatientModel)cisResults.getResultObject();
+	                        String  patientEmail=patientEmailId.getEmailId();
+	                       
+	                        DigiHealthCarePatientModel  firstname=(DigiHealthCarePatientModel)cisResults.getResultObject();
+	                        String name=firstname.getFirstName();
+	                      
+	                        DigiHealthCarePatientModel  lastName=(DigiHealthCarePatientModel)cisResults.getResultObject();
+	                        String  lastname=lastName.getLastName();
+	                        DigiHealthCarePatientModel  phone=(DigiHealthCarePatientModel)cisResults.getResultObject();
+	                        
+	                        String phoneNumber=phone.getPhone();
+	                        
+	                        String cc= staffEmail ;
+	                        String bcc= CISConstants.ADMINEMAILID ;
+	                        
+	                        // Hard coded will change later
+	                        
+	                        String subject= "Your care plan schedule has been created";
+	                        
+	                        String messageType=CISConstants.RECIEVED;     
+	                        String dirPhone=CISConstants.DIRPHONE;
+	                        
+	                        if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
+	                         {
+	                             cisResults=sendMail.sendPatientMail(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,cc,bcc,directorMail);
+	                        
+	                             cisResults=createScheduleDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate,messageType);
+	                             cisResults=smsCommunicaiton.sendRegistrationSMSworecurrence(patientEmail,appwith,startTime,endTime,type,recurrenceTime,cc,bcc,directorMail,phoneNumber,dirPhone);
+	                            
+	                         }
+	                       
+	                 }
+	                    
+	             }
+	                  
+	                  
+	         }
+	   
+	           
+	        // Capture Service End time
+	          String serviceEndTime=time.getTimeZone();
+	          long result=seriveTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
+	          logger.info("Database time for create schedule service:: " +result );
+	         
+	          return cisResults;
+	         }
 
 }
