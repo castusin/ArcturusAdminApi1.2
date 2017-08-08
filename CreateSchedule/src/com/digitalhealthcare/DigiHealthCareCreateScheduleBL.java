@@ -155,6 +155,9 @@ public class DigiHealthCareCreateScheduleBL {
                       DigiHealthCareSaveStaffMemberModel  stafflname=(DigiHealthCareSaveStaffMemberModel)cisResults.getResultObject();
                       String Stlname=stafflname.getlName();
                       
+                      DigiHealthCareSaveStaffMemberModel  stphone=(DigiHealthCareSaveStaffMemberModel)cisResults.getResultObject();
+                      String StaffPhoneNumber=stphone.getPhone1();
+                      
                       cisResults=createScheduleDAO.getPatientEmail(patientId);
                     
                       DigiHealthCarePatientModel  patientEmailId=(DigiHealthCarePatientModel)cisResults.getResultObject();
@@ -356,6 +359,9 @@ public class DigiHealthCareCreateScheduleBL {
 	                      DigiHealthCareSaveStaffMemberModel  stafflname=(DigiHealthCareSaveStaffMemberModel)cisResults.getResultObject();
 	                      String Stlname=stafflname.getlName();
 	                      
+	                      DigiHealthCareSaveStaffMemberModel  stphone=(DigiHealthCareSaveStaffMemberModel)cisResults.getResultObject();
+	                      String StaffPhoneNumber=stphone.getPhone1();
+	                     
 	                      cisResults=createScheduleDAO.getPatientEmail(patientId);
 	                    
 	                      DigiHealthCarePatientModel  patientEmailId=(DigiHealthCarePatientModel)cisResults.getResultObject();
@@ -552,6 +558,10 @@ public class DigiHealthCareCreateScheduleBL {
                       DigiHealthCareSaveStaffMemberModel  stafflname=(DigiHealthCareSaveStaffMemberModel)cisResults.getResultObject();
                       String Stlname=stafflname.getlName();
                       
+                      DigiHealthCareSaveStaffMemberModel  stphone=(DigiHealthCareSaveStaffMemberModel)cisResults.getResultObject();
+                      String StaffPhoneNumber=stphone.getPhone1();
+                     
+                      
                       cisResults=createScheduleDAO.getPatientEmail(patientId);
                     
                       DigiHealthCarePatientModel  patientEmailId=(DigiHealthCarePatientModel)cisResults.getResultObject();
@@ -583,10 +593,7 @@ public class DigiHealthCareCreateScheduleBL {
                           cisResults=smsCommunicaiton.sendRegistrationSMS(patientEmail,appwith,startTime,endTime,type,Stfname,Stlname,recurrenceTime,cc,bcc,directorMail,phoneNumber,dirPhone);
 	                         
                        }
-                     
-                  }
-                  
-                                    
+                    }
          }else{
        
                  c.add(Calendar.DATE, 14);
@@ -621,7 +628,7 @@ public class DigiHealthCareCreateScheduleBL {
              }
            }
          }
-         }
+       }
            
         // Capture Service End time
           String serviceEndTime=time.getTimeZone();
@@ -715,6 +722,10 @@ public class DigiHealthCareCreateScheduleBL {
 	                      
 	                        DigiHealthCareSaveStaffMemberModel  stafflname=(DigiHealthCareSaveStaffMemberModel)cisResults.getResultObject();
 	                        String lname=stafflname.getlName();
+	                        
+	                        DigiHealthCareSaveStaffMemberModel  stphone=(DigiHealthCareSaveStaffMemberModel)cisResults.getResultObject();
+	                        String StaffPhoneNumber=stphone.getPhone1();
+	                       
 	                        
 	                        cisResults=createScheduleDAO.getPatientEmail(patientId);
 	                      

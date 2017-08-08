@@ -15,6 +15,7 @@ public class DigiHealthCareSaveStaffMemberMapper implements RowMapper{
 		getStafflist.setEmailId(rs.getString("Emailid"));
 		getStafflist.setfName(rs.getString("Fname"));
 		getStafflist.setlName(rs.getString("Lname"));
+		getStafflist.setPhone1(rs.getString("Phone1"));
 		return getStafflist;
 	}
 

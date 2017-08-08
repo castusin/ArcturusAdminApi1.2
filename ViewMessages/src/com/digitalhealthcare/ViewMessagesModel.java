@@ -18,7 +18,9 @@ public class ViewMessagesModel {
 	String aptWith;
     String title;
 	String messageType;
-	
+	String firstName;
+	String lastName;
+	String photoUrl;
 
 
 	
@@ -37,7 +39,7 @@ public class ViewMessagesModel {
 	public ViewMessagesModel(String userId, String patientId,
 			String messageId, String aptId, String messageText,
 			String phoneNumber, String emailId, Date createDate,
-			String aptStarttime, String aptEndtime, String type, String aptWith, String messageType, String title) {
+			String aptStarttime, String aptEndtime, String type, String aptWith, String messageType, String title, String firstName, String lastName, String photoUrl) {
 		super();
 		this.userId = userId;
 		this.patientId = patientId;
@@ -53,6 +55,39 @@ public class ViewMessagesModel {
 		this.aptWith = aptWith;
 		this.messageType=messageType;
 		this.title=title;
+		this.firstName=firstName;
+		this.lastName=lastName;
+		this.photoUrl=photoUrl;
+	}
+
+
+	public String getPhotoUrl() {
+		return photoUrl;
+	}
+
+
+	public void setPhotoUrl(String photoUrl) {
+		this.photoUrl = photoUrl;
+	}
+
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+
+	public String getLastName() {
+		return lastName;
+	}
+
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 
