@@ -53,22 +53,22 @@
 		<link>
 			<name>CISCommunication</name>
 			<type>2</type>
-			<location>E:/GitHub/ArcturusadminApi1.1/CISCommunication/src</location>
+			<location>E:/GitHub/ArcturusAdminApi1.1/CISCommunication/src</location>
 		</link>
 		<link>
 			<name>CISDataCommon</name>
 			<type>2</type>
-			<location>E:/GitHub/ArcturusadminApi1.1/CISDataCommon/src</location>
+			<location>E:/GitHub/ArcturusAdminApi1.1/CISDataCommon/src</location>
 		</link>
 		<link>
 			<name>CISSessions</name>
 			<type>2</type>
-			<location>E:/GitHub/ArcturusadminApi1.1/CISSessions/src</location>
+			<location>E:/GitHub/ArcturusAdminApi1.1/CISSessions/src</location>
 		</link>
 		<link>
 			<name>CommonCISValidation</name>
 			<type>2</type>
-			<location>E:/GitHub/ArcturusadminApi1.1/CommonCISValidation/src</location>
+			<location>E:/GitHub/ArcturusAdminApi1.1/CommonCISValidation/src</location>
 		</link>
 		<link>
 			<name>CreateSchedule</name>

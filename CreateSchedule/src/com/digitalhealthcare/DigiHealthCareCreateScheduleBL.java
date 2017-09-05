@@ -40,7 +40,8 @@ public class DigiHealthCareCreateScheduleBL {
         
         EmailCommunication sendMail=new EmailCommunication();
         SMSCommunication smsCommunicaiton=new SMSCommunication();
-        String directorMail="udaykatikala@gmail.com";
+        
+        String directorMail=CISConstants.DIRECTOREMAILID;// for testing purpose
         // Capture service Start time
         
          CISResults cisResults=new CISResults();
@@ -79,6 +80,8 @@ public class DigiHealthCareCreateScheduleBL {
           String endTime="";
           String appwith="";
           int staffid=0;
+          String phoneNumber="";
+          
           String type= createSchedule.getType();
          
         // If startTimeListSize equal to > 1 need to series id=Y or series id=N no need else blcok
@@ -170,7 +173,7 @@ public class DigiHealthCareCreateScheduleBL {
                       String  lastname=lastName.getLastName();
                       DigiHealthCarePatientModel  phone=(DigiHealthCarePatientModel)cisResults.getResultObject();
                      
-                      String phoneNumber=phone.getPhone();
+                      phoneNumber=phone.getPhone();
                       
                       String cc= staffEmail ;
                       String bcc= CISConstants.ADMINEMAILID ;
@@ -179,15 +182,16 @@ public class DigiHealthCareCreateScheduleBL {
 
                       String messageType=CISConstants.RECIEVED;     
                       String dirPhone=CISConstants.DIRPHONE;
-                   
+                      String adminPhone=CISConstants.DIRPHONE;
+                      String messageCategory=CISConstants.APPOINTMENT_CREATED;
                       
                       if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
                        {
                           cisResults=sendMail.sendPatientMail(patientEmail,appwith,startTime,endTime,type,Stfname,Stlname,recurrenceTime,cc,bcc,directorMail);
                         
-                          cisResults=createScheduleDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate,messageType);
+                          cisResults=createScheduleDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate,messageType,messageCategory);
                        
-                          cisResults=smsCommunicaiton.sendRegistrationSMS(patientEmail,appwith,startTime,endTime,type,Stfname,Stlname,recurrenceTime,cc,bcc,directorMail,phoneNumber,dirPhone);
+                          cisResults=smsCommunicaiton.sendRegistrationSMS(patientEmail,appwith,startTime,endTime,type,Stfname,Stlname,recurrenceTime,cc,bcc,directorMail,phoneNumber,dirPhone,adminPhone,StaffPhoneNumber);
                        }
                      
                   }
@@ -221,9 +225,25 @@ public class DigiHealthCareCreateScheduleBL {
                  String endDatetime= strBuilder3.toString();
                  endDatetime=endDatetime+endDateTime;
                // cisResults.setParkDetails(parkDetailslist);   
-             
+                 cisResults=createScheduleDAO.getPatientEmail(patientId);
+                 
+                 DigiHealthCarePatientModel  patientEmailId=(DigiHealthCarePatientModel)cisResults.getResultObject();
+                 String  patientEmail=patientEmailId.getEmailId();
+                
+                 DigiHealthCarePatientModel  firstname=(DigiHealthCarePatientModel)cisResults.getResultObject();
+                 String name=firstname.getFirstName();
+               
+                 DigiHealthCarePatientModel  lastName=(DigiHealthCarePatientModel)cisResults.getResultObject();
+                 String  lastname=lastName.getLastName();
+                 DigiHealthCarePatientModel  phone=(DigiHealthCarePatientModel)cisResults.getResultObject();
+                 String subject= "Your care plan schedule has been created";
+
+                 String messageType=CISConstants.RECIEVED; 
+                 String messageCategory=CISConstants.APPOINTMENT_CREATED;
                  cisResults = createScheduleDAO.createSchedule(aptId,aptSeriesId,staffid,createSchedule.getPatientId(),startDatetime,endDatetime,totalDay,createSchedule.getType(),appwith,createDate,seriesStatus);
-                 }
+                 cisResults=createScheduleDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate,messageType,messageCategory);
+                  
+         		}
              }
            }
          }
@@ -283,6 +303,7 @@ public class DigiHealthCareCreateScheduleBL {
 	          String endTime="";
 	          String appwith="";
 	          int staffid=0;
+	          String phoneNumber="";
 	          String type= createSchedule.getType();
 	         
 	        // If startTimeListSize equal to > 1 need to series id=Y or series id=N no need else blcok
@@ -374,7 +395,7 @@ public class DigiHealthCareCreateScheduleBL {
 	                      String  lastname=lastName.getLastName();
 	                      DigiHealthCarePatientModel  phone=(DigiHealthCarePatientModel)cisResults.getResultObject();
 	                     
-	                      String phoneNumber=phone.getPhone();
+	                      phoneNumber=phone.getPhone();
 	                      
 	                      String cc= staffEmail ;
 	                      String bcc= CISConstants.ADMINEMAILID ;
@@ -385,13 +406,15 @@ public class DigiHealthCareCreateScheduleBL {
 	                      
 	                      String directorMail="udaykatikala@gmail.com";
 	                      String dirPhone=CISConstants.DIRPHONE;
+	                      String adminPhone=CISConstants.DIRPHONE;
+	                      String messageCategory=CISConstants.APPOINTMENT_CREATED;
 	                      if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
 	                       {
 	                          cisResults=sendMail.sendPatientMail(patientEmail,appwith,startTime,endTime,type,Stfname,Stlname,recurrenceTime,cc,bcc,directorMail);
 	                        
-	                          cisResults=createScheduleDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate,messageType);
-	                          cisResults=smsCommunicaiton.sendRegistrationSMS(patientEmail,appwith,startTime,endTime,type,Stfname,Stlname,recurrenceTime,cc,bcc,directorMail,phoneNumber,dirPhone);
-	                          
+	                          cisResults=createScheduleDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate,messageType,messageCategory);
+	                          cisResults=smsCommunicaiton.sendRegistrationSMS(patientEmail,appwith,startTime,endTime,type,Stfname,Stlname,recurrenceTime,cc,bcc,directorMail,phoneNumber,dirPhone,adminPhone,StaffPhoneNumber);
+	                            
 	                       }
 	                     
 	                  }
@@ -425,9 +448,25 @@ public class DigiHealthCareCreateScheduleBL {
 	                 String endDatetime= strBuilder3.toString();
 	                 endDatetime=endDatetime+endDateTime;
 	               // cisResults.setParkDetails(parkDetailslist);   
-	             
+	                 cisResults=createScheduleDAO.getPatientEmail(patientId);
+	                 
+	                 DigiHealthCarePatientModel  patientEmailId=(DigiHealthCarePatientModel)cisResults.getResultObject();
+	                 String  patientEmail=patientEmailId.getEmailId();
+	                
+	                 DigiHealthCarePatientModel  firstname=(DigiHealthCarePatientModel)cisResults.getResultObject();
+	                 String name=firstname.getFirstName();
+	               
+	                 DigiHealthCarePatientModel  lastName=(DigiHealthCarePatientModel)cisResults.getResultObject();
+	                 String  lastname=lastName.getLastName();
+	                 DigiHealthCarePatientModel  phone=(DigiHealthCarePatientModel)cisResults.getResultObject();
+	                 String subject= "Your care plan schedule has been created";
+
+	                 String messageType=CISConstants.RECIEVED; 
+	                 String messageCategory=CISConstants.APPOINTMENT_CREATED;
 	                 cisResults = createScheduleDAO.createSchedule(aptId,aptSeriesId,staffid,createSchedule.getPatientId(),startDatetime,endDatetime,totalDay,createSchedule.getType(),appwith,createDate,seriesStatus);
-	                 }
+	                 cisResults=createScheduleDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate,messageType,messageCategory);
+	                         
+	         }
 	             }
 	           }
 	         }
@@ -484,6 +523,7 @@ public class DigiHealthCareCreateScheduleBL {
           String endTime="";
           String appwith="";
           int staffid=0;
+          String phoneNumber="";
           String type= createSchedule.getType();
          
         // If startTimeListSize equal to > 1 need to series id=Y or series id=N no need else blcok
@@ -574,7 +614,7 @@ public class DigiHealthCareCreateScheduleBL {
                       String  lastname=lastName.getLastName();
                       DigiHealthCarePatientModel  phone=(DigiHealthCarePatientModel)cisResults.getResultObject();
                      
-                      String phoneNumber=phone.getPhone();
+                      phoneNumber=phone.getPhone();
                       
                       String cc= staffEmail ;
                       String bcc= CISConstants.ADMINEMAILID ;
@@ -584,14 +624,15 @@ public class DigiHealthCareCreateScheduleBL {
                       String messageType=CISConstants.RECIEVED;     
                       String directorMail="udaykatikala@gmail.com";
                       String dirPhone=CISConstants.DIRPHONE;
-                      
+                      String adminPhone=CISConstants.DIRPHONE;
+                      String messageCategory=CISConstants.APPOINTMENT_CREATED;
                       if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
                        {
                           cisResults=sendMail.sendPatientMail(patientEmail,appwith,startTime,endTime,type,Stfname,Stlname,recurrenceTime,cc,bcc,directorMail);
                         
-                          cisResults=createScheduleDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate,messageType);
-                          cisResults=smsCommunicaiton.sendRegistrationSMS(patientEmail,appwith,startTime,endTime,type,Stfname,Stlname,recurrenceTime,cc,bcc,directorMail,phoneNumber,dirPhone);
-	                         
+                          cisResults=createScheduleDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate,messageType,messageCategory);
+                          cisResults=smsCommunicaiton.sendRegistrationSMS(patientEmail,appwith,startTime,endTime,type,Stfname,Stlname,recurrenceTime,cc,bcc,directorMail,phoneNumber,dirPhone,adminPhone,StaffPhoneNumber);
+                              
                        }
                     }
          }else{
@@ -622,9 +663,25 @@ public class DigiHealthCareCreateScheduleBL {
                  String endDatetime= strBuilder3.toString();
                  endDatetime=endDatetime+endDateTime;
                // cisResults.setParkDetails(parkDetailslist);   
-             
+                 cisResults=createScheduleDAO.getPatientEmail(patientId);
+                 
+                 DigiHealthCarePatientModel  patientEmailId=(DigiHealthCarePatientModel)cisResults.getResultObject();
+                 String  patientEmail=patientEmailId.getEmailId();
+                
+                 DigiHealthCarePatientModel  firstname=(DigiHealthCarePatientModel)cisResults.getResultObject();
+                 String name=firstname.getFirstName();
+               
+                 DigiHealthCarePatientModel  lastName=(DigiHealthCarePatientModel)cisResults.getResultObject();
+                 String  lastname=lastName.getLastName();
+                 DigiHealthCarePatientModel  phone=(DigiHealthCarePatientModel)cisResults.getResultObject();
+                 String subject= "Your care plan schedule has been created";
+
+                 String messageType=CISConstants.RECIEVED; 
+                 String messageCategory=CISConstants.APPOINTMENT_CREATED;
                  cisResults = createScheduleDAO.createSchedule(aptId,aptSeriesId,staffid,createSchedule.getPatientId(),startDatetime,endDatetime,totalDay,createSchedule.getType(),appwith,createDate,seriesStatus);
-                 }
+                 cisResults=createScheduleDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate,messageType,messageCategory);
+                       
+         }
              }
            }
          }
@@ -750,13 +807,14 @@ public class DigiHealthCareCreateScheduleBL {
 	                        
 	                        String messageType=CISConstants.RECIEVED;     
 	                        String dirPhone=CISConstants.DIRPHONE;
-	                        
+	                        String adminPhone=CISConstants.DIRPHONE;
+	                        String messageCategory=CISConstants.APPOINTMENT_CREATED;
 	                        if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
 	                         {
 	                             cisResults=sendMail.sendPatientMail(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,cc,bcc,directorMail);
 	                        
-	                             cisResults=createScheduleDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate,messageType);
-	                             cisResults=smsCommunicaiton.sendRegistrationSMSworecurrence(patientEmail,appwith,startTime,endTime,type,recurrenceTime,cc,bcc,directorMail,phoneNumber,dirPhone);
+	                             cisResults=createScheduleDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate,messageType,messageCategory);
+	                             cisResults=smsCommunicaiton.sendRegistrationSMSworecurrence(patientEmail,appwith,startTime,endTime,type,recurrenceTime,cc,bcc,directorMail,phoneNumber,dirPhone,adminPhone,StaffPhoneNumber);
 	                            
 	                         }
 	                       

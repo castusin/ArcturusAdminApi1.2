@@ -129,6 +129,9 @@ public class DigiHealthCareEditSchedulePlanBL {
 							DigiHealthCareSaveStaffMemberModel  stafflname=(DigiHealthCareSaveStaffMemberModel)cisResult.getResultObject();
 							String lname=stafflname.getlName();
 						  
+							DigiHealthCareSaveStaffMemberModel  staffphone=(DigiHealthCareSaveStaffMemberModel)cisResult.getResultObject();
+							String staffPhone=staffphone.getPhone1();
+							
 							cisResult=editSchedulePlanDAO.getPatientEmail(patientId);
 						
 							DigiHealthCarePatientModel  patientEmailId=(DigiHealthCarePatientModel)cisResult.getResultObject();
@@ -146,12 +149,14 @@ public class DigiHealthCareEditSchedulePlanBL {
 						    String cc= staffEmail ;
 	                        String bcc= CISConstants.ADMINEMAILID ;
 	                        
-	                        String directorMail="udaykatikala@gmail.com";
+	                        String directorMail=CISConstants.DIRECTOREMAILID;
 	                        String dirPhone=CISConstants.DIRPHONE;
+	                        String adminPhone=CISConstants.DIRPHONE;
+	                       
 					  if(cisResult.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
 					   {
 						  cisResult=sendMail.sendPatientUpdateMail(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,cc,bcc,directorMail);
-						  cisResult=smsCommunicaiton.sendUpdateSMS(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,cc,bcc,directorMail,phoneNumber,dirPhone);
+						  cisResult=smsCommunicaiton.sendUpdateSMS(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,phoneNumber,dirPhone,staffPhone,adminPhone);
 	                      
 					   }
 			        
@@ -190,6 +195,9 @@ public class DigiHealthCareEditSchedulePlanBL {
 				  DigiHealthCareSaveStaffMemberModel  stafflname=(DigiHealthCareSaveStaffMemberModel)cisResult.getResultObject();
 				  String lname=stafflname.getlName();
 				  
+				  DigiHealthCareSaveStaffMemberModel  staffphone=(DigiHealthCareSaveStaffMemberModel)cisResult.getResultObject();
+				  String staffPhone=staffphone.getPhone1();
+					
 				  cisResult=editSchedulePlanDAO.getPatientEmail(patientId);
 				
 				  DigiHealthCarePatientModel  patientEmailId=(DigiHealthCarePatientModel)cisResult.getResultObject();
@@ -210,15 +218,17 @@ public class DigiHealthCareEditSchedulePlanBL {
                   
                  String subject= "Your care plan schedule has been updated";
                  String messageType=CISConstants.RECIEVED;
-                 String directorMail="udaykatikala@gmail.com";
+                 String directorMail=CISConstants.DIRECTOREMAILID;
                  String dirPhone=CISConstants.DIRPHONE;
+                 String adminPhone=CISConstants.DIRPHONE;
+                 String messageCategory=CISConstants.APPOINTMENT_UPDATE;
 				  if(cisResult.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
 				   {
 						  cisResult=sendMail.sendPatientMail(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,cc,bcc,directorMail);
 				
-						  cisResult=editSchedulePlanDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate,messageType);
-						  cisResult=smsCommunicaiton.sendUpdateSMS(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,cc,bcc,directorMail,phoneNumber,dirPhone);
-	                      
+						  cisResult=editSchedulePlanDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate,messageType,messageCategory);
+						  cisResult=smsCommunicaiton.sendUpdateSMS(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,phoneNumber,dirPhone,staffPhone,adminPhone);
+		                      
                       
 				   }
 		      }
@@ -227,7 +237,7 @@ public class DigiHealthCareEditSchedulePlanBL {
 		// Capture Service End time
 		String serviceEndTime=time.getTimeZone();
 		long result=seriveTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
-		  logger.info("Database time for edit schedule plan service:: " +result );
+		 logger.info("Database time for edit schedule plan service:: " +result );
 		  
 		return cisResult;
 	}

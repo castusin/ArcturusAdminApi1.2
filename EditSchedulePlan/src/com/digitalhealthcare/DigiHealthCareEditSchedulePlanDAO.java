@@ -145,7 +145,7 @@ public class DigiHealthCareEditSchedulePlanDAO extends JdbcDaoSupport {
 	}
 
 
-	public CISResults messageText(String messageId, String aptId, String patientId,String phoneNumber, String patientEmail,  String subject, String createDate, String messageType) {
+	public CISResults messageText(String messageId, String aptId, String patientId,String phoneNumber, String patientEmail,  String subject, String createDate, String messageType,String messageCategory) {
 			// TODO Auto-generated method stub
 
 		CISResults cisResults=new CISResults();
@@ -158,7 +158,7 @@ public class DigiHealthCareEditSchedulePlanDAO extends JdbcDaoSupport {
 			 testServiceTime sessionTimeCheck=new testServiceTime();
 			 String userId="";
 			 String serviceStartTime=time.getTimeZone();
-			 getJdbcTemplate().update(DigiHealthCareCreateScheduleQuery.SQL_MESSAGETEXT,messageId,aptId,patientId,userId,phoneNumber,patientEmail,subject,createDate,messageType);
+			 getJdbcTemplate().update(DigiHealthCareCreateScheduleQuery.SQL_MESSAGETEXT,messageId,aptId,patientId,userId,phoneNumber,patientEmail,subject,createDate,messageType,messageCategory);
 			 String serviceEndTime=time.getTimeZone();
 			 long result=sessionTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
 			 logger.info("message query time:: " +result);

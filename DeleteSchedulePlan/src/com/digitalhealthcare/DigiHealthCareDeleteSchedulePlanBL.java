@@ -95,11 +95,13 @@ public class DigiHealthCareDeleteSchedulePlanBL {
               String messageType=CISConstants.RECIEVED;;
               String directorMail="udaykatikala@gmail.com";
               String dirPhone=CISConstants.DIRPHONE;
+              String adminPhone=CISConstants.DIRPHONE;
+              String messageCategory=CISConstants.APPOINTMENT_CANCEL;
 			  if(cisResult.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
 			   {
 				  cisResult=sendMail.sendPatientDelMail(patientEmail,type,startTime,firstName,Lastname,cc,bcc,directorMail);
-				  cisResult=deleteSchedulePlanDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate,messageType);
-				  cisResult=smsCommunicaiton.sendDeleteSMS(patientEmail,type,startTime,firstName,Lastname,cc,bcc,directorMail,phoneNumber,dirPhone);
+				  cisResult=deleteSchedulePlanDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate,messageType,messageCategory);
+				  cisResult=smsCommunicaiton.sendDeleteSMS(patientEmail,type,startTime,firstName,Lastname,cc,bcc,directorMail,phoneNumber,dirPhone,adminPhone);
                   
 			   }
 	      }

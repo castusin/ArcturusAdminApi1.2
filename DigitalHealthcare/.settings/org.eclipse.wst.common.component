@@ -18,6 +18,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/DeleteSchedulePlan"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/AdminViewRecurrencePlans"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/ViewMessages"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
         <property name="context-root" value="DigitalHealthcare"/>
         <property name="java-output-path" value="/DigitalHealthcare/target/classes"/>
     </wb-module>
