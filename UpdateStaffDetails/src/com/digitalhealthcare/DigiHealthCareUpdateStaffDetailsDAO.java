@@ -14,12 +14,12 @@ public class DigiHealthCareUpdateStaffDetailsDAO extends JdbcDaoSupport {
 	public CISResults updateStaffDetails(int staffId, String getfName, String getlName,
 			String serviceType, String emailId, String phone1, String phone2,
 			String address1, String address2, String city, String country,
-			String state, int zipcode, String activeInd) {
+			String state, String zipcode, String activeInd, float lattitude, float longitude, String fax) {
 		CISResults cisResults=new CISResults();
 		
 		cisResults.setResponseCode(CISConstants.RESPONSE_SUCCESS);
 		Logger logger = Logger.getLogger(DigiHealthCareEditSchedulePlanDAO.class);
-		Object[] inputs = new Object[]{getfName,getlName,serviceType,emailId,phone1,phone2,address1,address2,city,country,state,zipcode,activeInd,staffId};
+		Object[] inputs = new Object[]{getfName,getlName,serviceType,emailId,phone1,phone2,address1,address2,city,country,state,zipcode,activeInd,lattitude,longitude,fax,staffId};
 		try{
 			// Capture service Start time
 			 TimeCheck time=new TimeCheck();

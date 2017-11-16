@@ -1,7 +1,6 @@
 
 package com.digitalhealthcare;
 
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -24,9 +23,12 @@ public class DigiHealthCareGetStaffMemberMapper implements RowMapper{
 		getStafflist.setCity(rs.getString("City"));
 		getStafflist.setCounty(rs.getString("county"));
 		getStafflist.setState(rs.getString("State"));
-		getStafflist.setZipcode(rs.getInt("Zipcode"));
+		getStafflist.setZipcode(rs.getString("Zipcode"));
 		getStafflist.setActiveInd(rs.getString("Activeind"));
 		getStafflist.setCreateDate(rs.getDate("Createdate"));
+		getStafflist.setLattitude(rs.getFloat("Lattitude"));
+		getStafflist.setLongitude(rs.getFloat("Longitude"));
+		getStafflist.setFax(rs.getString("Fax"));
 		return getStafflist;
 	}
 

@@ -14,8 +14,8 @@ public class DigiHealthCareSaveStaffMemberDAO extends JdbcDaoSupport {
 	public CISResults saveStaffMember(String getfName,
 			String getlName, String serviceType, String emailId, String phone1,
 			String phone2, String address1, String address2, String city,
-			String country, String state, int zipcode, String activeInd,
-			String createDate,String lattitude,String longitude) {
+			String country, String state, String zipcode, String activeInd,
+			String createDate,float lattitude,float longitude, String fax) {
 		CISResults cisResults=new CISResults();
 		
 		cisResults.setResponseCode(CISConstants.RESPONSE_SUCCESS);
@@ -25,7 +25,7 @@ public class DigiHealthCareSaveStaffMemberDAO extends JdbcDaoSupport {
 			 TimeCheck time=new TimeCheck();
 			 testServiceTime sessionTimeCheck=new testServiceTime();
 			 String serviceStartTime=time.getTimeZone();
-			 getJdbcTemplate().update(DigiHealthCareSaveStaffMemberQuery.SQL_SAVESTAFFMEMBER,getfName,getlName,serviceType,emailId,phone1,phone2,address1,address2,city,country,state,zipcode,activeInd,createDate,lattitude,longitude);
+			 getJdbcTemplate().update(DigiHealthCareSaveStaffMemberQuery.SQL_SAVESTAFFMEMBER,getfName,getlName,serviceType,emailId,phone1,phone2,address1,address2,city,country,state,zipcode,activeInd,createDate,lattitude,longitude,fax);
 			 String serviceEndTime=time.getTimeZone();
 			 long result=sessionTimeCheck.getServiceTime(serviceEndTime,serviceStartTime);
 			 logger.info("save staff member query time:: " +result);

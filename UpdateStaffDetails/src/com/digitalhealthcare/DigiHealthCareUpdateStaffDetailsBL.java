@@ -30,7 +30,7 @@ public class DigiHealthCareUpdateStaffDetailsBL {
 		 testServiceTime seriveTimeCheck=new testServiceTime();
 		 String serviceStartTime=time.getTimeZone();
 		 
-		CISResults cisResult = updateStaffDetailsDAO.updateStaffDetails(updateStaff.getStaffId(),updateStaff.getfName(),updateStaff.getlName(),updateStaff.getServiceType(),updateStaff.getEmailId(),updateStaff.getPhone1(),updateStaff.getPhone2(),updateStaff.getAddress1(),updateStaff.getAddress2(),updateStaff.getCity(),updateStaff.getCounty(),updateStaff.getState(),updateStaff.getZipcode(),updateStaff.getActiveInd());
+		CISResults cisResult = updateStaffDetailsDAO.updateStaffDetails(updateStaff.getStaffId(),updateStaff.getfName(),updateStaff.getlName(),updateStaff.getServiceType(),updateStaff.getEmailId(),updateStaff.getPhone1(),updateStaff.getPhone2(),updateStaff.getAddress1(),updateStaff.getAddress2(),updateStaff.getCity(),updateStaff.getCounty(),updateStaff.getState(),updateStaff.getZipcode(),updateStaff.getActiveInd(),updateStaff.getLattitude(),updateStaff.getLongitude(),updateStaff.getFax());
 		
 		// Capture Service End time
 		String serviceEndTime=time.getTimeZone();

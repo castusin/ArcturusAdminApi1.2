@@ -32,13 +32,13 @@ public class DigiHealthCareViewMessagesRest {
 		    Logger logger = Logger.getLogger(DigiHealthCareViewMessagesRest.class);
 			
             CommonCISValidation CommonCISValidation=new CommonCISValidation();
-		    CISResults cisResults=CommonCISValidation.viewMessagesValidation(request,viewMessages);
-		    if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
-		     {
+		   // CISResults cisResults=CommonCISValidation.viewMessagesValidation(request,viewMessages);
+		   // if(cisResults.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
+		    // {
 		    	ViewMessagesWebservice viewMessagesWebservice= new ViewMessagesWebservice();
-		       cisResults  = viewMessagesWebservice.viewMessages(viewMessages);
+		    	CISResults cisResults  = viewMessagesWebservice.viewMessages(viewMessages);
 		       logger.info(" DigitalHealthCare: view message service :"+cisResults);
-		     }
+		    // }
 		       return returnJsonData(cisResults);
 	 }
 	 

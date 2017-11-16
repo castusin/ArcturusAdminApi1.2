@@ -224,7 +224,7 @@ public class DigiHealthCareEditSchedulePlanBL {
                  String messageCategory=CISConstants.APPOINTMENT_UPDATE;
 				  if(cisResult.getResponseCode().equalsIgnoreCase(CISConstants.RESPONSE_SUCCESS))
 				   {
-						  cisResult=sendMail.sendPatientMail(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,cc,bcc,directorMail);
+						  cisResult=sendMail.sendPatientMail(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,cc,bcc,directorMail,name,lastname);
 				
 						  cisResult=editSchedulePlanDAO.messageText(messageId,aptId,patientId,phoneNumber,patientEmail,subject,createDate,messageType,messageCategory);
 						  cisResult=smsCommunicaiton.sendUpdateSMS(patientEmail,appwith,startTime,endTime,type,fname,lname,recurrenceTime,phoneNumber,dirPhone,staffPhone,adminPhone);

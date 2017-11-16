@@ -22,7 +22,7 @@ public class DigiHealthCareGetStaffMemberDAO extends JdbcDaoSupport {
 	public CISResults getStaffList(int staffId, String getfName, String getlName,
 			String serviceType, String emailId, String phone1, String phone2,
 			String address1, String address2, String city, String country,
-			String state, int zipcode, String activeInd, Date createDate) {
+			String state, String zipcode, String activeInd, Date createDate, String fax) {
 		Logger logger = Logger.getLogger(DigiHealthCareAdminViewPlansDAO.class);
 		DigiHealthCareSaveStaffMemberModel getStafflist=new DigiHealthCareSaveStaffMemberModel();
 		CISResults cisResults=new CISResults();
